@@ -69,7 +69,7 @@ const NavBar = () => {
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
-          <Link to="/about" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
+          <Link to="/" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
             Portfolio
           </Link>
 
@@ -77,14 +77,14 @@ const NavBar = () => {
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
-          <Link to="/about" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
+          <Link to="/services" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
             Service
           </Link>
           <div className="flex flex-row items-center justify-center">
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
-          <Link to="/about" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
+          <Link to="/contact" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
             Contact
           </Link>
           <div className="flex flex-row items-center justify-center">
