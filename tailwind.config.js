@@ -12,6 +12,7 @@ module.exports = {
       },
       fontFamily: {
         ubuntu: ['"Ubuntu Sans"'],
+        montserrat: ['Montserrat', 'sans-serif'], // Ajout de la police Montserrat
       },
       fontSize: {
         navbar_base: ['18px', '21.6px'], 

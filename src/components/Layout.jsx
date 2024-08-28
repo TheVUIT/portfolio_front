@@ -8,26 +8,25 @@ import heroBackground from '../assets/images/hero-background.png';
 import manBackground from '../assets/images/man-background.jpg';
 import '../css/index.css'
 
+      {/* <main className='layout-background h-full'>
+      <div className='bg-gray-400 h-32'> */}
 
 const Layout = ({ children }) => {
   const percent = 100;
   return (
-    <>
-      <main className='layout-background h-full'>
-      <div className='bg-gray-400 h-32'>
-
-      </div>
-      <NavBar percent={percent} /> 
-         <div className='main-content'>
-          {children}
-          </div>
-      <Footer />
-      </main>
-    </>
+    <div>
+     <NavBar/>
+     <div className=''>
+      {children}
+     </div>
+    </div>
   );
 };
-
+      {/* <Footer /> */ }
 export default Layout;
+
+
+
 
 {/* <div className="inline-block">
 <img  
