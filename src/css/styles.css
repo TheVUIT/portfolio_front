@@ -1,0 +1,13 @@
+@keyframes fillWidth {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 70%;
+    }
+  }
+  
+  .animate-fill-width {
+    animation: fillWidth 1s ease-in-out infinite;
+  }
+  
