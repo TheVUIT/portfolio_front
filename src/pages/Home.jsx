@@ -20,7 +20,7 @@ const Home = () => {
       {/* <div className='bg-transparent h-28 flex flex-col'>
 
       </div> */}
-      <GridSection/>
+      {/* <GridSection/> */}
       {/* <Newsletter/> */}
     </main>
   );

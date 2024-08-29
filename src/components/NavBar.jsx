@@ -143,7 +143,7 @@ const NavBar = () => {
             </div> */}
 
           {/* Small screen hamburger menu */}
-          <div className="md:hidden mr-6">
+          <div className="lg:hidden mr-6">
             <button
               onClick={toggleMenu}
               type="button"
@@ -170,31 +170,63 @@ const NavBar = () => {
         <div
           className={
             showMenu
-              ? 'absolute left-0 right-0 top-20 flex flex-col z-70 m-0 sm:ml-4 mt-5 sm:mt-3 sm:flex p-5 sm:p-0 justify-center items-center shadow-lg sm:shadow-none'
+              ? 'absolute left-0 right-0 top-20 z-70 h-screen flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
               : 'hidden'
           }
         >
           <Link
             to="/projects"
-            className="flex flex-row mb-2 text-lg text-left text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 sm:py-2"
+            className="h-1/ w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Projects"
           >
             Projects
           </Link>
+
+          <div className="flex flex-row items-center justify-center">
+            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
+          </div>
+
+
           <Link
             to="/about"
-            className="flex flex-row pt-3 mb-2 text-lg text-left border-t-2 text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 sm:py-2 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark"
+            className="h-1/6 w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="About Me"
           >
             About Me
           </Link>
+
+          <div className="h-1/8 flex flex-row items-center justify-center">
+            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
+          </div>
+
+
+
+
           <Link
             to="/contact"
-            className="flex flex-row pt-3 mb-2 text-lg text-left border-t-2 text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 sm:py-2 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark"
+            className="h-1/8 w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Contact"
           >
             Contact
           </Link>
+
+          <div className="h-1/8 flex flex-row items-center justify-center">
+            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
+          </div>
+
+          <div className="flex lg:items-center space-x-2">
+          <Link className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+            <RiBehanceLine className='h-full' />
+          </Link>
+
+          <Link className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+            <RiInstagramLine className='h-full' />
+          </Link>
+
+          <Link className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+            <RiLinkedinLine className='h-full' />
+          </Link>
+        </div>
 
         </div>
 
