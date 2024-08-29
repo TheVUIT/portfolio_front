@@ -37,10 +37,6 @@ const NavBar = () => {
 
 
   return (
-    // <div className=" inset-x-0 top-0 mt-0.5 h-1 bg-red-500" style={{ width: `${percent}%` }}>
-
-    //     </div>
-
     <nav className="fixed left-0 right-0 top-0 z-10 flex flex-row h-20 w-full justify-between items-center bg-white py-4 shadow-md backdrop-blur-md">
 
       {/* Logo Container */}
@@ -55,7 +51,6 @@ const NavBar = () => {
       </div>
 
       <div className='h-full flex flex-row gap-10'>
-
 
         {/* Large screen Link pagging container */}
 
@@ -171,7 +166,6 @@ const NavBar = () => {
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
-
           <Link
             to="/services"
             className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
@@ -183,7 +177,6 @@ const NavBar = () => {
           <div className="h-auto flex flex-row items-center justify-center">
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
-
 
           <Link
             to="/contact"
@@ -198,9 +191,7 @@ const NavBar = () => {
           </div>
 
           <div className='h-0.5 flex w-full mb-4 bg-texte_secondary bg-opacity-20'>
-
           </div>
-
 
           <div className="h-auto flex pg items-center space-x-2">
             <Link className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
@@ -218,9 +209,7 @@ const NavBar = () => {
 
         </div>
 
-
       </div>
-
 
     </nav>
 

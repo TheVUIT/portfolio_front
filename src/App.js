@@ -5,10 +5,10 @@ import Layout from './components/Layout';
 import './css/index.css';
 import '@mantine/core/styles.css';
 import Home from './pages/Home';
-import Partnership from './pages/Partnership';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Services from './pages/Services';
+import NotFoundPage from './pages/NotFoundPage';
 
 const validPaths = ['/', '/about', '/partners', '/contact', "/blog", "/histoire", "/membre"];
 
@@ -37,12 +37,10 @@ function getPageComponent(path) {
     case '/contact':
       return <Contact/>;   
     default:
-      return <NotFoundPage />; // Affiche une page par défaut pour les chemins non valides
+      return <NotFoundPage />; 
   }
 }
 
-function NotFoundPage() {
-  return <div>Page not found</div>;
-}
+
 
 export default App;
