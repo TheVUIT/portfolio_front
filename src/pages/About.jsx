@@ -2,20 +2,7 @@ import React from 'react'
 import imagesPack from '../utils/ImagesContant';
 
 const About = () => {
-  // return (
-  //   <div className='flex flex-row '>
-  //       <>
-  //           <div className='h-8 w-screen bg-background_primary'>
-
-  //           </div>
-  //           <div className='h-screen w-full p-16 md:p-10 sm:p-4'>
-  //               <main className=" flex h-5/6 w-full bg-cover bg-re bg-center" style={{ backgroundImage: `url(${imagesPack.BANNERIMAGE})` }}>
-
-  //               </main>
-  //           </div>
-  //       </>
-  //   </div>
-  // )
+  
 
   return (
     <> 
@@ -38,10 +25,10 @@ const About = () => {
           With a solid foundation in some 3D software like Blender and Substance 3d Painter, I specialize in professional product design and visualization.
           My ability to combine artistic vision with technical mastery allows me to deliver exceptional results that exceed client expectations        </p>
         <div className="flex flex-row justify-between lg:flex-row lg:justify-between gap-4">
-          <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
+          <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]">
             Check the portfolio
           </button>
-          <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
+          <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]">
             Hire me for project
           </button>
         </div>
