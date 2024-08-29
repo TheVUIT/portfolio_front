@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import React from 'react';
-import '../css/navbar/NavBar.css';
+// import '../css/navbar/NavBar.css';
 import '../css/index.css'
 import '../css/styles.css'
-import logo from "../assets/images/email.png"
+// import logo from "../assets/images/email.png"
 import imagesPack from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
 
