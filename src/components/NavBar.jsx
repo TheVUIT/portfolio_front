@@ -55,8 +55,8 @@ const NavBar = () => {
       </div>
 
       <div className='h-full flex flex-row gap-10'>
-        
-        
+
+
         {/* Large screen Link pagging container */}
 
         <div className="hidden items-center space-x-5 gap-2 lg:flex lg:items-center">
@@ -78,7 +78,7 @@ const NavBar = () => {
           </div>
 
           <Link to="/services" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
-            Service
+            Services
           </Link>
           <div className="flex flex-row items-center justify-center">
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
@@ -93,54 +93,24 @@ const NavBar = () => {
 
         </div>
 
-            {/* Social Links And Directions */}
+        {/* Social Links And Directions */}
         <div className="hidden lg:flex lg:items-center space-x-2">
-          <Link className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+          <Link className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiBehanceLine className='h-full' />
           </Link>
 
-          <Link className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+          <Link className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiInstagramLine className='h-full' />
           </Link>
 
-          <Link className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
+          <Link className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiLinkedinLine className='h-full' />
           </Link>
         </div>
 
-        
-         {/* Header menu links and small screen hamburger menu */}
-        <div className="flex items-center justify-between px-4 sm:px-0">
-          {/* <div>
-              <Link to="/">
-                {activeTheme === 'dark' ? (
-                  <img
-                    src={logoDark}
-                    className="w-36"
-                    alt="Dark Logo"
-                  />
-                ) : (
-                  <img
-                    src={logoLight}
-                    className="w-36"
-                    alt="Dark Logo"
-                  />
-                )}
-              </Link>
-            </div> */}
 
-          {/* Theme switcher small screen */}
-          {/* <div
-              onClick={() => setTheme(activeTheme)}
-              aria-label="Theme Switcher"
-              className="block p-3 ml-0 shadow-sm cursor-pointer sm:hidden bg-primary-light dark:bg-ternary-dark rounded-xl"
-            >
-              {activeTheme === 'dark' ? (
-                <FiMoon className="text-xl text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light" />
-              ) : (
-                <FiSun className="text-xl text-gray-200 hover:text-gray-50" />
-              )}
-            </div> */}
+        {/* Header menu links and small screen hamburger menu */}
+        <div className="flex items-center justify-between px-4 sm:px-0">
 
           {/* Small screen hamburger menu */}
           <div className="lg:hidden mr-6">
@@ -170,63 +140,81 @@ const NavBar = () => {
         <div
           className={
             showMenu
-              ? 'absolute left-0 right-0 top-20 z-70 h-screen flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
+              ? 'absolute left-0 right-0 top-20 z-70 h-[85vh] flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
               : 'hidden'
           }
         >
-          <Link
-            to="/projects"
-            className="h-1/ w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
-            aria-label="Projects"
-          >
-            Projects
-          </Link>
+          <div className='h-0.5 flex w-full bg-texte_secondary bg-opacity-20'>
 
-          <div className="flex flex-row items-center justify-center">
-            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
-
-
           <Link
             to="/about"
-            className="h-1/6 w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
-            aria-label="About Me"
+            className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
+            aria-label="Projects"
           >
-            About Me
+            About
           </Link>
 
-          <div className="h-1/8 flex flex-row items-center justify-center">
+          <div className="h-auto flex flex-row items-center justify-center">
+            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
+          </div>
+
+          <Link
+            to="/"
+            className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
+            aria-label="Projects"
+          >
+            Portfolio
+          </Link>
+
+          <div className="h-auto flex flex-row items-center justify-center">
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
 
+          <Link
+            to="/services"
+            className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
+            aria-label="About Me"
+          >
+            Services
+          </Link>
+
+          <div className="h-auto flex flex-row items-center justify-center">
+            <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
+          </div>
 
 
           <Link
             to="/contact"
-            className="h-1/8 w-1/4 flex flex-row items-center justify-center rounded-3xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
+            className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Contact"
           >
             Contact
           </Link>
 
-          <div className="h-1/8 flex flex-row items-center justify-center">
+          <div className="h-auto flex flex-row items-center justify-center">
             <div className="w-1 h-2 rounded-sm bg-texte_secondary"></div>
           </div>
 
-          <div className="flex lg:items-center space-x-2">
-          <Link className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
-            <RiBehanceLine className='h-full' />
-          </Link>
+          <div className='h-0.5 flex w-full mb-4 bg-texte_secondary bg-opacity-20'>
 
-          <Link className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
-            <RiInstagramLine className='h-full' />
-          </Link>
+          </div>
 
-          <Link className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary">
-            <RiLinkedinLine className='h-full' />
-          </Link>
-        </div>
+
+          <div className="h-auto flex pg items-center space-x-2">
+            <Link className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+              <RiBehanceLine className='h-full text-3xl sm:text-2xl' />
+            </Link>
+
+            <Link className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+              <RiInstagramLine className='h-full text-3xl sm:text-2xl' />
+            </Link>
+
+            <Link className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+              <RiLinkedinLine className='h-full text-3xl sm:text-2xl' />
+            </Link>
+          </div>
 
         </div>
 
@@ -236,7 +224,7 @@ const NavBar = () => {
 
     </nav>
 
-);
+  );
 }
 
 
