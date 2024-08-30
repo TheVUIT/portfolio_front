@@ -10,7 +10,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import NotFoundPage from './pages/NotFoundPage';
 
-const validPaths = ['/', '/about', '/partners', '/contact', "/blog", "/histoire", "/membre"];
+const validPaths = ['/', '/about', '/services', '/contact'];
 
 function App() {
   return (
