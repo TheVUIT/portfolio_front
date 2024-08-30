@@ -1,6 +1,7 @@
 import React from 'react'
 import ServicePng from '../components/ServicePng'
-
+import ServiceProductAds from '../components/ServiceProductAds'
+import Service3dModel from '../components/Service3dModel'
 
 const Services = () => {
   return (
@@ -15,8 +16,8 @@ const Services = () => {
         Discover the packs adapted to your needs.
       </p>
 
-    {/* The Line */}
-      <div className='w-full h-0.5 flex flex-row bg-texte_secondary bg-opacity-25 lg:hidden  mb-12 mt-10 pr-4 pl-4'>
+      {/* The Line */}
+      <div className='w-full h-0.5 flex flex-row bg-texte_secondary bg-opacity-25 lg:hidden  mb-8 mt-10 pr-4 pl-4'>
 
       </div>
 
@@ -33,7 +34,7 @@ const Services = () => {
 
         <div className='w-1/12'>
           <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
-              
+
           </div>
         </div>
 
@@ -42,11 +43,43 @@ const Services = () => {
 
 
       </section>
-      
+
+
+
+
+
+      {/* For Product Ads */}
+
+      <section className='w-full flex flex-col lg:flex-row mt-10'>
+        <div className='lg:mt-8 w-auto flex flex-col items-center'>
+          <div className='p-2 flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl lg:text-2xl'>
+           <p>product</p>
+           <p>visualization</p>
+           <p>/</p>
+           <p>Products ADS</p>
+          </div>
+          <p className='font-ubuntu text-base text-nowrap'>
+            4096px X 4096px
+          </p>
+        </div>
+
+        <div className='w-1/12'>
+          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
+
+          </div>
+        </div>
+
+        <ServiceProductAds
+        />
+
+      </section>
+
+
+      {/* For 3D Modelling */}
       <section className='w-full flex flex-col lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center'>
           <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
-            24 PNG 4K
+            3D Modelisation          
           </div>
           <p className='font-ubuntu text-base text-nowrap'>
             4096px X 4096px
@@ -55,27 +88,16 @@ const Services = () => {
 
         <div className='w-1/12'>
           <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
-              
+
           </div>
         </div>
 
-        <ServicePng
+        <Service3dModel
         />
 
 
       </section>
 
-
-
-      {/* For Product Ads */}
-      <section>
-
-      </section>
-
-      {/* For 3D Modelling */}
-      <section>
-
-      </section>
 
     </main>
   )
