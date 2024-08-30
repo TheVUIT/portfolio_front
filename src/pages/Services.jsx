@@ -33,7 +33,7 @@ const Services = () => {
         </div>
 
         <div className='w-1/12'>
-          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
+          <div className='mb-3 mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
 
           </div>
         </div>
@@ -45,15 +45,12 @@ const Services = () => {
       </section>
 
 
-
-
-
       {/* For Product Ads */}
 
       <section className='w-full flex flex-col lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center'>
-          <div className='p-2 flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl lg:text-2xl'>
-           <p>product</p>
+          <div className='flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl lg:text-2xl'>
+           <p>Product</p>
            <p>visualization</p>
            <p>/</p>
            <p>Products ADS</p>
@@ -78,7 +75,7 @@ const Services = () => {
       {/* For 3D Modelling */}
       <section className='w-full flex flex-col lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center'>
-          <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
+          <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl lg:text-2xl rounded-3xl'>
             3D Modelisation          
           </div>
           <p className='font-ubuntu text-base text-nowrap'>
@@ -94,7 +91,6 @@ const Services = () => {
 
         <Service3dModel
         />
-
 
       </section>
 
