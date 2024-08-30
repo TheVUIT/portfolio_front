@@ -2,7 +2,7 @@ import React from 'react'
 
 const ServicePng = () => {
   return (
-    <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
+    <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p>
         A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
       </p>
@@ -62,13 +62,33 @@ const ServicePng = () => {
       </div>
 
 
-      <div className='mt-8  w-full flex flex-row justify-center items-start'>
+      <div className='mt-8  w-full flex flex-row justify-center items-start border-t border-texte_secondary'>
         <p className='mb-6 text-texte_secondary text-lg font-ubuntu font-bold'>
           ADDITIONAL OPTIONS
         </p>
       </div>
 
+      <div className='flex flex-col items-center justify-center mt-8 mb-8'>
+        <p className='text-sm text-center'>
+          3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
+        </p>
+
+        <p className='font-ubuntu font-bold text-sm text-center'>
+          + $100 (Simple)
+        </p>
+        <p className='font-ubuntu font-bold text-sm text-center'>
+          from + $200 (Complex)
+        </p>
+
+      </div>
+
       <div className='mt-8  w-full flex flex-row justify-center items-start border-b border-texte_secondary'>
+
+      </div>
+
+      <div className='flex flex-col items-center justify-center mt-8 mb-8'>
+        <p className='font-ubuntu font-bold text-sm text-center'>
+          *You will have to provide all the necessary details according to the results you wish to obtain        </p>
 
       </div>
 

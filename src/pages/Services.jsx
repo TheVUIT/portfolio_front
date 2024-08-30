@@ -22,9 +22,9 @@ const Services = () => {
       </div>
 
       {/* For PNG Product */}
-      <section className='w-full flex flex-col lg:flex-row mt-10'>
+      <section className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center'>
-          <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
+          <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
             24 PNG 4K
           </div>
           <p className='font-ubuntu text-base text-nowrap'>
@@ -32,8 +32,8 @@ const Services = () => {
           </p>
         </div>
 
-        <div className='w-1/12'>
-          <div className='mb-3 mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
+        <div className='w-1/12 flex flex-col items-start justify-center lg:block '>
+          <div className='mb-6 mt-6 lg:mt-[52px] w-full h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
 
           </div>
         </div>
@@ -47,21 +47,24 @@ const Services = () => {
 
       {/* For Product Ads */}
 
-      <section className='w-full flex flex-col lg:flex-row mt-10'>
+      <section className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center'>
-          <div className='flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl lg:text-2xl'>
+          <div className='p-2 flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
            <p>Product</p>
            <p>visualization</p>
            <p>/</p>
            <p>Products ADS</p>
           </div>
           <p className='font-ubuntu text-base text-nowrap'>
-            4096px X 4096px
+          Ratio
+          </p>
+          <p className='font-ubuntu text-base text-nowrap'>
+          3 840px X 2 160px by default; According to your needs
           </p>
         </div>
 
         <div className='w-1/12'>
-          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
+          <div className='mb-6 mt-6 lg:mt-[95px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
 
           </div>
         </div>
@@ -73,18 +76,19 @@ const Services = () => {
 
 
       {/* For 3D Modelling */}
-      <section className='w-full flex flex-col lg:flex-row mt-10'>
-        <div className='lg:mt-8 w-auto flex flex-col items-center'>
+      <section className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10'>
+        <div className='lg:mt-8 w-auto flex flex-col items-center lg:items-start'>
           <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl lg:text-2xl rounded-3xl'>
-            3D Modelisation          
+            3D Modelisation
           </div>
-          <p className='font-ubuntu text-base text-nowrap'>
-            4096px X 4096px
+          <p className='font-ubuntu text-base text-nowrap text-red-600 lg:text-wrap'>
+          HARD-SURFACE &
+          SURFACE MODELING
           </p>
         </div>
 
         <div className='w-1/12'>
-          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
+          <div className='mb-6 mt-6 lg:mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
 
           </div>
         </div>
