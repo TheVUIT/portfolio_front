@@ -22,7 +22,7 @@ const Services = () => {
 
       {/* For PNG Product */}
       <section className='w-full flex flex-col lg:flex-row mt-10'>
-        <div className='w-auto flex flex-col items-center'>
+        <div className='lg:mt-8 w-auto flex flex-col items-center'>
           <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
             24 PNG 4K
           </div>
@@ -32,12 +32,35 @@ const Services = () => {
         </div>
 
         <div className='w-1/12'>
-          <div className='w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-0.5 lg:bg-opacity-20 lg:rounded-2xl '>
+          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
               
           </div>
         </div>
 
-        <ServicePng/>
+        <ServicePng
+        />
+
+
+      </section>
+      
+      <section className='w-full flex flex-col lg:flex-row mt-10'>
+        <div className='lg:mt-8 w-auto flex flex-col items-center'>
+          <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
+            24 PNG 4K
+          </div>
+          <p className='font-ubuntu text-base text-nowrap'>
+            4096px X 4096px
+          </p>
+        </div>
+
+        <div className='w-1/12'>
+          <div className='mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
+              
+          </div>
+        </div>
+
+        <ServicePng
+        />
 
 
       </section>

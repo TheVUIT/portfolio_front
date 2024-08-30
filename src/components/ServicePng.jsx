@@ -2,7 +2,7 @@ import React from 'react'
 
 const ServicePng = () => {
   return (
-    <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]' >
+    <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p>
         A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
       </p>
@@ -76,8 +76,8 @@ const ServicePng = () => {
 
       </div>
 
-      <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]">
-        Cntact / Collab
+      <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg transition-colors duration-300 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]">
+        Contact / Collab
       </button>
 
     </div>
