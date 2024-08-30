@@ -1,4 +1,6 @@
 import React from 'react'
+import ServicePng from '../components/ServicePng'
+
 
 const Services = () => {
   return (
@@ -13,27 +15,29 @@ const Services = () => {
         Discover the packs adapted to your needs.
       </p>
 
-      <div className='w-full h-0.5 flex flex-row bg-texte_secondary lg:hidden  mb-12 mt-10 pr-4 pl-4'>
+    {/* The Line */}
+      <div className='w-full h-0.5 flex flex-row bg-texte_secondary bg-opacity-25 lg:hidden  mb-12 mt-10 pr-4 pl-4'>
 
-          </div>
+      </div>
 
       {/* For PNG Product */}
-      <section className='w-full flex flex-col lg:flex-row'>
+      <section className='w-full flex flex-col lg:flex-row mt-10'>
         <div className='w-auto flex flex-col items-center'>
-          <div className='h-auto w-auto p-1 bg-texte_secondary text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
+          <div className='h-auto w-auto p-1 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-2xl rounded-3xl'>
             24 PNG 4K
-
           </div>
-          <p className='font-ubuntu text-base'>
+          <p className='font-ubuntu text-base text-nowrap'>
             4096px X 4096px
           </p>
         </div>
 
-        <div className='w-auto'>
-          <div className='h-0.5 bg-texte_secondary transform rotate-90 lg:rotate-180 lg:h-3'>
-
+        <div className='w-full'>
+          <div className='w-full flex flex-row h-0.5 bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-0.5'>
+              
           </div>
         </div>
+
+        <ServicePng/>
 
 
       </section>
