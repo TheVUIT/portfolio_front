@@ -70,13 +70,11 @@ import ChoiceButton from './ChoiceButton';
 
 
 import React, { useEffect, useRef, useState } from 'react';
+import ButtonCarousel from './ButtonCarousel';
 
 const GridSection = () => {
   const gridItems = [
     { id: 1, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 1' },
-    { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
-    { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
-    { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
     { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
     { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
     { id: 2, modelUrl: 'https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb', title: 'Modèle 3D 2' },
@@ -103,13 +101,15 @@ const GridSection = () => {
 
   return (
     <section className="flex flex-col items-center justify-center p-4">
-      <ChoiceButton/>
+      {/* Placez les boutons ici pour éviter qu'ils se répètent */}
+      <ButtonCarousel />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Grille d'éléments */}
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {gridItems.map((item) => (
           <GridItem key={item.id} modelUrl={item.modelUrl} title={item.title} />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

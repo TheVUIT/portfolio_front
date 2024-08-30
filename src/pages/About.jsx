@@ -31,10 +31,10 @@ const About = () => {
             Thus in the sections of each project of the portfolio, you will see visuals illustrating use cases of 3D renderings png 4K</p>
           <div className="flex flex-row justify-between lg:flex-row lg:justify-between gap-4">
             <button className="bg-background_primary text-nowrap text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]">
-              Check the portfolio
+              Check portfolio
             </button>
             <button className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]">
-              Hire me for project
+              Hire  for project
             </button>
           </div>
         </div>

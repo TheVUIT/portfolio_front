@@ -4,8 +4,7 @@ const ServiceProductAds = () => {
   return (
     <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p>
-        A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
-      </p>
+      A pack that can be used not only by graphic designers, UI, layout artists but also by salespeople, comms, producers/designers themselves for their work      </p>
 
       <div className='mt-8 w-full flex flex-row justify-center items-start border-b border-texte_secondary'>
         <p className='mb-6 text-texte_secondary text-lg font-ubuntu font-bold'>
@@ -15,29 +14,11 @@ const ServiceProductAds = () => {
 
       <div className='flex flex-col items-center justify-center mt-8 mb-8'>
         <p className='font-ubuntu font-bold text-sm text-center' >
-          20 viewing angles png
+        02 different scene renderings (16:9 ratio)
         </p>
         <p className='text-sm text-center'>
-          (18 different angle png renders, no background, 4K, full textured + 02 in gray mode)
-        </p>
-      </div>
-
-
-      <div className='flex flex-col items-center justify-center mt-8 mb-8'>
-        <p className='font-ubuntu font-bold text-sm text-center'>
-          02 png in wireframe mode with the same angles as the grays
-        </p>
-        <p className='text-sm text-center'>
-          (Very useful for certain types of design)
-        </p>
-      </div>
-
-      <div className='flex flex-col items-center justify-center mt-8 mb-8'>
-        <p className='font-ubuntu font-bold text-sm text-center'>
-          02 others png to illustrate product color variations
-        </p>
-        <p className='text-sm text-center'>
-          (Random viewing angles)
+        Visualisation, Product + Sets and background with texts (or without) according to your description / script
+        (if this is specified)
         </p>
       </div>
 
@@ -52,12 +33,12 @@ const ServiceProductAds = () => {
       <div className='flex flex-row items-center justify-center gap-10'>
         <div >
           <p className=''>Simple product</p>
-          <p> <b>$ 199</b> </p>
+          <p> <b>$ 199 </b>USD</p>
         </div>
 
         <div>
           <p className=''>Complex product</p>
-          <p>from <b> $ 499</b></p>
+          <p>from <b> $ 499 </b>USD</p>
         </div>
       </div>
 

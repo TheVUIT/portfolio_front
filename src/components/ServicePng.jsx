@@ -52,12 +52,12 @@ const ServicePng = () => {
       <div className='flex flex-row items-center justify-center gap-10'>
         <div >
           <p className=''>Simple product</p>
-          <p> <b>$ 199</b> </p>
+          <p> <b>$ 199 </b> USD </p>
         </div>
 
         <div>
           <p className=''>Complex product</p>
-          <p>from <b> $ 499</b></p>
+          <p>from <b> $ 499 </b> USD</p>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ const ServicePng = () => {
 
       <div className='flex flex-col items-center justify-center mt-8 mb-8'>
         <p className='text-sm text-center'>
-          3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
+        &#10004; 3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
         </p>
 
         <p className='font-ubuntu font-bold text-sm text-center'>

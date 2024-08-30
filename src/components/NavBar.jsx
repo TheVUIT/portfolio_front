@@ -1,26 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// NavBar.js
+
 import { useState } from 'react';
 
-import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 import React from 'react';
-// import '../css/navbar/NavBar.css';
 import '../css/index.css'
 import '../css/styles.css'
-// import logo from "../assets/images/email.png"
 import imagesPack from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
 
 import {
-  RiYoutubeLine,
   RiInstagramLine,
-  RiDribbbleLine,
   RiBehanceLine,
-  RiPinterestLine,
-  RiFacebookBoxLine,
   RiLinkedinLine,
-  RiGithubLine
 } from 'react-icons/ri'
 
 
@@ -53,7 +46,6 @@ const NavBar = () => {
       <div className='h-full flex flex-row gap-10'>
 
         {/* Large screen Link pagging container */}
-
         <div className="hidden items-center space-x-5 gap-2 lg:flex lg:items-center">
 
           <Link to="/about" className="p-3 h-full w-full flex flex-row items-center text-center rounded-xl font-ubuntu text-navbar_base font-navbar_bold cursor-pointer text-texte_secondary transition-colors duration-150 hover:bg-texte_secondary hover:text-backgroung_secondary">
@@ -215,7 +207,5 @@ const NavBar = () => {
 
   );
 }
-
-
 
 export default NavBar;
