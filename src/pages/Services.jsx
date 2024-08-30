@@ -32,7 +32,7 @@ const Services = () => {
         </div>
 
         <div className='w-full'>
-          <div className='w-full flex flex-row h-0.5 bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-0.5'>
+          <div className='w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-0.5 lg:bg-opacity-20 lg:rounded-2xl '>
               
           </div>
         </div>
