@@ -14,8 +14,8 @@ const Home = () => {
       {/* <div className='bg-transparent h-28 flex flex-col'>
 
       </div> */}
-      {/* <GridSection/> */}
-      <GridSectionSecond/>
+      <GridSection/>
+      {/* <GridSectionSecond/> */}
       {/* <Newsletter/> */}
     </main>
   );
