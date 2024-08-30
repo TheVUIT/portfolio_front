@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   return (
     <div>
      <NavBar/>
-     <div className=''>
+     <div className='w-screen'>
       {children}
      </div>
     </div>

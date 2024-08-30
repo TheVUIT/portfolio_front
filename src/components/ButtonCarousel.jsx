@@ -243,50 +243,90 @@
 
 import React from "react";
 import '../css/index.css'
-import { Carousel, CarouselItem,   CarouselContent, CarouselNext, CarouselPrevious } from "../components/ui/carousel"; // Assurez-vous que ces chemins sont corrects
+import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "../components/ui/carousel"; // Assurez-vous que ces chemins sont corrects
+
+// const ButtonCarousel = () => {
+//     const buttons = [
+//         'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
+//         'Blueprints / Prototyping', 'Architecture', 'Logo', 'Others'
+//     ];
+
+//     return (
+//         <Carousel
+//             opts={{
+//                 align: "center",
+//                 loop: false,
+//                 autoplay: false,
+//                 speed: 50,
+//                 slidesToShow: 4, // Ajuster pour afficher plus de boutons sur les grands écrans
+//                 slidesToScroll: 2
+//                 //   breakpoints: {
+//                 //     640: {
+//                 //       slidesToShow: 1, // Afficher 1 bouton sur les petits écrans
+//                 //     },
+//                 //     768: {
+//                 //       slidesToShow: 2, // Afficher 2 boutons sur les écrans moyens
+//                 //     },
+//                 //     1024: {
+//                 //       slidesToShow: 3, // Afficher 3 boutons sur les écrans plus grands
+//                 //     },
+//                 //   },
+//             }}
+//             className="relative w-screen max-w-full overflow-hidden mb-8"
+//         >
+//             <CarouselContent className="flex flex-row space-x-4 transition-transform duration-100 ease-out">
+//                 {buttons.map((button, index) => (
+//                     // <CarouselItem key={index} className="w-1/3 flex-none lg:w-auto lg:flex-none lg:space-x-4">
+//                     <CarouselItem key={index} className="flex-none w-32 lg:w-32 xl:w-32 2xl:w-32 px-2">
+//                         {/* <button className="w-auto bg-background_primary text-texte_secondary text-nowrap text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-colors duration-200">
+//                                 {button}
+//                             </button> */}
+//                         <button className="w-auto bg-background_primary text-texte_secondary text-nowrap text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap">
+//                             {button}
+//                         </button>
+
+//                     </CarouselItem>
+//                 ))}
+//             </CarouselContent>
+//             <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-backgroung_secondary text-texte_secondary font-ubuntu font-bold rounded-full p-2 cursor-pointer lg:hidden" />
+//             <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-backgroung_secondary text-texte_secondary rounded-full p-2 cursor-pointer lg:hidden" />
+//         </Carousel>
+//     );
+// }
 
 const ButtonCarousel = () => {
     const buttons = [
-      'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
-      'Blueprints/Prototyping', 'Architecture', 'Logo', 'Others'
+        'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
+        'Blueprints / Prototyping', 'Architecture', 'Logo', 'Others'
     ];
   
     return (
-      <Carousel
-        opts={{
-          align: "center",
-          loop: false,
-          autoplay: false,
-          speed: 1200,
-          slidesToShow: 6, // Ajuster pour afficher plus de boutons sur les grands écrans
-          slidesToScroll: 1
-        //   breakpoints: {
-        //     640: {
-        //       slidesToShow: 1, // Afficher 1 bouton sur les petits écrans
-        //     },
-        //     768: {
-        //       slidesToShow: 2, // Afficher 2 boutons sur les écrans moyens
-        //     },
-        //     1024: {
-        //       slidesToShow: 3, // Afficher 3 boutons sur les écrans plus grands
-        //     },
-        //   },
-        }}
-        className="relative w-screen max-w-full overflow-hidden mb-8"
-      >
-        <CarouselContent className="flex flex-row space-x-4 transition-transform duration-100 ease-out">
-          {buttons.map((button, index) => (
-            <CarouselItem key={index} className="flex flex-row w-auto">
-              <button className="w-auto bg-background_primary text-texte_secondary text-lg font-ubuntu text-nowrap px-4 py-2 rounded-lg hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:ring-opacity-50 transition-colors duration-200">
-                {button}
-              </button>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-backgroung_secondary text-texte_secondary rounded-full p-2 cursor-pointer lg:hidden" />
-        <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-backgroung_secondary text-texte_secondary rounded-full p-2 cursor-pointer lg:hidden" />
-      </Carousel>
+      <div className="relative w-full max-w-full overflow-hidden mb-8">
+        <Carousel
+          opts={{
+            align: "start",
+            speed: 200, // Ajustez la vitesse du défilement ici
+          }}
+          className="relative w-full"
+        >
+          <CarouselContent className="flex flex-row space-x-2 transition-transform duration-100 ease-out">
+            {buttons.map((button, index) => (
+              <CarouselItem
+                key={index}
+                className="flex-none w-32 flex-shrink-0"
+              >
+                <button className="w-full bg-background_primary text-texte_secondary text-nowrap text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap">
+                  {button}
+                </button>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2" />
+          <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2" />
+        </Carousel>
+      </div>
     );
-  }
+  };
   
-  export default ButtonCarousel;
+
+export default ButtonCarousel;
