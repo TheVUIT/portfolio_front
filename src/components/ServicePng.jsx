@@ -5,7 +5,7 @@ const ServicePng = () => {
 
   return (
     <div className=' bg-background_primary m-4 p-1 flex flex-col items-center justify-between rounded-xl lg:ml-0 lg:mt-6  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
-      <p className='mt-4 '>
+      <p className='mt-6 font-montserrat font-extralight text-center'>
         A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
       </p>
 
@@ -20,7 +20,7 @@ const ServicePng = () => {
         <p className='font-ubuntu font-bold text-sm text-center' >
           20 viewing angles png
         </p>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           (18 different angle png renders, no background, 4K, full textured + 02 in gray mode)
         </p>
       </div>
@@ -63,7 +63,7 @@ const ServicePng = () => {
         <p className='font-ubuntu font-bold text-sm text-center'>
           02 png in wireframe mode with the same angles as the grays
         </p>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           (Very useful for certain types of design)
         </p>
       </div>
@@ -79,7 +79,7 @@ const ServicePng = () => {
         <p className='font-ubuntu font-bold text-sm text-center'>
           02 others png to illustrate product color variations
         </p>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           (Random viewing angles)
         </p>
       </div>
@@ -97,19 +97,19 @@ const ServicePng = () => {
 
       <div className='mt-4 flex flex-row items-center justify-center gap-10'>
         <div >
-          <p className='mb-4'>Simple product</p>
+          <p className='font-montserrat mb-4'>Simple product</p>
           <p> <b className='font-custom text-2xl'>$ 199</b> USD </p>
         </div>
 
         <div>
-          <p className='mb-4'>Complex product</p>
+          <p className='font-montserrat mb-4'>Complex product</p>
           <p>from <b className='font-custom text-2xl'> $ 499 </b> USD</p>
         </div>
       </div>
 
 
       <div className='mt-8  w-full flex flex-row justify-center items-start border-t border-texte_secondary border-opacity-25'>
-        <p className='mt-4 mb-6 text-texte_secondary text-lg font-ubuntu font-extrabold'>
+        <p className='mt-4 mb-6 text-texte_secondary text-lg font-ubuntu font-custom'>
           ADDITIONAL OPTIONS
         </p>
       </div>
@@ -122,7 +122,7 @@ const ServicePng = () => {
       </div> 
 
       <div className='flex flex-col items-center justify-center mt-5 mb-2'>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           &#10004; 3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
         </p>
 
@@ -139,13 +139,13 @@ const ServicePng = () => {
 
       </div>
 
-      <div className='flex flex-col items-center justify-center mt-2'>
-        <p className='font-ubuntu font-bold text-sm text-center'>
+      <div className='flex flex-col items-center justify-center mt-4'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           *You will have to provide all the necessary details according to the results you wish to obtain </p>
 
       </div>
 
-      <div className='mt-2 mb-5  w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-20'>
+      <div className='mt-4 mb-5  w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-20'>
 
       </div>
 
