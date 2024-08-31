@@ -9,6 +9,9 @@ const Home = () => {
   return (
     <main>
       <Banner/>
+      <div className='h-[90px] bg-background_primary'>
+
+      </div>
       <Hero />
       {/* <Faqs /> */}
       {/* <div className='bg-transparent h-28 flex flex-col'>

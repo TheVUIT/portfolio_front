@@ -1,10 +1,85 @@
 import React from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ServicePng from '../components/ServicePng'
 import ServiceProductAds from '../components/ServiceProductAds'
 import Service3dModel from '../components/Service3dModel'
 import imagesPack from 'src/utils/ImagesContant'
 
 const Services = () => {
+
+
+
+  // const [backgroundImageClass, setBackgroundImageClass] = useState('bg-no-repeat bg-cover');
+
+  // useEffect(() => {
+  //   const updateBackgroundImage = () => {
+  //     if (window.matchMedia('(min-width: 1024px)').matches) {
+  //       // Si l'écran est large ou plus grand (taille lg ou plus)
+  //       setBackgroundImageClass('bg-none');
+  //     } else {
+  //       // Si l'écran est plus petit que large
+  //       setBackgroundImageClass('bg-no-repeat bg-cover');
+  //     }
+  //   };
+
+  //   // Vérifier au montage initial
+  //   updateBackgroundImage();
+
+  //   // Ajouter un écouteur d'événement pour les changements de taille d'écran
+  //   window.addEventListener('resize', updateBackgroundImage);
+
+  //   // Nettoyer l'écouteur d'événement lors du démontage
+  //   return () => window.removeEventListener('resize', updateBackgroundImage);
+  // }, []);
+  const sectionRef = useRef(null); // Créer une référence à la section
+
+  // useEffect(() => {
+  //   const updateBackgroundImage = () => {
+  //     if (window.innerWidth >= 1024) {
+  //       // Si la largeur de l'écran est de 1024px ou plus (taille lg)
+  //       if (sectionRef.current) {
+  //         sectionRef.current.style.backgroundImage = 'none';
+  //       }
+  //     } else {
+  //       // Si la largeur de l'écran est moins de 1024px
+  //       if (sectionRef.current) {
+  //         sectionRef.current.style.backgroundImage = `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})`;
+  //       }
+  //     }
+  //   };
+
+  //   // Initialement mettre à jour l'image de fond
+  //   updateBackgroundImage();
+
+  //   // Ajouter un écouteur d'événement pour les changements de taille de fenêtre
+  //   window.addEventListener('resize', updateBackgroundImage);
+
+  //   // Supprimer l'écouteur d'événement lors du démontage du composant
+  //   return () => window.removeEventListener('resize', updateBackgroundImage);
+  // }, []);
+  useEffect(() => {
+    const updateBackgroundImage = () => {
+      if (window.innerWidth >= 1024) {
+        if (sectionRef.current) {
+          sectionRef.current.style.backgroundImage = 'none';
+        }
+      } else {
+        if (sectionRef.current) {
+          sectionRef.current.style.backgroundImage = `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})`;
+          sectionRef.current.style.backgroundSize = 'cover';
+          sectionRef.current.style.backgroundRepeat = 'no-repeat';
+          // Utilisation d'un pseudo-élément pour appliquer la rotation
+          sectionRef.current.classList.add('rotate-background');
+        }
+      }
+    };
+
+    updateBackgroundImage();
+    window.addEventListener('resize', updateBackgroundImage);
+    return () => window.removeEventListener('resize', updateBackgroundImage);
+  }, []);
+
+
   return (
     <main className='w-full pt-28 pr-8 pl-8 flex flex-col items-start justify-center bg-background_primary lg:bg-backgroung_secondary lg:pt-32'>
       <p className='h-auto w-auto text-4xl font-ubuntu font-bold lg:text-6xl'>
@@ -24,8 +99,10 @@ const Services = () => {
 
       {/* For PNG Product */}
       <section
-        className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover lg:bg-none'
-        style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}
+        // className= {`w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover lg:bg-none ${backgroundImageClass}}`}
+        ref={sectionRef}
+        className="w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover"
+        // style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}
       >        <div className='lg:mt-8 w-auto flex flex-col items-center'>
           <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
             24 PNG 4K

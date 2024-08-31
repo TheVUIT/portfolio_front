@@ -11,7 +11,7 @@ function Hero() {
   ];
 
   return (
-    <div className='mt-8 w-screen flex flex-col items-start bg-backgroung_secondary'>
+    <div className='mt-8 w-screen flex flex-col items-center bg-backgroung_secondary'>
 
       <div className='w-full flex justify-center items-center text-center mb-4'>
         <p className='flex flex-row items-center justify-center text-center text-4xl lg:text-6xl md:text-5xl font-montserrat font-bold'>
@@ -31,7 +31,7 @@ function Hero() {
         </p>
       </div>
 
-      <div className='w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
+      <div className='font-montserrat font-extralight w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
         {items.map((item, index) =>(
           <div key={index} className='text-xs font-montserrat font-normal'> <b className=''>&bull;</b> {item}</div>
         ))}
