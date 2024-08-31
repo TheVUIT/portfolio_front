@@ -15,22 +15,7 @@ const ServicePng = () => {
         </p>
       </div>
 
-      <div className='hidden lg:flex lg:flex-row justify-center gap-12 flex-wrap w-full'>
-            {service.map((imageSrc, index) => (
-                <div 
-                    key={index} 
-                    className="flex-none m-2"  
-                    style={{ 
-                        width: '54px', 
-                        height: '69px', 
-                        backgroundImage: `url(${imageSrc})`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                    }}
-                >  </div>
-            ))}
-        </div>
+      
 
       <div className='flex flex-col items-center justify-center mt-8 mb-8'>
         <p className='font-ubuntu font-bold text-sm text-center' >
@@ -41,6 +26,31 @@ const ServicePng = () => {
         </p>
       </div>
 
+      <div className='hidden lg:flex lg:flex-row justify-center gap-12 flex-wrap w-full'>
+            {service.map((item, index) => (
+                <div 
+                    key={index} 
+                    className="flex flex-col items-center m-2" // Utiliser flex-col pour empiler le texte sous l'image
+                    style={{ 
+                        width: '54px', 
+                        height: '69px', 
+                    }}
+                >
+                    <div 
+                        className="flex-none"  
+                        style={{ 
+                            width: '54px', 
+                            height: '69px', 
+                            backgroundImage: `url(${item.src})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                        }}
+                    ></div>
+                    <span className="mt-1 text-sm text-center">{item.label}</span> {/* Ajouter le label sous l'image */}
+                </div>
+            ))}
+        </div>
 
       <div className='flex flex-col items-center justify-center mt-8 mb-8'>
         <p className='font-ubuntu font-bold text-sm text-center'>

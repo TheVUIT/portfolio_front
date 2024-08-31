@@ -24,7 +24,7 @@ import SERVICE_19_LEFT_FRONT_GRAY from "../assets/images/services/B_G1.png"
 import SERVICE_20_RIGHT_FRONT_GRAY from "../assets/images/services/B_G2.png"
 
 
-const imagesPack = {
+const imagesPack2 = {
     TONY_LOGO,
     BANNER_IMAGE,
     CONTACT_PROFILE,
@@ -52,5 +52,34 @@ const imagesPack = {
         SERVICE_20_RIGHT_FRONT_GRAY
     ]
 }
+const imagesPack = {
+    TONY_LOGO,
+    BANNER_IMAGE,
+    CONTACT_PROFILE,
+    CONTACT_PROFILE_BACKGROUND,
+    service: [
+      { src: SERVICE_1_FACE, label: "1.Face" },
+      { src: SERVICE_2_BACK, label: "2.Back" },
+      { src: SERVICE_3_LEFT, label: "3.Left" },
+      { src: SERVICE_4_RIGHT, label: "4.Right" },
+      { src: SERVICE_5_TOP, label: "5.Top" },
+      { src: SERVICE_6_BOTTOM, label: "6.Bottom" },
+      { src: SERVICE_7_LEFT_FRONT, label: "7.Left Front" },
+      { src: SERVICE_8_RIGHT_FRONT, label: "8.Right Front" },
+      { src: SERVICE_9_LEFT_BACK, label: "9.Left Back" },
+      { src: SERVICE_10_RIGHT_BACK, label: "10.Right Back" },
+      { src: SERVICE_11_LEFT_FRONT_TOP, label: "11.Left Front Top" },
+      { src: SERVICE_12_RIGHT_FRONT_TOP, label: "12.Right Front Top" },
+      { src: SERVICE_13_LEFT_FRONT_BOTTOM, label: "13.Left Front Bottom" },
+      { src: SERVICE_14_RIGHT_FRONT_BOTTOM, label: "14.Right Front Bottom" },
+      { src: SERVICE_15_LEFT_BACK_TOP, label: "15.Left Back Top" },
+      { src: SERVICE_16_RIGHT_BACK_TOP, label: "16.Right Back Top" },
+      { src: SERVICE_17_LEFT_BACK_BOTTOM, label: "17.Left Back Bottom" },
+      { src: SERVICE_18_RIGHT_BACK_BOTTOM, label: "18.Right Back Bottom" },
+      { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19.Left Front Gray" },
+      { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20.Right Front Gray" }
+    ]
+  };
+  
 
 export default  imagesPack;
