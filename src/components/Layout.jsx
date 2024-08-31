@@ -12,7 +12,6 @@ import '../css/index.css'
       <div className='bg-gray-400 h-32'> */}
 
 const Layout = ({ children }) => {
-  const percent = 100;
   return (
     <div>
      <NavBar/>
@@ -22,7 +21,6 @@ const Layout = ({ children }) => {
     </div>
   );
 };
-      {/* <Footer /> */ }
 export default Layout;
 
 

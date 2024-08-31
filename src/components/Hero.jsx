@@ -1,7 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
+
+
 function Hero() {
+
+  const items = [
+    'Producers', 'Graphic designer', 'Web designer', 'Packaging designers', 'Products presentations',
+    'Artistic director', 'Video game designer', 'Technical illustrator', 'Model maker', 'Designers', 'Computer graphics designers', 'Etc'
+  ];
+
   return (
     <div className='w-screen flex flex-col items-start bg-backgroung_secondary'>
 
@@ -21,6 +29,12 @@ function Hero() {
         <p className='text-base font-montserrat'>
           4K PNGs & PRODUCT VISUALIZATION FOR
         </p>
+      </div>
+
+      <div className='w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
+        {items.map((item, index) =>(
+          <div key={index} className='text-xs text-nowrap font-montserrat font-normal'>&bull; {item}</div>
+        ))}
       </div>
 
     </div>

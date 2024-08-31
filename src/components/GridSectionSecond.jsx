@@ -1,4 +1,7 @@
 import React from 'react'
+import ButtonCarousel from './ButtonCarousel';
+
+
 
 const GridSectionSecond = () => {
   const gridItems = [
@@ -9,7 +12,10 @@ const GridSectionSecond = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center p-4">
+    <div className='flex flex-col items-center justify-center p-4'>
+      <ButtonCarousel />
+
+<section className="flex flex-col items-center justify-center p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {gridItems.map((item) => (
           <div key={item.id} className="relative group cursor-pointer w-64 h-64">
@@ -36,6 +42,9 @@ const GridSectionSecond = () => {
         ))}
       </div>
     </section>
+    </div>
+
+   
   );
 };
 
