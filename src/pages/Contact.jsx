@@ -5,8 +5,9 @@ import '../css/index.css'
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
+    profession: '',
     email: '',
-    password: ''
+    message: ''
   });
 
   const handleChange = (e) => {
@@ -45,9 +46,9 @@ const Contact = () => {
             <label htmlFor="name" className="flex flex-row text-md font-ubuntu text-texte_secondary">Profession / Domain</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="profession"
+              name="profession"
+              value={formData.profession}
               onChange={handleChange}
               className="mt-1 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none"
               placeholder=""
@@ -60,9 +61,9 @@ const Contact = () => {
           <label htmlFor="name" className="block text-md font-ubuntu text-texte_secondary">Your Email</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             className="mt-1 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none"
             placeholder=""
@@ -73,9 +74,9 @@ const Contact = () => {
           <label htmlFor="name" className="block text-md font-ubuntu text-texte_secondary">Message</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="message"
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             className="mt-1 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none"
             placeholder=""

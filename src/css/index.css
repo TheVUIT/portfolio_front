@@ -86,3 +86,11 @@ body {
 body {
     background-color: white; /* Ou n'importe quelle couleur de votre choix */
 }
+
+.font-custom {
+  font-weight: 950; /* Remplacez 250 par n'importe quelle valeur que vous voulez */
+}
+
+.font-custom-ligth {
+  font-weight: 100; /* Remplacez 250 par n'importe quelle valeur que vous voulez */
+}
