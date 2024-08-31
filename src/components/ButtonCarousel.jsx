@@ -300,86 +300,86 @@ import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious
 
 
 
-// const ButtonCarousel = () => {
-//     const buttons = [
-//         'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
-//         'Blueprints / Prototyping', 'Architecture', 'Logo', 'Others'
-//     ];
-  
-//     return (
-//         <div className="w-screen">
-//         <div className="w-full hidden lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-6" >
-//             {buttons.map((button, index)=> (
-//                 <button key={index} className="text-texte_secondary bg-background_primary hover:bg-texte_secondary hover:text-background_primary text-md p-2 rounded-lg font-ubuntu">
-//                     {button}
-//                 </button>
-//             ))}
-//         </div>
-//       <div className="relative w-full max-w-full overflow-hidden mb-8 lg:hidden">
-//         <Carousel
-//           opts={{
-//             align: "start",
-//             speed: 200, 
-//           }}
-//           className="relative w-full"
-//         >
-//           <CarouselContent className="w-screen flex flex-row justify-between space-x-2 transition-transform duration-100 ease-out">
-//             {buttons.map((button, index) => (
-//               <CarouselItem
-//                 key={index}
-//                 // className="flex-none w-32 flex-shrink-0"
-//                 className="w-auto flex flex-row gap-2 cursor-pointer hover:bg-texte_secondary hover:text-background_primary"
-//               >
-//                 {/* <button className="w-1/2 bg-background_primary text-texte_secondary text-nowrap text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap"> */}
-//                   {button}
-//                 {/* </button> */}
-//                 {/* <button className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-//                     <span className="">
-//                     {button}
-//                     </span>
-//                 </button> */}
-//               </CarouselItem>
-//             ))}
-//           </CarouselContent>
-//           <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2" />
-//           <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2" />
-//         </Carousel>
-//       </div>
-//       </div>
-//     );
-//   };
-  
-
-
-
 const ButtonCarousel = () => {
-       const buttons = [
+    const buttons = [
         'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
         'Blueprints / Prototyping', 'Architecture', 'Logo', 'Others'
     ];
   
     return (
-      <Carousel
-        opts={{
-          align: "start",
-          speed: 500, // Augmente la vitesse pour un défilement plus rapide
-          loop: true, // Ajoute l'effet de boucle pour une meilleure UX
-        }}
-        className="w-full max-w-2xl overflow-hidden mb-8"
-      >
-        <CarouselContent className="flex space-x-4 px-4">
-          {buttons.map((button, index) => (
-            <CarouselItem key={index} className="flex-none w-1/3 md:w-1/4 lg:w-1/5">
-              <button className="w-full bg-background_primary text-texte_secondary text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-all duration-200 whitespace-nowrap">
-                {button}
-              </button>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full p-2 transition-colors duration-300" />
-        <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full p-2 transition-colors duration-300" />
-      </Carousel>
+        <div className="w-screen">
+        <div className="w-full hidden lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-6" >
+            {buttons.map((button, index)=> (
+                <button key={index} className="text-texte_secondary bg-background_primary hover:bg-texte_secondary hover:text-background_primary text-md p-2 rounded-lg font-ubuntu">
+                    {button}
+                </button>
+            ))}
+        </div>
+      <div className="relative w-full max-w-full overflow-hidden mb-8 lg:hidden">
+        <Carousel
+          opts={{
+            align: "start",
+            speed: 200, 
+          }}
+          className="relative w-full"
+        >
+          <CarouselContent className="w-screen flex flex-row justify-between space-x-2 transition-transform duration-100 ease-out">
+            {buttons.map((button, index) => (
+              <CarouselItem
+                key={index}
+                // className="flex-none w-32 flex-shrink-0"
+                className="w-auto flex flex-row gap-2 cursor-pointer hover:bg-texte_secondary hover:text-background_primary"
+              >
+                {/* <button className="w-1/2 bg-background_primary text-texte_secondary text-nowrap text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap"> */}
+                  {button}
+                {/* </button> */}
+                {/* <button className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
+                    <span className="">
+                    {button}
+                    </span>
+                </button> */}
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2" />
+          <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2" />
+        </Carousel>
+      </div>
+      </div>
     );
   };
+  
+
+
+
+// const ButtonCarousel = () => {
+//        const buttons = [
+//         'Woodworking', 'Electronics', 'Household appliances', 'Glassworks', 'Industrial',
+//         'Blueprints / Prototyping', 'Architecture', 'Logo', 'Others'
+//     ];
+  
+//     return (
+//       <Carousel
+//         opts={{
+//           align: "start",
+//           speed: 500, // Augmente la vitesse pour un défilement plus rapide
+//           loop: true, // Ajoute l'effet de boucle pour une meilleure UX
+//         }}
+//         className="w-full max-w-2xl overflow-hidden mb-8"
+//       >
+//         <CarouselContent className="flex space-x-4 px-4">
+//           {buttons.map((button, index) => (
+//             <CarouselItem key={index} className="flex-none w-1/3 md:w-1/4 lg:w-1/5">
+//               <button className="w-full bg-background_primary text-texte_secondary text-lg font-ubuntu px-4 py-2 rounded-2xl hover:bg-texte_secondary hover:text-background_primary focus:outline-none focus:ring-2 focus:ring-texte_secondary focus:bg-texte_secondary focus:text-background_primary focus:ring-opacity-50 transition-all duration-200 whitespace-nowrap">
+//                 {button}
+//               </button>
+//             </CarouselItem>
+//           ))}
+//         </CarouselContent>
+//         <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full p-2 transition-colors duration-300" />
+//         <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full p-2 transition-colors duration-300" />
+//       </Carousel>
+//     );
+//   };
   
 export default ButtonCarousel;

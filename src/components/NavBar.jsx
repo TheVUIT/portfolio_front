@@ -37,7 +37,7 @@ const NavBar = () => {
 
         <div className="flex justify-start items-left w-full">
           <a className="cursor-pointer">
-            <img className="h-10 object-cover" src={imagesPack.TONYLOGO} alt="Tony Logo" />
+            <img className="h-10 object-cover" src={imagesPack.TONY_LOGO} alt="Tony Logo" />
           </a>
         </div>
 

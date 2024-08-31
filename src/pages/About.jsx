@@ -8,9 +8,9 @@ const About = () => {
     <>
       <section className="h-auto lg:h-[95vh] mt-20 flex flex-col-reverse lg:flex-row  bg-backgroung_secondary">
         {/* Div pour la photo de profil */}
-        <div className="flex-shrink-0 lg:w-1/2 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${imagesPack.CONTACTPROFILEBACKGROUND})` }}>
+        <div className="flex-shrink-0 lg:w-1/2 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}>
           <img
-            src={imagesPack.CONTACTPROFILE}
+            src={imagesPack.CONTACT_PROFILE}
             alt="Profile"
             className="max-w-full max-h-full object-cover"
           />
