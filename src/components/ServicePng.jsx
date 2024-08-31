@@ -1,6 +1,8 @@
 import React from 'react'
-
+import imagesPack from 'src/utils/ImagesContant'
 const ServicePng = () => {
+  const {service} = imagesPack;
+
   return (
     <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p>
@@ -12,6 +14,23 @@ const ServicePng = () => {
           FEATURES
         </p>
       </div>
+
+      <div className='hidden lg:flex lg:flex-row justify-center gap-12 flex-wrap w-full'>
+            {service.map((imageSrc, index) => (
+                <div 
+                    key={index} 
+                    className="flex-none m-2"  
+                    style={{ 
+                        width: '54px', 
+                        height: '69px', 
+                        backgroundImage: `url(${imageSrc})`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+                    }}
+                >  </div>
+            ))}
+        </div>
 
       <div className='flex flex-col items-center justify-center mt-8 mb-8'>
         <p className='font-ubuntu font-bold text-sm text-center' >
