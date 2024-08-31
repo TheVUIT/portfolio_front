@@ -29,7 +29,7 @@ const ServicePng = () => {
         {service.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center m-2" // Utiliser flex-col pour empiler le texte sous l'image
+            className="flex flex-col items-center m-2" 
             style={{
               width: '54px',
               height: '69px',
@@ -46,7 +46,7 @@ const ServicePng = () => {
                 backgroundPosition: 'center',
               }}
             ></div>
-            <span className="mt-1 text-[12px] text-nowrap text-center">{item.label}</span> {/* Ajouter le label sous l'image */}
+            <span className="mt-1 text-[12px] text-nowrap text-center">{item.label}</span> 
           </div>
         ))}
       </div>

@@ -139,7 +139,7 @@ const imagesPack = {
       description: "A marble barrel for storing wine",
     },
     {
-      id: 8,
+      id: 9,
       imageUrl1: GRID1_PRINCIPAL,
       imageUrl2: GRID1_SECOND,
       title: "WOOD",

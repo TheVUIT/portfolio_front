@@ -9,15 +9,14 @@ const Home = () => {
   return (
     <main>
       <Banner/>
-      <div className='h-[90px] bg-background_primary'>
+      <div className='h-[90px] hidden bg-background_primary lg:flex lg:flex-row'>
 
       </div>
       <Hero />
-      <div className='h-[150px] bg-background_primary'>
+      <div className='h-[150px] hidden bg-background_primary lg:flex lg:flex-row'>
 
       </div>
      
-      {/* <GridSection/> */}
       <GridSectionSecond/>
     </main>
   );

@@ -158,14 +158,14 @@ const Services = () => {
           <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl lg:text-2xl rounded-3xl'>
             3D Modelisation
           </div>
-          <p className='font-ubuntu text-base text-nowrap text-red-600 lg:text-wrap'>
-            HARD-SURFACE &
-            SURFACE MODELING
-          </p>
+          <div className='mt-6 flex flex-col items-center lg:text-wrap lg:flex-row'>
+            <p className='font-ubuntu font-custom text-base text-nowrap text-red-600' >HARD-SURFACE &</p>
+            <p className='font-ubuntu font-custom text-base text-nowrap text-red-600'> SURFACE MODELING</p>            
+          </div>
         </div>
 
         <div className='w-1/12'>
-          <div className='mb-6 mt-6 lg:mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl'>
+          <div className='mb-10 mt-10 lg:mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
 
           </div>
         </div>
