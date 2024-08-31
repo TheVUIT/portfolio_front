@@ -24,6 +24,9 @@ import SERVICE_19_LEFT_FRONT_GRAY from "../assets/images/services/B_G1.png"
 import SERVICE_20_RIGHT_FRONT_GRAY from "../assets/images/services/B_G2.png"
 
 
+import GRID1_PRINCIPAL from "../assets/images/home-grid-section/grid1-principal.png"
+import GRID1_SECOND from "../assets/images/home-grid-section/grid1-second.png"
+
 const imagesPack2 = {
     TONY_LOGO,
     BANNER_IMAGE,
@@ -78,6 +81,23 @@ const imagesPack = {
       { src: SERVICE_18_RIGHT_BACK_BOTTOM, label: "18.Right Back Bottom" },
       { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19.Left Front Gray" },
       { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20.Right Front Gray" }
+    ],
+    home_grid: [
+      {  id : 1,
+        imageUrl1: GRID1_PRINCIPAL,
+        imageUrl2: GRID1_SECOND,
+        title: "WOOD A marble barrel for storing wine"
+      },
+      {  id : 2,
+        imageUrl1: GRID1_PRINCIPAL,
+        imageUrl2: GRID1_SECOND,
+        title: "WOOD A marble barrel for storing wine"
+      },
+      {  id : 3,
+        imageUrl1: GRID1_PRINCIPAL,
+        imageUrl2: GRID1_SECOND,
+        title: "WOOD A marble barrel for storing wine"
+      },
     ]
   };
   

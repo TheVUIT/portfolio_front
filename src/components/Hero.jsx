@@ -20,7 +20,7 @@ function Hero() {
       </div>
 
       <div className='w-full flex justify-center items-center text-center mb-12'>
-        <p className='text-2xl font-montserrat lg:font-bold'>
+        <p className='text-2xl font-montserrat font-extralight'>
           Elevate your designs and captivate your audience
         </p>
       </div>
@@ -31,9 +31,9 @@ function Hero() {
         </p>
       </div>
 
-      <div className='font-montserrat font-extralight w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
+      <div className='w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
         {items.map((item, index) =>(
-          <div key={index} className='text-xs font-montserrat font-normal'> <b className=''>&bull;</b> {item}</div>
+          <div key={index} className='text-xs font-extralight font-montserrat'> <b className=''>&bull;</b> {item}</div>
         ))}
       </div>
 

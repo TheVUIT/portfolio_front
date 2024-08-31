@@ -1,12 +1,14 @@
 import React from 'react';
 import ButtonCarousel from './ButtonCarousel';
+import imagesPack from 'src/utils/ImagesContant';
 
 const GridSectionSecond = () => {
-  const gridItems = [
-    { id: 1, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 1' },
-    { id: 2, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 2' },
-    { id: 3, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 3' },
-  ];
+  const {home_grid} = imagesPack
+  // const home_grid = [
+  //   { id: 1, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 1' },
+  //   { id: 2, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 2' },
+  //   { id: 3, imageUrl1: 'url_to_face1.jpg', imageUrl2: 'url_to_face2.jpg', title: 'Modèle 3D 3' },
+  // ];
 
   return (
     <div className='flex flex-col items-center justify-center p-4'>
@@ -14,11 +16,11 @@ const GridSectionSecond = () => {
 
       <section className="flex flex-col items-center justify-center p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {gridItems.map((item) => (
+          {home_grid.map((item) => (
             <div
               key={item.id}
               className="relative group cursor-pointer"
-              style={{ width: '560.58px', height: '560.58px' }} // Set the width and height here
+              style={{ width: '560.58px', height: '560.58px' }} 
             >
               {/* Container for the images */}
               <div className="absolute inset-0 overflow-hidden rounded-lg">

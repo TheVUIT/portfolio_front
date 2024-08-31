@@ -13,13 +13,12 @@ const Home = () => {
 
       </div>
       <Hero />
-      {/* <Faqs /> */}
-      {/* <div className='bg-transparent h-28 flex flex-col'>
+      <div className='h-[150px] bg-background_primary'>
 
-      </div> */}
+      </div>
+     
       {/* <GridSection/> */}
       <GridSectionSecond/>
-      {/* <Newsletter/> */}
     </main>
   );
 };
