@@ -57,16 +57,16 @@ const Services = () => {
             <p className='mb-0'>/</p>
             <p>PRODUCTS ADS</p>
           </div>
-          <p className=' font-montserrat font-extralight text-nowrap'>
+          <p className='mt-6 font-montserrat text-base font-extralight text-nowrap'>
             Ratio
           </p>
-          <p className='font-montserrat font-extralight text-base text-nowrap text-center'>
-            3 840px X 2 160px by default; According to your needs
+          <p className='font-montserrat font-extralight text-sm text-nowrap text-center'>
+            3840px X 2160px by default; According to your needs
           </p>
         </div>
 
         <div className='w-1/12'>
-          <div className='mb-6 mt-6 lg:mt-[95px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
+          <div className='mb-8 mt-8 lg:mt-[95px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
 
           </div>
         </div>

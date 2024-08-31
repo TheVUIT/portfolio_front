@@ -3,7 +3,7 @@ import React from 'react'
 const ServiceProductAds = () => {
   return (
     <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
-      <p className='mt-6 text-center p-5'>
+      <p className='mt-6 font-montserrat font-extralight text-center p-5'>
       A pack that can be used not only by graphic designers, UI, layout artists but also by salespeople, comms, producers/designers themselves for their work      </p>
 
       <div className='mt-8 w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-20'>
@@ -16,7 +16,7 @@ const ServiceProductAds = () => {
         <p className='font-ubuntu font-bold text-sm text-center' >
         02 different scene renderings (16:9 ratio)
         </p>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
         Visualisation, Product + Sets and background with texts (or without) according to your description / script
         (if this is specified)
         </p>
@@ -57,7 +57,7 @@ const ServiceProductAds = () => {
       </div> 
 
       <div className='flex flex-col items-center justify-center mt-5 mb-2'>
-        <p className='text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           &#10004; 3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
         </p>
 
@@ -73,7 +73,7 @@ const ServiceProductAds = () => {
     
 
       <div className='flex flex-col items-center justify-center mt-8'>
-        <p className='font-ubuntu font-bold text-sm text-center'>
+        <p className='font-montserrat font-extralight text-sm text-center'>
           *You will have to provide all the necessary details according to the results you wish to obtain </p>
 
       </div>
