@@ -7,8 +7,6 @@ import imagesPack from 'src/utils/ImagesContant'
 
 const Services = () => {
 
-
-
   // const [backgroundImageClass, setBackgroundImageClass] = useState('bg-no-repeat bg-cover');
 
   // useEffect(() => {

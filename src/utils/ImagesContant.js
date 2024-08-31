@@ -103,6 +103,48 @@ const imagesPack = {
       title: "WOOD",
       description: "A marble barrel for storing wine",
     },
+    {
+      id: 4,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    },
+    {
+      id: 5,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    },
+    {
+      id: 6,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    },
+    {
+      id: 7,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    },
+    {
+      id: 8,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    },
+    {
+      id: 8,
+      imageUrl1: GRID1_PRINCIPAL,
+      imageUrl2: GRID1_SECOND,
+      title: "WOOD",
+      description: "A marble barrel for storing wine",
+    }
   ],
 };
 
