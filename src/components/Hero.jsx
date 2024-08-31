@@ -13,7 +13,7 @@ function Hero() {
   return (
     <div className='mt-8 w-screen flex flex-col items-center bg-backgroung_secondary'>
 
-      <div className='w-full flex justify-center items-center text-center mb-4'>
+      <div className='w-full flex justify-center items-center text-center mt-8 lg:mt-16 mb-4'>
         <p className='flex flex-row items-center justify-center text-center text-4xl lg:text-6xl md:text-5xl font-montserrat font-bold'>
           A unique and tailor-made 3D universe for each client
         </p>
