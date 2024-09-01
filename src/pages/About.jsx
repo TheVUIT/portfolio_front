@@ -1,5 +1,5 @@
 import React from 'react'
-import imagesPack from '../utils/ImagesContant';
+import {imagesPack} from '../utils/ImagesContant';
 
 const About = () => {
 

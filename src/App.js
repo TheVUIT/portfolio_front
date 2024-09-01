@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // App.js
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import './css/index.css';
@@ -9,6 +10,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Services from './pages/Services';
 import NotFoundPage from './pages/NotFoundPage';
+import ProjectDetail from './pages/ProjectDetail'; // Assure-toi d'importer le composant ProjectDetail
 
 const validPaths = ['/', '/about', '/services', '/contact'];
 
@@ -20,6 +22,8 @@ function App() {
           {validPaths.map((path) => (
             <Route key={path} path={path} element={getPageComponent(path)} />
           ))}
+          <Route path="/portfolio/project/:id" element={<ProjectDetail />} />
+          <Route path="*" element={<NotFoundPage />} /> {/* Route de fallback pour les chemins non trouvés */}
         </Routes>
       </Layout>
     </Router>
@@ -35,12 +39,10 @@ function getPageComponent(path) {
     case '/services':
       return <Services />;
     case '/contact':
-      return <Contact/>;   
+      return <Contact />;
     default:
-      return <NotFoundPage />; 
+      return <NotFoundPage />;
   }
 }
-
-
 
 export default App;

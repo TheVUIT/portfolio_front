@@ -7,7 +7,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import React from 'react';
 import '../css/index.css'
 import '../css/styles.css'
-import imagesPack from "../utils/ImagesContant"
+import {imagesPack} from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
 
 import {

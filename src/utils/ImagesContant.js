@@ -23,7 +23,6 @@ import SERVICE_18_RIGHT_BACK_BOTTOM from "../assets/images/services/0016.png";
 import SERVICE_19_LEFT_FRONT_GRAY from "../assets/images/services/B_G1.png";
 import SERVICE_20_RIGHT_FRONT_GRAY from "../assets/images/services/B_G2.png";
 
-
 import SERVICE_FIRST_01 from "../assets/images/services/B_W_G1.png";
 import SERVICE_FIRST_02 from "../assets/images/services/B_W_G2.png";
 import SERVICE_SECOND_A from "../assets/images/services/C2.png";
@@ -32,21 +31,23 @@ import SERVICE_SECOND_B from "../assets/images/services/C3.png";
 import GRID1_PRINCIPAL from "../assets/images/home-grid-section/grid1-principal.png";
 import GRID1_SECOND from "../assets/images/home-grid-section/grid1-second.png";
 
+import BANNER_IMAGE_1 from "../assets/images/banner/banner-image-1.png";
+import BANNER_IMAGE_2 from "../assets/images/banner/banner-image-2.png";
+import BANNER_IMAGE_3 from "../assets/images/banner/banner-image-3.png";
+import BANNER_IMAGE_4 from "../assets/images/banner/banner-image-4.png";
 
-import BANNER_IMAGE_1 from "../assets/images/banner/banner-image-1.png"
-import BANNER_IMAGE_2 from "../assets/images/banner/banner-image-2.png"
-import BANNER_IMAGE_3 from "../assets/images/banner/banner-image-3.png"
-import BANNER_IMAGE_4 from "../assets/images/banner/banner-image-4.png"
+import BANNER_IMAGE_1_DETAIL_1 from "../assets/images/project-detail/banner-image-1-detail-1.png"
+import BANNER_IMAGE_1_DETAIL_2 from "../assets/images/project-detail/banner-image-1-detail-2.png"
+
 
 const imagesPack = {
   TONY_LOGO,
   BANNER_IMAGE,
-  banner : [
-    BANNER_IMAGE_1,
-    BANNER_IMAGE_2,
-    BANNER_IMAGE_3,
-    BANNER_IMAGE_4
-  ],
+  banner: [
+    {id: 1, src : BANNER_IMAGE_1}, 
+    {id: 2, src : BANNER_IMAGE_2}, 
+    {id: 3, src : BANNER_IMAGE_3}, 
+    {id: 4, src : BANNER_IMAGE_4}],
   CONTACT_PROFILE,
   CONTACT_PROFILE_BACKGROUND,
   service: [
@@ -71,70 +72,81 @@ const imagesPack = {
     { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19. Left Front Gray" },
     { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20. Right Front Gray" },
   ],
-  service_png_first : [
-    {src : SERVICE_FIRST_01 , label : "A"},
-    {src : SERVICE_FIRST_02 , label : "B"}
+  service_png_first: [
+    { src: SERVICE_FIRST_01, label: "A" },
+    { src: SERVICE_FIRST_02, label: "B" },
   ],
-  service_png_second : [
-    {src : SERVICE_SECOND_A , label : "01"},
-    {src : SERVICE_SECOND_B , label : "02"}
+  service_png_second: [
+    { src: SERVICE_SECOND_A, label: "01" },
+    { src: SERVICE_SECOND_B, label: "02" },
   ],
   home_grid: [
     {
       id: 1,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-     
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 2,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-      
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 3,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-    
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 4,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-      
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 5,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-     
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 6,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-  
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 7,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-     
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 8,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-    
+      imageUrl2: GRID1_SECOND,
     },
     {
       id: 9,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND
-  
-    }
+      imageUrl2: GRID1_SECOND,
+    },
   ],
 };
 
-export default imagesPack;
+const banner_project = [
+  {id: 1, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
+  {id: 2, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
+]
+
+
+
+const getProjectDetails = (id) => {
+  const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
+  
+  if (projectBanner) {
+    return {
+      ...projectBanner,
+      bannerImage: imagesPack.banner.find(b => b.id === projectBanner.id),
+    };
+  }
+  return null;
+}
+
+
+export { imagesPack, banner_project, getProjectDetails };

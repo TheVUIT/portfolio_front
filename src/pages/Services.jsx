@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import ServicePng from '../components/ServicePng'
 import ServiceProductAds from '../components/ServiceProductAds'
 import Service3dModel from '../components/Service3dModel'
-import imagesPack from 'src/utils/ImagesContant'
+import {imagesPack} from 'src/utils/ImagesContant'
 
 const Services = () => {
 

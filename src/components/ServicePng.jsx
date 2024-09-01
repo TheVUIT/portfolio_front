@@ -1,5 +1,5 @@
 import React from 'react'
-import imagesPack from 'src/utils/ImagesContant'
+import {imagesPack} from 'src/utils/ImagesContant'
 const ServicePng = () => {
   const { service, service_png_first, service_png_second } = imagesPack;
 

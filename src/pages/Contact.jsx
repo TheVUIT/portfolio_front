@@ -22,7 +22,7 @@ const Contact = () => {
 
 
   return (
-    <div className='h-[95vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-0 pl-0'>
+    <div className='h-[95vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-5 pl-5'>
 
       <p className='mt-8 text-3xl lg:text-6xl font-montserrat font-bold text-texte_secondary md:text-4xl sm:text-2xl'>Hire me for your projects</p>
       <p className='mb-12 text-xs lg:text-xl font-montserrat'>Designers, UI, Comms companies and everyone ! Elevate your work with stunning 4K 3D renders - Ready to use and customizable</p>
