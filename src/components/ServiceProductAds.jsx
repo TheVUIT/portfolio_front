@@ -30,14 +30,20 @@ const ServiceProductAds = () => {
       </div>
 
 
-      <div className='mt-6 flex flex-row items-center justify-center gap-10'>
+      <div className='mt-6 flex flex-row items-center justify-center gap-10 lg:w-full lg:justify-around'>
         <div >
-          <p className=''>Simple product</p>
+          <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Simple product <b className=' hidden lg:flex text-lg font-ubuntu'>presentation</b></p>
+          <p className='hidden lg:flex'>No Script</p>
+          <p className='hidden lg:flex'>(Gray Screen or Minimalist background</p>
+          <p className='hidden lg:flex'>You can also choose a color theme)</p>
           <p> <b className='font-custom text-2xl'>$99 </b>USD</p>
         </div>
 
         <div>
-          <p className=''>Complex product</p>
+          <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Complex product  <b className=' hidden lg:flex text-lg font-ubuntu'>visualisation</b></p>
+          <p className='hidden lg:flex'>Detailed scene as desired</p>
+          <p className='hidden lg:flex' >(Complex furniture, Vehicles,</p>
+          <p className='hidden lg:flex'>Object association with complex scene,...)</p>
           <p>from <b className='font-custom text-2xl'> $199 </b>USD</p>
         </div>
       </div>

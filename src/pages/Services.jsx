@@ -79,7 +79,7 @@ const Services = () => {
 
 
   return (
-    <main className='w-full pt-28 pr-8 pl-8 flex flex-col items-start justify-center bg-background_primary lg:bg-backgroung_secondary lg:pt-32'>
+    <main className='w-full pt-28 pr-8 pl-8 lg:pr-12 lg:pl-12 flex flex-col items-start justify-center bg-background_primary lg:bg-backgroung_secondary lg:pt-32'>
       <p className='h-auto w-auto text-4xl font-ubuntu font-bold lg:text-6xl'>
         Services & Prices
       </p>

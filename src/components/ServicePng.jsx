@@ -5,9 +5,11 @@ const ServicePng = () => {
 
   return (
     <div className=' bg-background_primary m-4 p-1 flex flex-col items-center justify-between rounded-xl lg:ml-0 lg:mt-6  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
-      <p className='mt-6 font-montserrat font-extralight text-center'>
+      <p className='mt-6 font-montserrat font-extralight text-center lg:font-montserrat lg:mt-14 lg:mb-4'>
         A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
       </p>
+
+      <div className='bg-background_primary lg:bg-backgroung_secondary lg:mt-8 pb-6'>
 
       <div className='mt-12 w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-20'>
         <p className='mb-2 text-texte_secondary text-lg font-ubuntu font-bold'>
@@ -29,7 +31,7 @@ const ServicePng = () => {
         {service.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center m-2" 
+            className="flex flex-col items-center m-1" 
             style={{
               width: '54px',
               height: '69px',
@@ -46,7 +48,7 @@ const ServicePng = () => {
                 backgroundPosition: 'center',
               }}
             ></div>
-            <span className="mt-1 text-[12px] text-nowrap text-center">{item.label}</span> 
+            <span className="text-[12px] text-nowrap text-center">{item.label}</span> 
           </div>
         ))}
       </div>
@@ -72,7 +74,7 @@ const ServicePng = () => {
         {service_png_first.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center m-2" 
+            className="flex flex-col items-center m-1" 
             style={{
               width: '54px',
               height: '69px',
@@ -138,6 +140,10 @@ const ServicePng = () => {
       </div>
 
 
+      </div>
+
+
+
       <div className="mt-10 w-full flex flex-row justify-center items-start">
         <div className="w-4/5 border-b border-texte_secondary border-opacity-15 flex justify-center">
           <p className="mb-2 text-texte_secondary text-lg font-ubuntu font-extrabold">
@@ -148,34 +154,34 @@ const ServicePng = () => {
 
 
 
-      <div className='mt-4 flex flex-row items-center justify-center gap-10 lg:w-full lg:justify-around border-2 border-green-700'>
+      <div className='mt-4 flex flex-row items-center justify-center gap-10 lg:w-full lg:justify-around'>
         <div className='flex flex-col items-start'>
-          <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Simple product <b className='text-lg font-ubuntu'>presentation</b></p>
-          <p className=''>No Script</p>
-          <p>(Gray Screen or Minimalist background</p>
-          <p>You can also choose a color theme)</p>
+          <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Simple product</p>
+          <p className='hidden lg:flex'>Simple topology</p>
+          <p className='hidden lg:flex'>(Cosmetics, Bottles, Drinks,</p>
+          <p className='hidden lg:flex'> Phones, Simple electronics,...)</p>
           <p> <b className='font-custom text-2xl'>$ 199</b> USD </p>
         </div>
 
         <div>
-          <p className='font-montserrat mb-4 lg:text-lg lg:font-ubuntu'>Complex product <b>visualisation</b></p>
-          <p>Detailed scene as desired</p>
-          <p>(Complex furniture, Vehicles,</p>
-          <p>Object association with complex scene,...)</p>
-          <p>from <b className='font-custom text-2xl'> $ 499 </b> USD</p>
+          <p className='font-montserrat mb-4 lg:text-lg lg:font-ubuntu'>Complex product</p>
+          <p className='hidden lg:flex'>Reinforced topology</p>
+          <p className='hidden lg:flex' >(Complex furniture, Vehicles,</p>
+          <p className='hidden lg:flex'>Object association,...)</p>
+          <p >from <b className='font-custom text-2xl'> $ 499 </b> USD</p>
         </div>
       </div>
 
 
-      <div className='mt-8  w-full flex flex-row justify-center items-start border-t border-texte_secondary border-opacity-25'>
-        <p className='mt-4 mb-6 text-texte_secondary text-lg font-ubuntu font-custom'>
+      <div className='mt-8 w-full flex flex-row justify-center items-start border-t border-texte_secondary border-opacity-25'>
+        <p className='mt-4 mb-6 text-texte_secondary text-lg font-ubuntu font-custom lg:m-0'>
           ADDITIONAL OPTIONS
         </p>
       </div>
 
        {/* The Line */}
-       <div className='w-1/12 flex flex-col items-start justify-center lg:block '>
-        <div className='mb-2 mt-2 lg:mt-[52px] w-full h-[1px]  bg-texte_secondary bg-opacity-30 transform rotate-90 lg:opacity-15'>
+       <div className='w-1/12  flex flex-col items-start justify-center lg:block lg:w-[22px]'>
+        <div className='mb-2 mt-2 lg:mt-[52px] w-full h-[1px]  bg-texte_secondary bg-opacity-30 transform rotate-90 lg:opacity-90'>
 
         </div>
       </div> 
