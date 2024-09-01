@@ -32,60 +32,44 @@ import SERVICE_SECOND_B from "../assets/images/services/C3.png";
 import GRID1_PRINCIPAL from "../assets/images/home-grid-section/grid1-principal.png";
 import GRID1_SECOND from "../assets/images/home-grid-section/grid1-second.png";
 
-const imagesPack2 = {
-  TONY_LOGO,
-  BANNER_IMAGE,
-  CONTACT_PROFILE,
-  CONTACT_PROFILE_BACKGROUND,
-  service: [
-    SERVICE_1_FACE,
-    SERVICE_2_BACK,
-    SERVICE_3_LEFT,
-    SERVICE_4_RIGHT,
-    SERVICE_5_TOP,
-    SERVICE_6_BOTTOM,
-    SERVICE_7_LEFT_FRONT,
-    SERVICE_8_RIGHT_FRONT,
-    SERVICE_9_LEFT_BACK,
-    SERVICE_10_RIGHT_BACK,
-    SERVICE_11_LEFT_FRONT_TOP,
-    SERVICE_12_RIGHT_FRONT_TOP,
-    SERVICE_13_LEFT_FRONT_BOTTOM,
-    SERVICE_14_RIGHT_FRONT_BOTTOM,
-    SERVICE_15_LEFT_BACK_TOP,
-    SERVICE_16_RIGHT_BACK_TOP,
-    SERVICE_17_LEFT_BACK_BOTTOM,
-    SERVICE_18_RIGHT_BACK_BOTTOM,
-    SERVICE_19_LEFT_FRONT_GRAY,
-    SERVICE_20_RIGHT_FRONT_GRAY,
-  ],
-};
+
+import BANNER_IMAGE_1 from "../assets/images/banner/banner-image-1.png"
+import BANNER_IMAGE_2 from "../assets/images/banner/banner-image-2.png"
+import BANNER_IMAGE_3 from "../assets/images/banner/banner-image-3.png"
+import BANNER_IMAGE_4 from "../assets/images/banner/banner-image-4.png"
+
 const imagesPack = {
   TONY_LOGO,
   BANNER_IMAGE,
+  banner : [
+    BANNER_IMAGE_1,
+    BANNER_IMAGE_2,
+    BANNER_IMAGE_3,
+    BANNER_IMAGE_4
+  ],
   CONTACT_PROFILE,
   CONTACT_PROFILE_BACKGROUND,
   service: [
-    { src: SERVICE_1_FACE, label: "1.Face" },
-    { src: SERVICE_2_BACK, label: "2.Back" },
-    { src: SERVICE_3_LEFT, label: "3.Left" },
-    { src: SERVICE_4_RIGHT, label: "4.Right" },
-    { src: SERVICE_5_TOP, label: "5.Top" },
-    { src: SERVICE_6_BOTTOM, label: "6.Bottom" },
-    { src: SERVICE_7_LEFT_FRONT, label: "7.Left Front" },
-    { src: SERVICE_8_RIGHT_FRONT, label: "8.Right Front" },
-    { src: SERVICE_9_LEFT_BACK, label: "9.Left Back" },
-    { src: SERVICE_10_RIGHT_BACK, label: "10.Right Back" },
-    { src: SERVICE_11_LEFT_FRONT_TOP, label: "11.Left Front Top" },
-    { src: SERVICE_12_RIGHT_FRONT_TOP, label: "12.Right Front Top" },
-    { src: SERVICE_13_LEFT_FRONT_BOTTOM, label: "13.Left Front Bottom" },
-    { src: SERVICE_14_RIGHT_FRONT_BOTTOM, label: "14.Right Front Bottom" },
-    { src: SERVICE_15_LEFT_BACK_TOP, label: "15.Left Back Top" },
-    { src: SERVICE_16_RIGHT_BACK_TOP, label: "16.Right Back Top" },
-    { src: SERVICE_17_LEFT_BACK_BOTTOM, label: "17.Left Back Bottom" },
-    { src: SERVICE_18_RIGHT_BACK_BOTTOM, label: "18.Right Back Bottom" },
-    { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19.Left Front Gray" },
-    { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20.Right Front Gray" },
+    { src: SERVICE_1_FACE, label: "1. Face" },
+    { src: SERVICE_2_BACK, label: "2. Back" },
+    { src: SERVICE_3_LEFT, label: "3. Left" },
+    { src: SERVICE_4_RIGHT, label: "4. Right" },
+    { src: SERVICE_5_TOP, label: "5. Top" },
+    { src: SERVICE_6_BOTTOM, label: "6. Bottom" },
+    { src: SERVICE_7_LEFT_FRONT, label: "7. Left Front" },
+    { src: SERVICE_8_RIGHT_FRONT, label: "8. Right Front" },
+    { src: SERVICE_9_LEFT_BACK, label: "9. Left Back" },
+    { src: SERVICE_10_RIGHT_BACK, label: "10. Right Back" },
+    { src: SERVICE_11_LEFT_FRONT_TOP, label: "11. Left Front Top" },
+    { src: SERVICE_12_RIGHT_FRONT_TOP, label: "12. Right Front Top" },
+    { src: SERVICE_13_LEFT_FRONT_BOTTOM, label: "13. Left Front Bottom" },
+    { src: SERVICE_14_RIGHT_FRONT_BOTTOM, label: "14. Right Front Bottom" },
+    { src: SERVICE_15_LEFT_BACK_TOP, label: "15. Left Back Top" },
+    { src: SERVICE_16_RIGHT_BACK_TOP, label: "16. Right Back Top" },
+    { src: SERVICE_17_LEFT_BACK_BOTTOM, label: "17. Left Back Bottom" },
+    { src: SERVICE_18_RIGHT_BACK_BOTTOM, label: "18. Right Back Bottom" },
+    { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19. Left Front Gray" },
+    { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20. Right Front Gray" },
   ],
   service_png_first : [
     {src : SERVICE_FIRST_01 , label : "A"},
@@ -99,65 +83,56 @@ const imagesPack = {
     {
       id: 1,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+     
     },
     {
       id: 2,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+      
     },
     {
       id: 3,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+    
     },
     {
       id: 4,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+      
     },
     {
       id: 5,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+     
     },
     {
       id: 6,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+  
     },
     {
       id: 7,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+     
     },
     {
       id: 8,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+    
     },
     {
       id: 9,
       imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-      title: "WOOD",
-      description: "A marble barrel for storing wine",
+      imageUrl2: GRID1_SECOND
+  
     }
   ],
 };

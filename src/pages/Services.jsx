@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import ServicePng from '../components/ServicePng'
 import ServiceProductAds from '../components/ServiceProductAds'
 import Service3dModel from '../components/Service3dModel'
@@ -7,54 +7,10 @@ import imagesPack from 'src/utils/ImagesContant'
 
 const Services = () => {
 
-  // const [backgroundImageClass, setBackgroundImageClass] = useState('bg-no-repeat bg-cover');
-
-  // useEffect(() => {
-  //   const updateBackgroundImage = () => {
-  //     if (window.matchMedia('(min-width: 1024px)').matches) {
-  //       // Si l'écran est large ou plus grand (taille lg ou plus)
-  //       setBackgroundImageClass('bg-none');
-  //     } else {
-  //       // Si l'écran est plus petit que large
-  //       setBackgroundImageClass('bg-no-repeat bg-cover');
-  //     }
-  //   };
-
-  //   // Vérifier au montage initial
-  //   updateBackgroundImage();
-
-  //   // Ajouter un écouteur d'événement pour les changements de taille d'écran
-  //   window.addEventListener('resize', updateBackgroundImage);
-
-  //   // Nettoyer l'écouteur d'événement lors du démontage
-  //   return () => window.removeEventListener('resize', updateBackgroundImage);
-  // }, []);
+ 
   const sectionRef = useRef(null); // Créer une référence à la section
 
-  // useEffect(() => {
-  //   const updateBackgroundImage = () => {
-  //     if (window.innerWidth >= 1024) {
-  //       // Si la largeur de l'écran est de 1024px ou plus (taille lg)
-  //       if (sectionRef.current) {
-  //         sectionRef.current.style.backgroundImage = 'none';
-  //       }
-  //     } else {
-  //       // Si la largeur de l'écran est moins de 1024px
-  //       if (sectionRef.current) {
-  //         sectionRef.current.style.backgroundImage = `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})`;
-  //       }
-  //     }
-  //   };
-
-  //   // Initialement mettre à jour l'image de fond
-  //   updateBackgroundImage();
-
-  //   // Ajouter un écouteur d'événement pour les changements de taille de fenêtre
-  //   window.addEventListener('resize', updateBackgroundImage);
-
-  //   // Supprimer l'écouteur d'événement lors du démontage du composant
-  //   return () => window.removeEventListener('resize', updateBackgroundImage);
-  // }, []);
+  
   useEffect(() => {
     const updateBackgroundImage = () => {
       if (window.innerWidth >= 1024) {
@@ -95,14 +51,16 @@ const Services = () => {
 
       </div>
 
+
+
       {/* For PNG Product */}
       <section
         // className= {`w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover lg:bg-none ${backgroundImageClass}}`}
         ref={sectionRef}
-        className="w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover"
-        // style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}
-      >        <div className='lg:mt-8 w-auto flex flex-col items-center'>
-          <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
+        className="w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover">    
+            
+      <div className='lg:mt-8 w-auto flex flex-col items-center'>
+          <div className='h-auto w-auto mt-0 lg:mt-[40px] p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
             24 PNG 4K
           </div>
           <p className='mt-6 font-ubuntu text-base text-nowrap'>
@@ -110,34 +68,40 @@ const Services = () => {
           </p>
         </div>
 
+      {/* THE Lateral Line */}
         <div className='w-1/12 flex flex-col items-start justify-center lg:block '>
-          <div className='mb-8 mt-10 lg:mt-[52px] w-full h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
+          <div className='mb-8 mt-10 lg:mt-[95px] w-full h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
 
           </div>
         </div>
 
         <ServicePng
         />
-
       </section>
 
 
       {/* For Product Ads */}
+      <section className='w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
 
-      <section className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10'>
-        <div className='lg:mt-8 w-auto flex flex-col items-center'>
+        <div className='lg:mt-8 w-auto flex flex-col items-center lg:items-start'>
           <div className='p-2 flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-base lg:text-xl rounded-3xl'>
             <p className='mb-0'>PRODUCT</p>
             <p className='mb-0'>VISUALIZATION</p>
             <p className='mb-0'>/</p>
             <p>PRODUCTS ADS</p>
           </div>
+          <div className='flex flex-col items-center justify-center'>
           <p className='mt-6 font-montserrat text-base font-extralight text-nowrap'>
             Ratio
           </p>
           <p className='font-montserrat font-extralight text-sm text-nowrap text-center'>
-            3840px X 2160px by default; According to your needs
+            3840px X 2160px by default;
           </p>
+          <p className='font-montserrat font-extralight text-sm text-nowrap text-center'>
+             According to your needs
+          </p>
+          </div>
+          
         </div>
 
         <div className='w-1/12'>
@@ -153,14 +117,14 @@ const Services = () => {
 
 
       {/* For 3D Modelling */}
-      <section className='w-full flex flex-col items-center lg:items-start lg:flex-row mt-10'>
+      <section className='w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
         <div className='lg:mt-8 w-auto flex flex-col items-center lg:items-start'>
           <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl lg:text-2xl rounded-3xl'>
             3D Modelisation
           </div>
           <div className='mt-6 flex flex-col items-center lg:text-wrap lg:flex-row'>
             <p className='font-ubuntu font-custom text-base text-nowrap text-red-600' >HARD-SURFACE &</p>
-            <p className='font-ubuntu font-custom text-base text-nowrap text-red-600'> SURFACE MODELING</p>            
+            <p className='font-ubuntu font-custom text-base text-nowrap text-red-600'> SURFACE MODELING</p>
           </div>
         </div>
 

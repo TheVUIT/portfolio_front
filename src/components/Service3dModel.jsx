@@ -2,7 +2,7 @@ import React from 'react'
 
 const Service3dModel = () => {
   return (
-    <div className='bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
+    <div className='lg:w-11/12 bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p className='mt-6 font-montserrat font-extralight text-center'>
         A pack exclusively dedicated to 3D artists / designers / animators or any actor wishing to free themselves from the modeling stage while having an advanced and professional level of topology      </p>
 
