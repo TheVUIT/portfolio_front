@@ -23,6 +23,12 @@ import SERVICE_18_RIGHT_BACK_BOTTOM from "../assets/images/services/0016.png";
 import SERVICE_19_LEFT_FRONT_GRAY from "../assets/images/services/B_G1.png";
 import SERVICE_20_RIGHT_FRONT_GRAY from "../assets/images/services/B_G2.png";
 
+
+import SERVICE_FIRST_01 from "../assets/images/services/B_W_G1.png";
+import SERVICE_FIRST_02 from "../assets/images/services/B_W_G2.png";
+import SERVICE_SECOND_A from "../assets/images/services/C2.png";
+import SERVICE_SECOND_B from "../assets/images/services/C3.png";
+
 import GRID1_PRINCIPAL from "../assets/images/home-grid-section/grid1-principal.png";
 import GRID1_SECOND from "../assets/images/home-grid-section/grid1-second.png";
 
@@ -80,6 +86,14 @@ const imagesPack = {
     { src: SERVICE_18_RIGHT_BACK_BOTTOM, label: "18.Right Back Bottom" },
     { src: SERVICE_19_LEFT_FRONT_GRAY, label: "19.Left Front Gray" },
     { src: SERVICE_20_RIGHT_FRONT_GRAY, label: "20.Right Front Gray" },
+  ],
+  service_png_first : [
+    {src : SERVICE_FIRST_01 , label : "A"},
+    {src : SERVICE_FIRST_02 , label : "B"}
+  ],
+  service_png_second : [
+    {src : SERVICE_SECOND_A , label : "01"},
+    {src : SERVICE_SECOND_B , label : "02"}
   ],
   home_grid: [
     {

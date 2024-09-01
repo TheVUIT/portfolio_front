@@ -1,7 +1,7 @@
 import React from 'react'
 import imagesPack from 'src/utils/ImagesContant'
 const ServicePng = () => {
-  const { service } = imagesPack;
+  const { service, service_png_first, service_png_second } = imagesPack;
 
   return (
     <div className=' bg-background_primary m-4 p-1 flex flex-col items-center justify-between rounded-xl lg:ml-0 lg:mt-6  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
@@ -68,6 +68,32 @@ const ServicePng = () => {
         </p>
       </div>
 
+      <div className='hidden lg:flex lg:flex-row justify-center gap-12 flex-wrap w-full'>
+        {service_png_first.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center m-2" 
+            style={{
+              width: '54px',
+              height: '69px',
+            }}
+          >
+            <div
+              className="flex-none"
+              style={{
+                width: '54px',
+                height: '69px',
+                backgroundImage: `url(${item.src})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+            <span className="mt-1 text-[12px] text-nowrap text-center">{item.label}</span> 
+          </div>
+        ))}
+      </div>
+
       {/* The Line */}
       <div className='w-1/12 flex flex-col items-start justify-center lg:block '>
         <div className='mb-1 mt-1 lg:mt-[52px] w-full h-[1px]  bg-texte_secondary transform rotate-90 lg:opacity-15'>
@@ -85,6 +111,33 @@ const ServicePng = () => {
       </div>
 
 
+      <div className='hidden lg:flex lg:flex-row justify-center gap-12 flex-wrap w-full'>
+        {service_png_second.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center m-2" 
+            style={{
+              width: '54px',
+              height: '69px',
+            }}
+          >
+            <div
+              className="flex-none"
+              style={{
+                width: '54px',
+                height: '69px',
+                backgroundImage: `url(${item.src})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+            <span className="mt-1 text-[12px] text-nowrap text-center">{item.label}</span> 
+          </div>
+        ))}
+      </div>
+
+
       <div className="mt-10 w-full flex flex-row justify-center items-start">
         <div className="w-4/5 border-b border-texte_secondary border-opacity-15 flex justify-center">
           <p className="mb-2 text-texte_secondary text-lg font-ubuntu font-extrabold">
@@ -95,14 +148,20 @@ const ServicePng = () => {
 
 
 
-      <div className='mt-4 flex flex-row items-center justify-center gap-10'>
-        <div >
-          <p className='font-montserrat mb-4'>Simple product</p>
+      <div className='mt-4 flex flex-row items-center justify-center gap-10 lg:w-full lg:justify-around border-2 border-green-700'>
+        <div className='flex flex-col items-start'>
+          <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Simple product <b className='text-lg font-ubuntu'>presentation</b></p>
+          <p className=''>No Script</p>
+          <p>(Gray Screen or Minimalist background</p>
+          <p>You can also choose a color theme)</p>
           <p> <b className='font-custom text-2xl'>$ 199</b> USD </p>
         </div>
 
         <div>
-          <p className='font-montserrat mb-4'>Complex product</p>
+          <p className='font-montserrat mb-4 lg:text-lg lg:font-ubuntu'>Complex product <b>visualisation</b></p>
+          <p>Detailed scene as desired</p>
+          <p>(Complex furniture, Vehicles,</p>
+          <p>Object association with complex scene,...)</p>
           <p>from <b className='font-custom text-2xl'> $ 499 </b> USD</p>
         </div>
       </div>
