@@ -56,9 +56,9 @@ const Services = () => {
       <section
         // className= {`w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover lg:bg-none ${backgroundImageClass}}`}
         ref={sectionRef}
-        className="border-2 border-yellow-500 w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover">    
+        className="w-full flex flex-col items-center lg:items-start lg:flex-row mt-10 bg-no-repeat bg-cover">    
             
-      <div className='lg:mt-8 w-auto flex flex-col items-center border-2 border-red-600 lg:pr-9 lg:pl-9'>
+      <div className='lg:mt-8 w-auto flex-shrink-0 flex-col items-center lg:pr-9 lg:pl-9'>
           <div className='h-auto w-auto mt-0 lg:mt-[40px] p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl rounded-3xl'>
             24 PNG 4K
           </div>
@@ -68,7 +68,7 @@ const Services = () => {
         </div>
 
       {/* THE Lateral Line */}
-        <div className='w-1/12 flex flex-col items-start justify-center lg:block border-2 border-red-600 '>
+        <div className='w-1/12 flex-grow flex-col items-start justify-center lg:block'>
           <div className='mb-8 mt-10 lg:mt-[95px] w-full h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
 
           </div>
@@ -80,9 +80,9 @@ const Services = () => {
 
 
       {/* For Product Ads */}
-      <section className='border-2 border-yellow-500 w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
+      <section className='w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
 
-      <div className='lg:mt-8 w-auto flex-shrink-0 flex flex-col items-center lg:items-start border-2 border-red-600 lg:pr-3 lg:pl-3'>
+      <div className='lg:mt-8 w-auto flex-shrink-0 flex flex-col items-center lg:items-start lg:pr-3 lg:pl-3'>
       {/* <div className='lg:mt-8 w-auto flex flex-col items-center lg:items-start border-2 border-red-600'> */}
           <div className='p-2 flex flex-col items-center justify-center h-auto w-auto bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-base lg:text-xl rounded-3xl'>
             <p className='mb-0'>PRODUCT</p>
@@ -104,7 +104,7 @@ const Services = () => {
           
         </div>
 
-        <div className='w-1/12 flex-grow border-2 border-red-600'>
+        <div className='w-1/12 flex-grow'>
         {/* <div className='w-1/12 border-2 border-red-600'> */}
           <div className='mb-8 mt-8 lg:mt-[95px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl lg:'>
 
@@ -119,8 +119,8 @@ const Services = () => {
 
 
       {/* For 3D Modelling */}
-      <section className='border-2 border-yellow-500 w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
-        <div className='lg:mt-8 w-auto flex flex-col items-center lg:items-start border-2 border-red-600'>
+      <section className='w-full  flex flex-col items-center lg:items-start lg:flex-row mt-10'>
+        <div className='lg:mt-8 w-auto flex-shrink-0 flex-col items-center lg:items-start'>
           <div className='h-auto w-auto p-2 bg-texte_secondary text-nowrap text-backgroung_secondary font-ubuntu text-xl lg:text-2xl rounded-3xl'>
             3D Modelisation
           </div>
@@ -130,7 +130,7 @@ const Services = () => {
           </div>
         </div>
 
-        <div className='w-1/12 border-2 border-red-600'>
+        <div className='w-1/12 flex-grow'>
           <div className='mb-10 mt-10 lg:mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '>
 
           </div>

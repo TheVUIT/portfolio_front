@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ServiceProductAds = () => {
   return (
-    <div className='border-2 border-red-600 lg:w-11/12 bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
+    <div className='lg:w-11/12 bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p className='mt-6 font-montserrat font-extralight text-center p-5'>
       A pack that can be used not only by graphic designers, UI, layout artists but also by salespeople, comms, producers/designers themselves for their work      </p>
 

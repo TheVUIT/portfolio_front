@@ -7,7 +7,7 @@ const ServicePng = () => {
   const { service, service_png_first, service_png_second } = imagesPack;
 
   return (
-    <div className='border-2 border-red-600 lg:w-11/12 bg-background_primary m-4 p-1 flex flex-col items-center justify-between rounded-xl lg:ml-0 lg:mt-6  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
+    <div className='lg:w-11/12 bg-background_primary m-4 p-1 flex flex-col items-center justify-between rounded-xl lg:ml-0 lg:mt-6  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
       <p className='mt-6 font-montserrat font-extralight text-center lg:font-montserrat lg:mt-14 lg:mb-4'>
         A pack dedicated to graphic designers, ui, layout artists and any actors looking to use qualitative 3D renderings without background for various projects
       </p>
