@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-
 const Service3dModel = () => {
   return (
     <div className='lg:w-11/12 bg-background_primary m-4 p-2 flex flex-col items-center justify-between rounded-xl lg:ml-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] lg:shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
@@ -67,24 +66,6 @@ const Service3dModel = () => {
         </div>
       </div>
 
-      {/* <div className='flex flex-col items-center justify-center mt-5 mb-2'>
-        <p className='font-montserrat font-extralight text-sm text-center'>
-          &#10004; 3D model usable in the format chosen during discussions (obj, fbx, stl, dae, etc.)
-        </p>
-
-        <p className='font-ubuntu font-bold text-sm text-center'>
-          + $100 (Simple)
-        </p>
-        <p className='font-ubuntu font-bold text-sm text-center'>
-          from + $200 (Complex)
-        </p>
-
-      </div> */}
-
-      {/* <div className='mt-2  w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-20'>
-
-      </div> */}
-
       <div className='flex flex-col items-center justify-center mt-4'>
         <p className='font-montserrat font-extralight text-sm text-center'>
           *You will have to provide all the necessary details according to the results you wish to obtain </p>
@@ -104,3 +85,4 @@ const Service3dModel = () => {
 }
 
 export default Service3dModel
+
