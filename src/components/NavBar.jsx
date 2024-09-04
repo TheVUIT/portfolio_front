@@ -190,15 +190,21 @@ const NavBar = () => {
           </div>
 
           <div className="h-auto flex pg items-center space-x-2">
-            <Link className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link 
+            onClick={toggleMenu}
+            className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiBehanceLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
-            <Link className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link 
+            onClick={toggleMenu} 
+            className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiInstagramLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
-            <Link className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link 
+            onClick={toggleMenu}
+            className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiLinkedinLine className='h-full text-3xl sm:text-2xl' />
             </Link>
           </div>

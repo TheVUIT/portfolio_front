@@ -72,7 +72,7 @@ const ProjectDetail = () => {
                     />
                 ))}
             </div>
-            <div className='fixed bottom-0 right-0 flex flex-row items-center justify-end'>
+            <div className='fixed bottom-4 right-4 flex flex-row items-center justify-end ml-4'>
                 <button
                     onClick={() => navigate('/')}
                     className="mt-4 px-4 py-2 font-ubuntu text-xl bg-texte_secondary text-backgroung_secondary rounded hover:text-texte_secondary hover:bg-backgroung_secondary"

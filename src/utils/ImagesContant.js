@@ -138,19 +138,6 @@ const banner_project = [
 
 
 
-// const getProjectDetails = (id) => {
-//   const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
-  
-//   if (projectBanner) {
-//     return {
-//       ...projectBanner,
-//       bannerImage: imagesPack.banner.find(b => b.id === projectBanner.id),
-//     };
-//   }
-//   return null;
-// }
-
-
 const getProjectDetails = (id) => {
   const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
 
@@ -170,3 +157,19 @@ const getProjectDetails = (id) => {
 
 
 export { imagesPack, banner_project, getProjectDetails };
+
+
+
+
+
+// const getProjectDetails = (id) => {
+//   const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
+  
+//   if (projectBanner) {
+//     return {
+//       ...projectBanner,
+//       bannerImage: imagesPack.banner.find(b => b.id === projectBanner.id),
+//     };
+//   }
+//   return null;
+// }
