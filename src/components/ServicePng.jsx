@@ -1,5 +1,8 @@
 import React from 'react'
 import {imagesPack} from 'src/utils/ImagesContant'
+import { Link } from 'react-router-dom';
+
+
 const ServicePng = () => {
   const { service, service_png_first, service_png_second } = imagesPack;
 
@@ -232,9 +235,9 @@ const ServicePng = () => {
 </div>
 
 
-      <button className="mb-4 bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg transition-colors duration-300 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]">
+      <Link to={'/contact'} className="mb-4 bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg transition-colors duration-300 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]">
         Contact / Collab
-      </button>
+      </Link>
 
     </div>
   )
