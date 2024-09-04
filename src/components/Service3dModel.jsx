@@ -7,7 +7,7 @@ const Service3dModel = () => {
       <p className='mt-6 font-montserrat font-extralight text-center'>
         A pack exclusively dedicated to 3D artists / designers / animators or any actor wishing to free themselves from the modeling stage while having an advanced and professional level of topology      </p>
 
-      <div className='mt-8 w-full flex flex-row justify-center items-start border-b border-texte_secondary'>
+      <div className='mt-8 w-full flex flex-row justify-center items-start border-b border-texte_secondary border-opacity-25'>
         <p className='mb-2 text-texte_secondary text-lg font-ubuntu font-bold'>
           FEATURES
         </p>

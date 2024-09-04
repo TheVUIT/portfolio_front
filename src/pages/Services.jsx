@@ -317,7 +317,7 @@ const Services = () => {
 
         <motion.div
           variants={sectionVariants}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.5 }}
           className='w-1/12 flex-grow'
         >
           <div className='mb-10 mt-10 lg:mt-[52px] w-full flex flex-row h-[1px]  bg-texte_secondary transform rotate-90 lg:rotate-0 lg:h-[-1px] lg:rounded-1xl '></div>
