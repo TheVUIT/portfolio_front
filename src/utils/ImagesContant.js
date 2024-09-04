@@ -138,17 +138,35 @@ const banner_project = [
 
 
 
+// const getProjectDetails = (id) => {
+//   const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
+  
+//   if (projectBanner) {
+//     return {
+//       ...projectBanner,
+//       bannerImage: imagesPack.banner.find(b => b.id === projectBanner.id),
+//     };
+//   }
+//   return null;
+// }
+
+
 const getProjectDetails = (id) => {
   const projectBanner = banner_project.find(banner => banner.id === parseInt(id));
-  
+
   if (projectBanner) {
+    const details = Object.keys(projectBanner)
+      .filter(key => key.startsWith('src_detail'))
+      .map(key => projectBanner[key]);
+
     return {
       ...projectBanner,
+      details,
       bannerImage: imagesPack.banner.find(b => b.id === projectBanner.id),
     };
   }
   return null;
-}
+};
 
 
 export { imagesPack, banner_project, getProjectDetails };

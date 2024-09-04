@@ -1,65 +1,3 @@
-// import React from 'react'
-// import {imagesPack} from '../utils/ImagesContant';
-
-// import { useEffect, useRef, useState } from 'react';
-
-// const Banner = () => {
-//     const { banner } = imagesPack;
-//     const mainRef = useRef(null);
-//     const [currentImageIndex, setCurrentImageIndex] = useState(0); // State of this image
-
-//     useEffect(() => {
-//         if (mainRef.current && banner.length > 0) {
-
-//             const handleResize = () => {
-//                 const image = new Image();
-//                 image.src = banner[currentImageIndex].src; // Utiliser la source de l'image actuelle pour calculer la hauteur
-//                 image.onload = () => {
-//                     const aspectRatio = image.height / image.width;
-//                     const containerWidth = mainRef.current.offsetWidth;
-//                     mainRef.current.style.height = `${containerWidth * aspectRatio}px`;
-//                 };
-//             };
-
-//             handleResize();
-
-//             window.addEventListener('resize', handleResize);
-
-//             return () => window.removeEventListener('resize', handleResize);
-//         }
-//     }, [currentImageIndex, banner]); // Recalculer lors du changement d'image
-
-//     useEffect(() => {
-//         const intervalId = setInterval(() => {
-//             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % banner.length); 
-//         }, 3000); 
-//         return () => clearInterval(intervalId); // Cleaning intervalle
-//     }, [banner.length]);
-
-//     return (
-//         <div className='mt-16 lg:mt-10 w-full p-4 md:p-10 overflow-hidden'>
-//             <main 
-//                 ref={mainRef}
-//                 className="w-full bg-cover bg-top transition-all duration-700 ease-in-out"
-//                 style={{ 
-//                     backgroundImage: `url(${banner[currentImageIndex].src})`, // Utiliser la source de l'image actuelle
-//                     backgroundSize: 'cover', // Ajuster la taille de l'image pour couvrir le conteneur
-//                     backgroundRepeat: 'no-repeat',
-//                     backgroundPosition: 'center' // Centrer l'image
-//                 }}
-//             >
-//             </main>
-//         </div>
-//     );
-// };
-
-// export default Banner;
-
-
-
-
-
-
 
 
 // import React, { useEffect, useRef, useState } from 'react';
@@ -69,7 +7,7 @@
 //   const { banner } = imagesPack;
 //   const mainRef = useRef(null);
 //   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-//   const [imagesLoaded, setImagesLoaded] = useState(false); // État pour suivre si toutes les images sont chargées
+//   const [imagesLoaded, setImagesLoaded] = useState(false);
 
 //   useEffect(() => {
 //     const preloadImages = () => {
@@ -80,13 +18,13 @@
 //         img.onload = () => {
 //           loadedImagesCount += 1;
 //           if (loadedImagesCount === banner.length) {
-//             setImagesLoaded(true); // Toutes les images sont chargées
+//             setImagesLoaded(true);
 //           }
 //         };
 //         img.onerror = () => {
 //           loadedImagesCount += 1;
 //           if (loadedImagesCount === banner.length) {
-//             setImagesLoaded(true); // Considérez les erreurs comme des chargements pour éviter les blocages
+//             setImagesLoaded(true);
 //           }
 //         };
 //       });
@@ -118,9 +56,9 @@
 //     if (imagesLoaded) {
 //       const intervalId = setInterval(() => {
 //         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % banner.length);
-//       }, 3000); // Change d'image toutes les 3 secondes
+//       }, 3000);
 
-//       return () => clearInterval(intervalId); // Nettoyage de l'intervalle
+//       return () => clearInterval(intervalId);
 //     }
 //   }, [imagesLoaded, banner.length]);
 
@@ -130,21 +68,22 @@
 //         ref={mainRef}
 //         className="w-full bg-cover bg-top transition-all duration-700 ease-in-out"
 //         style={{
-//           backgroundImage: imagesLoaded ? `url(${banner[currentImageIndex].src})` : 'none', // N'affiche l'image que si elle est chargée
+//           backgroundImage: imagesLoaded ? `url(${banner[currentImageIndex].src})` : 'none',
 //           backgroundSize: 'cover',
 //           backgroundRepeat: 'no-repeat',
-//           backgroundPosition: 'center'
+//           backgroundPosition: 'center',
+//           height: imagesLoaded ? 'auto' : '400px', // Hauteur par défaut pour le skeleton
 //         }}
 //       >
-//         {!imagesLoaded && <p>Loading images...</p>} {/* Message de chargement (optionnel) */}
+//         {!imagesLoaded && (
+//           <div className="skeleton-loader w-full h-full bg-gray-300 animate-pulse"></div>
+//         )}
 //       </main>
 //     </div>
 //   );
 // };
 
 // export default Banner;
-
-
 
 
 
@@ -162,6 +101,7 @@ const Banner = () => {
   const mainRef = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const preloadImages = () => {
@@ -209,7 +149,11 @@ const Banner = () => {
   useEffect(() => {
     if (imagesLoaded) {
       const intervalId = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % banner.length);
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentImageIndex((prevIndex) => (prevIndex + 1) % banner.length);
+          setIsTransitioning(false);
+        }, 500); // Temps de transition
       }, 3000);
 
       return () => clearInterval(intervalId);
@@ -220,7 +164,7 @@ const Banner = () => {
     <div className='mt-16 lg:mt-10 w-full p-4 md:p-10 overflow-hidden'>
       <main
         ref={mainRef}
-        className="w-full bg-cover bg-top transition-all duration-700 ease-in-out"
+        className={`w-full bg-cover bg-top transition-all duration-700 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
         style={{
           backgroundImage: imagesLoaded ? `url(${banner[currentImageIndex].src})` : 'none',
           backgroundSize: 'cover',
