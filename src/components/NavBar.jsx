@@ -127,7 +127,7 @@ const NavBar = () => {
         <div
           className={
             showMenu
-              ? 'absolute left-0 right-0 top-20 z-70 h-[85vh] flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
+              ? 'absolute left-0 right-0 top-16 z-70 h-[85vh] flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
               : 'hidden'
           }
         >
@@ -136,6 +136,7 @@ const NavBar = () => {
           </div>
           <Link
             to="/about"
+            onClick={toggleMenu}
             className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Projects"
           >
@@ -148,6 +149,7 @@ const NavBar = () => {
 
           <Link
             to="/"
+            onClick={toggleMenu}
             className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Projects"
           >
@@ -160,6 +162,7 @@ const NavBar = () => {
 
           <Link
             to="/services"
+            onClick={toggleMenu}
             className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="About Me"
           >
@@ -172,6 +175,7 @@ const NavBar = () => {
 
           <Link
             to="/contact"
+            onClick={toggleMenu}
             className="h-auto w-auto p-4 flex flex-row items-center justify-center rounded-2xl text-texte_secondary font-ubuntu text-3xl transition-colors duration-300 hover:bg-texte_secondary hover:text-backgroung_secondary"
             aria-label="Contact"
           >

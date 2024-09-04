@@ -7,6 +7,21 @@ body {
   @apply m-0 p-0 box-border;
 }
 
+.skeleton-loader {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0; /* Couleur de fond pour le skeleton */
+  animation: pulse 1.5s infinite; /* Animation de pulsation */
+}
+
+@keyframes pulse {
+0%, 100% {
+  opacity: 1;
+}
+50% {
+  opacity: 0.5;
+}
+}
 
 
 @layer base {
@@ -124,3 +139,5 @@ body {
   height: 100%;
   transition: opacity 0.5s ease-in-out;
 }
+
+

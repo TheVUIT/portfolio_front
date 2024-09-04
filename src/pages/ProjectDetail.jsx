@@ -13,19 +13,16 @@ const ProjectDetail = () => {
 
     return (
         <div className='w-full p-7'>
-            {/* <h1>Détails du Projet</h1> */}
             <div>
-                {/* <h2>Image de Banner</h2> */}
                 <img src={projectDetails.bannerImage?.src} alt={`Banner ${projectDetails.id}`} />
             </div>
             <div>
-                {/* <h2>Détails du Projet</h2> */}
                 <img src={projectDetails.src_detail1} alt={`Detail 1 ${projectDetails.id}`} />
                 <img src={projectDetails.src_detail2} alt={`Detail 2 ${projectDetails.id}`} />
             </div>
             {/* Bouton Go Back */}
 
-            <div className='flex flex-row items-center justify-end'>
+            <div className='fixed bottom-0 right-0 flex flex-row items-center justify-end'>
                 <button
                     onClick={() => navigate('/')}
                     className="mt-4 px-4 py-2 font-ubuntu text-xl bg-texte_secondary text-backgroung_secondary rounded hover:text-texte_secondary hover:bg-backgroung_secondary"
