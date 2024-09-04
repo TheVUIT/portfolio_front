@@ -226,6 +226,7 @@ const Banner = () => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
+          height: imagesLoaded ? 'auto' : '400px', // Hauteur par défaut pour le skeleton
         }}
       >
         {!imagesLoaded && (

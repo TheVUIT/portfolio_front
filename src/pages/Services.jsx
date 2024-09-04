@@ -22,7 +22,6 @@ const Services = () => {
           sectionRef.current.style.backgroundImage = `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})`;
           sectionRef.current.style.backgroundSize = 'cover';
           sectionRef.current.style.backgroundRepeat = 'no-repeat';
-          // Utilisation d'un pseudo-élément pour appliquer la rotation
           sectionRef.current.classList.add('rotate-background');
         }
       }
