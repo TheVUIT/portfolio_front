@@ -36,6 +36,9 @@ import BANNER_IMAGE_2 from "../assets/images/banner/banner-image-2.png";
 import BANNER_IMAGE_3 from "../assets/images/banner/banner-image-3.png";
 import BANNER_IMAGE_4 from "../assets/images/banner/banner-image-4.png";
 import BANNER_IMAGE_5 from "../assets/images/banner/banner-image-5.png";
+import BANNER_IMAGE_6 from "../assets/images/banner/banner-image-6.png";
+import BANNER_IMAGE_7 from "../assets/images/banner/banner-image-7.png";
+import BANNER_IMAGE_8 from "../assets/images/banner/banner-image-8.png";
 
 import BANNER_IMAGE_1_DETAIL_1 from "../assets/images/project-detail/banner-image-1-detail-1.png"
 import BANNER_IMAGE_1_DETAIL_2 from "../assets/images/project-detail/banner-image-1-detail-2.png"
@@ -49,7 +52,11 @@ const imagesPack = {
     {id: 2, src : BANNER_IMAGE_2}, 
     {id: 3, src : BANNER_IMAGE_3}, 
     {id: 4, src : BANNER_IMAGE_4},
-    {id: 5, src : BANNER_IMAGE_5}],
+    {id: 5, src : BANNER_IMAGE_5},
+    {id: 6, src : BANNER_IMAGE_6},
+    {id: 7, src : BANNER_IMAGE_7},
+    {id: 8, src : BANNER_IMAGE_8},
+  ],
   CONTACT_PROFILE,
   CONTACT_PROFILE_BACKGROUND,
   service: [

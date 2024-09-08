@@ -147,7 +147,7 @@
 
 
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion'; // Importer framer-motion
+import { motion } from 'framer-motion'; 
 import ServicePng from '../components/ServicePng';
 import ServiceProductAds from '../components/ServiceProductAds';
 import Service3dModel from '../components/Service3dModel';

@@ -11,8 +11,7 @@ function Hero() {
   ];
 
   return (
-    // <div className='mt-16 w-full flex flex-col items-center bg-backgroung_secondary border-2 border-y-amber-300'>
-<div className='mt-16 max-w-full flex flex-col items-center bg-backgroung_secondary border-2 border-y-amber-300 overflow-x-hidden'>
+    <div className='mt-32 max-w-full flex flex-col items-center bg-backgroung_secondary overflow-x-hidden'>
 
       <div className='w-full flex justify-center items-center text-center mt-8 lg:mt-16 mb-4'>
         <p className='flex flex-row items-center justify-center text-center text-4xl lg:text-6xl md:text-5xl font-montserrat font-bold'>
@@ -33,7 +32,7 @@ function Hero() {
       </div>
 
       <div className='w-full hidden lg:flex lg:flex-row justify-between items-center gap-2 p-8'>
-        {items.map((item, index) =>(
+        {items.map((item, index) => (
           <div key={index} className='text-xs font-extralight font-montserrat'> <b className=''>&bull;</b> {item}</div>
         ))}
       </div>

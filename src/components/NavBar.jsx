@@ -7,8 +7,9 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import React from 'react';
 import '../css/index.css'
 import '../css/styles.css'
-import {imagesPack} from "../utils/ImagesContant"
+import { imagesPack } from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import {
   RiInstagramLine,
@@ -27,6 +28,20 @@ const NavBar = () => {
       setShowMenu(false);
     }
   }
+  // Variantes d'animation pour la navbar
+  const menuVariants = {
+    hidden: { opacity: 0, y: -50 },  // Caché avec opacité 0 et hors écran en haut
+    visible: {
+      opacity: 1,
+      y: 0,  // Slide vers la position normale
+      transition: {
+        duration: 0.5, // Durée de l'animation
+        ease: 'easeInOut' // Transition fluide
+      },
+    },
+    exit: { opacity: 0, y: -50 }, // Animation à la sortie
+  };
+
 
 
   return (
@@ -124,7 +139,8 @@ const NavBar = () => {
 
 
         {/* Header links small screen */}
-        <div
+        <motion.div
+
           className={
             showMenu
               ? 'absolute left-0 right-0 top-16 z-70 h-[85vh] flex flex-col justify-around items-center bg-background_primary  m-0 p-5 shadow-lg sm:shadow-none'
@@ -190,26 +206,27 @@ const NavBar = () => {
           </div>
 
           <div className="h-auto flex pg items-center space-x-2">
-            <Link 
-            onClick={toggleMenu}
-            className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link
+              onClick={toggleMenu}
+              className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiBehanceLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
-            <Link 
-            onClick={toggleMenu} 
-            className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link
+              onClick={toggleMenu}
+              className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiInstagramLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
-            <Link 
-            onClick={toggleMenu}
-            className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
+            <Link
+              onClick={toggleMenu}
+              className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiLinkedinLine className='h-full text-3xl sm:text-2xl' />
             </Link>
           </div>
 
-        </div>
+        </motion.div>
+
 
       </div>
 
