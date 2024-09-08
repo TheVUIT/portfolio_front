@@ -11,7 +11,8 @@ function Hero() {
   ];
 
   return (
-    <div className='mt-8 w-screen flex flex-col items-center bg-backgroung_secondary'>
+    // <div className='mt-16 w-full flex flex-col items-center bg-backgroung_secondary border-2 border-y-amber-300'>
+<div className='mt-16 max-w-full flex flex-col items-center bg-backgroung_secondary border-2 border-y-amber-300 overflow-x-hidden'>
 
       <div className='w-full flex justify-center items-center text-center mt-8 lg:mt-16 mb-4'>
         <p className='flex flex-row items-center justify-center text-center text-4xl lg:text-6xl md:text-5xl font-montserrat font-bold'>

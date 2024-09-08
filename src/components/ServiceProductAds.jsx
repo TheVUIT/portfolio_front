@@ -33,7 +33,7 @@ const ServiceProductAds = () => {
 
 
       <div className='mt-6 flex flex-row items-center justify-center gap-10 lg:w-full lg:justify-around'>
-        <div >
+        <div className='flex flex-col items-start'>
           <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Simple product <b className=' hidden lg:flex text-lg font-ubuntu'>presentation</b></p>
           <p className='hidden lg:flex'>No Script</p>
           <p className='hidden lg:flex'>(Gray Screen or Minimalist background</p>
@@ -41,7 +41,7 @@ const ServiceProductAds = () => {
           <p> <b className='font-custom text-2xl'>$99 </b>USD</p>
         </div>
 
-        <div>
+        <div className='flex flex-col items-end'>
           <p className='font-montserrat mb-4 lg: lg:text-lg lg:font-ubuntu'>Complex product  <b className=' hidden lg:flex text-lg font-ubuntu'>visualisation</b></p>
           <p className='hidden lg:flex'>Detailed scene as desired</p>
           <p className='hidden lg:flex' >(Complex furniture, Vehicles,</p>
@@ -90,7 +90,7 @@ const ServiceProductAds = () => {
 
       </div>
 
-      <Link to={'/contact'} className="mb-4 bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg transition-colors duration-300 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]">
+      <Link to={'/contact'} className="mb-4 bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg transition-colors duration-300 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:text-backgroung_secondary hover:bg-texte_secondary">
         Contact / Collab
       </Link>
 

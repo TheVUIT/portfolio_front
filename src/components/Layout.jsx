@@ -8,9 +8,9 @@ import '../css/index.css'
 
 const Layout = ({ children }) => {
   return (
-    <div className="w-screen overflow-x-hidden">
+    <div className="w-screen ">
       <NavBar />
-      <div className="w-full">
+      <div className="max-w-full overflow-x-hidden">
         {children}
       </div>
     </div>

@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   return (
-    <main>
+    <main >
       {/* Ajout d'une animation de fade-in pour le Banner */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
