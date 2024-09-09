@@ -155,7 +155,9 @@ const Banner = () => {
         image.onload = () => {
           const aspectRatio = image.height / image.width;
           const containerWidth = mainRef.current.offsetWidth;
-          mainRef.current.style.height = `${ containerWidth * aspectRatio}px`;
+          const heightResultCalutation = containerWidth * aspectRatio;
+          // mainRef.current.style.width = `${containerWidth * 0.8}px`
+          mainRef.current.style.height = `${heightResultCalutation }px`;
         };
       };
 
@@ -181,7 +183,7 @@ const Banner = () => {
   }, [imagesLoaded, banner.length]);
 
   return (
-    <div className='mt-16 lg:mt-16 w-full p-4 lg:p-0  md:p-0 overflow-hidden'>
+    <div className='mt-16 lg:mt-16 w-full p-4 lg:pl-16 lg:pr-16  md:p-0 overflow-hidden'>
       <main
         ref={mainRef}
         className={`lg:mt-4 w-full bg-cover bg-top transition-all duration-700 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
