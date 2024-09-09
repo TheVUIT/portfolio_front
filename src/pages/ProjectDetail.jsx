@@ -69,7 +69,8 @@ const ProjectDetail = () => {
                     </button>
                 ) : (
                     <button
-                        onClick={() => navigate('/')}
+                        // A la page précédente
+                        onClick={() => navigate(-1)}
                         className="mt-4 px-4 py-2 font-ubuntu text-xl bg-texte_secondary text-backgroung_secondary rounded hover:text-texte_secondary hover:bg-backgroung_secondary hover:border-2 hover:border-texte_secondary"
                     >
                         Go Back
