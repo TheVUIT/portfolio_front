@@ -4,9 +4,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-  <div></div>
+    <footer className="w-full bg-backgroung_secondary text-texte_secondary py-4">
+      <div className="text-center">
+        <p className="text-lg font-ubuntu ">All rights reserved &copy; 2024</p>
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-

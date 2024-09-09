@@ -4,6 +4,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import '../css/Layout.css'; 
 import '../css/index.css'
+import Footer from './Footer';
 
 
 const Layout = ({ children }) => {
@@ -13,27 +14,10 @@ const Layout = ({ children }) => {
       <div className="max-w-full overflow-x-hidden">
         {children}
       </div>
+      <Footer/>
     </div>
   );
 };
 
 export default Layout;
 
-
-
-
-{/* <div className="inline-block">
-<img  
-    src={manBackground} 
-    alt="Second Image" 
-    className="w-full h-1/2" 
-    layout="fill" 
-  />
-  <img  
-    src={heroBackground}
-    alt="First Image" 
-    className="w-full h-1/2" 
-    layout="fill" // Utilisé par Next.js pour remplir l'espace parent
-  />
-  
-</div> */}
