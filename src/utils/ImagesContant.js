@@ -30,6 +30,8 @@ import SERVICE_SECOND_B from "../assets/images/services/C3.png";
 
 import GRID1_PRINCIPAL from "../assets/images/home-grid-section/grid1-principal.png";
 import GRID1_SECOND from "../assets/images/home-grid-section/grid1-second.png";
+import GRID2_PRINCIPAL from "../assets/images/home-grid-section/grid2-principal.png";
+import GRID2_SECOND from "../assets/images/home-grid-section/grid2-second.png";
 
 import BANNER_IMAGE_1 from "../assets/images/banner/banner-image-1.png";
 import BANNER_IMAGE_2 from "../assets/images/banner/banner-image-2.png";
@@ -102,38 +104,8 @@ const imagesPack = {
     },
     {
       id: 3,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 4,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 5,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 6,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 7,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 8,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
-    },
-    {
-      id: 9,
-      imageUrl1: GRID1_PRINCIPAL,
-      imageUrl2: GRID1_SECOND,
+      imageUrl1: GRID2_PRINCIPAL,
+      imageUrl2: GRID2_SECOND,
     },
   ],
 };
@@ -142,6 +114,12 @@ const banner_project = [
   {id: 1, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
   {id: 2, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
 ]
+
+
+const banner_project2 = [
+  { id: 1, src_detail: [BANNER_IMAGE_1_DETAIL_1, BANNER_IMAGE_1_DETAIL_2] },
+  { id: 2, src_detail: [BANNER_IMAGE_1_DETAIL_1, BANNER_IMAGE_1_DETAIL_2] },
+];
 
 
 
