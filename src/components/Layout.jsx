@@ -4,7 +4,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import '../css/Layout.css'; 
 import '../css/index.css'
-import Footer from './Footer';
+// import Footer from './Footer';
 
 
 const Layout = ({ children }) => {
@@ -14,7 +14,6 @@ const Layout = ({ children }) => {
       <div className="max-w-full overflow-x-hidden">
         {children}
       </div>
-      <Footer/>
     </div>
   );
 };
