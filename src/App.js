@@ -15,6 +15,7 @@ import AdminPage from "./pages/AdminPage";
 import UserInfosManagePage from "./pages/UserInfosManagePage";
 import ProjectManagePage from "./pages/ProjectManagePage";
 import CarrouselManagePage from "./pages/CarrouselManagePage";
+import Loading from "src/components/Loading";
 
 
 
@@ -47,7 +48,7 @@ const  App = ()=> {
   }, []);
 
   if (loading) {
-    return <div>Loading ...</div>;
+    return (<Loading/>) ;
   }
 
 
