@@ -185,3 +185,14 @@ body {
 }
 
 
+.admin-page-choice-button {
+  @apply bg-texte_secondary text-backgroung_secondary text-2xl rounded-xl p-4 font-ubuntu hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+}
+
+.custom-btn {
+  @apply bg-backgroung_secondary text-texte_secondary font-bold py-2 px-4 rounded hover:bg-texte_secondary hover:text-backgroung_secondary;
+}
+
+.form-input {
+  @apply m-2 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
+}

@@ -1,7 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// app.js
+import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { auth } from "./config/firebase";
+
+import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
+import UserInfosManagePage from "./pages/UserInfosManagePage";
+import ProjectManagePage from "./pages/ProjectManagePage";
+import CarrouselManagePage from "./pages/CarrouselManagePage";
+
+
+
 import Layout from './components/Layout';
 import './css/index.css';
 import '@mantine/core/styles.css';
@@ -10,11 +26,34 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Services from './pages/Services';
 import NotFoundPage from './pages/NotFoundPage';
-import ProjectDetail from './pages/ProjectDetail'; // Assure-toi d'importer le composant ProjectDetail
+import ProjectDetail from './pages/ProjectDetail'; 
+
+
+
 
 const validPaths = ['/', '/about', '/services', '/contact'];
 
-function App() {
+const  App = ()=> {
+
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div>Loading ...</div>;
+  }
+
+
+
+
+
   return (
     <Router>
       <Layout>
@@ -23,6 +62,34 @@ function App() {
             <Route key={path} path={path} element={getPageComponent(path)} />
           ))}
           <Route path="/portfolio/project/:id" element={<ProjectDetail />} />
+
+           {/* Si l'utilisateur est déjà connecté, redirige vers /admin */}
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/admin" /> : <LoginPage />}
+        />
+
+        <Route
+          path="/admin/user-manage"
+          element={<PrivateRoute element={<UserInfosManagePage />} />}
+        />
+
+        <Route
+          path="/admin"
+          element={<PrivateRoute element={<AdminPage />} />}
+        />
+
+        <Route
+          path="/admin/carousel-manage"
+          element={<PrivateRoute element={<CarrouselManagePage />} />}
+        />
+        <Route
+          path="/admin/project-manage"
+          element={<PrivateRoute element={<ProjectManagePage />} />}
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
+
+
           <Route path="*" element={<NotFoundPage />} /> {/* Route de fallback pour les chemins non trouvés */}
         </Routes>
       </Layout>
@@ -44,5 +111,25 @@ function getPageComponent(path) {
       return <NotFoundPage />;
   }
 }
+
+
+const PrivateRoute = ({ element }) => {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div>Loading ...</div>;
+  }
+
+  return user ? element : <Navigate to="/login" />;
+};
 
 export default App;

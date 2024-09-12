@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import NavBar from './NavBar';
-import '../css/Layout.css'; 
+// import '../css/Layout.css'; 
 import '../css/index.css'
 // import Footer from './Footer';
 
