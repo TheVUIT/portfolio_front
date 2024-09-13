@@ -1,7 +1,8 @@
 
 /* eslint-disable import/no-anonymous-default-export */
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
-import { ref, deleteObject,uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, listAll, deleteObject,uploadBytes, getDownloadURL } from "firebase/storage";
+
 import { db, storage } from '../config/firebase';
 import { auth } from "../config/firebase";
 
@@ -11,71 +12,297 @@ import { auth } from "../config/firebase";
     
 //     await setDoc(doc(db, "users", userId), {
 //       ...userData,
-//       logo: await formatUrlLinkToImage(logoFile, userId) || userData.logo,
-//       aboutImage: await formatUrlLinkToImage(aboutImageFile, userId) || userData.aboutImage
+//       logo: await formatUrlLinkToImage(logoFile, userId, 'logos') || userData.logo,
+//       aboutImage: await formatUrlLinkToImage(aboutImageFile, userId, 'aboutImages') || userData.aboutImage
 //     }, { merge: true }); // Merge pour ne pas écraser les anciennes données
 //   } catch (error) {
 //     console.error("Error saving user data: ", error);
 //   }
 // };
 
-// const formatUrlLinkToImage = async (imageFile, userId) => {
-//   let imageUrl = "";
-//   if (imageFile) {
-//     const logoRef = ref(storage, `logos/${userId}/${imageFile.name}`);
-//     await uploadBytes(logoRef, imageFile);
-//     imageUrl = await getDownloadURL(logoRef);
-//   }
-
-//   return imageUrl
-// }
-
-
 export const saveUserData = async (userId, userData, logoFile, aboutImageFile) => {
   try {
-    // Obtenez les données utilisateur existantes pour vérifier les anciennes images
-    const userDocRef = doc(db, "users", userId);
-    const userDoc = await getDoc(userDocRef);
-    const existingUserData = userDoc.data();
-    
-    // Supprimer les anciennes images si elles existent
-    if (existingUserData) {
-      if (existingUserData.logo) {
-        const oldLogoRef = ref(storage, existingUserData.logo);
-        await deleteObject(oldLogoRef);
-      }
-      if (existingUserData.aboutImage) {
-        const oldAboutImageRef = ref(storage, existingUserData.aboutImage);
-        await deleteObject(oldAboutImageRef);
-      }
-    }
+    // Ajout de logs pour vérifier quel fichier est uploadé
+    console.log("Logo file:", logoFile ? logoFile.name : "No file");
+    console.log("About image file:", aboutImageFile ? aboutImageFile.name : "No file");
 
-    // Télécharger les nouvelles images et obtenir les URLs
-    const newLogoUrl = await formatUrlLinkToImage(logoFile, userId, 'logos');
-    const newAboutImageUrl = await formatUrlLinkToImage(aboutImageFile, userId, 'aboutImages');
-
-    // Mettre à jour les données utilisateur dans Firestore
-    await setDoc(userDocRef, {
+    await setDoc(doc(db, "users", userId), {
       ...userData,
-      logo: newLogoUrl || userData.logo,
-      aboutImage: newAboutImageUrl || userData.aboutImage
-    }, { merge: true });
-
+      logo: await formatUrlLinkToImage(logoFile, userId, 'logos') || userData.logo,
+      aboutImage: await formatUrlLinkToImage(aboutImageFile, userId, 'aboutImages') || userData.aboutImage
+    }, { merge: true }); // Merge pour ne pas écraser les anciennes données
   } catch (error) {
     console.error("Error saving user data: ", error);
   }
 };
 
+
+
 const formatUrlLinkToImage = async (imageFile, userId, folder) => {
   let imageUrl = "";
   if (imageFile) {
-    const imageRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
-    await uploadBytes(imageRef, imageFile);
-    imageUrl = await getDownloadURL(imageRef);
+    const logoRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+    await uploadBytes(logoRef, imageFile);
+    imageUrl = await getDownloadURL(logoRef);
   }
 
-  return imageUrl;
+  return imageUrl
 }
+
+
+// // const formatUrlLinkToImage = async (imageFile, userId, folder) => {
+// //   let imageUrl = "";
+// //   try {
+// //     if (imageFile) {
+// //       const fileRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+// //       await uploadBytes(fileRef, imageFile);
+// //       imageUrl = await getDownloadURL(fileRef);
+// //     } else {
+// //       console.error("No image file provided");
+// //     }
+// //   } catch (error) {
+// //     console.error("Error uploading file:", error);
+// //   }
+
+// //   return imageUrl;
+// // };
+
+
+// const formatUrlLinkToImage = async (imageFile, userId, folder) => {
+//   let imageUrl = "";
+//   if (imageFile) {
+//     try {
+//       // Ajout de logs pour vérifier le chemin et le fichier
+//       console.log(`Uploading file to ${folder}/${userId}/${imageFile.name}`);
+
+//       const fileRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+//       await uploadBytes(fileRef, imageFile);
+//       imageUrl = await getDownloadURL(fileRef);
+
+//       console.log(`File uploaded successfully: ${imageUrl}`);
+//     } catch (error) {
+//       console.error("Error uploading file:", error);
+//     }
+//   } else {
+//     console.error("No image file provided");
+//   }
+
+//   return imageUrl;
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const saveUserData = async (userId, userData, logoFile, aboutImageFile) => {
+//   try {
+//     // Obtenez les données utilisateur existantes pour vérifier les anciennes images
+//     const userDocRef = doc(db, "users", userId);
+//     const userDoc = await getDoc(userDocRef);
+//     const existingUserData = userDoc.data();
+    
+//     // Supprimer les anciennes images si elles existent
+//     if (existingUserData) {
+//       if (existingUserData.logo) {
+//         const oldLogoRef = ref(storage, existingUserData.logo);
+//         await deleteObject(oldLogoRef);
+//       }
+//       if (existingUserData.aboutImage) {
+//         const oldAboutImageRef = ref(storage, existingUserData.aboutImage);
+//         await deleteObject(oldAboutImageRef);
+//       }
+//     }
+
+//     // Télécharger les nouvelles images et obtenir les URLs
+//     const newLogoUrl = await formatUrlLinkToImage(logoFile, userId, 'logos');
+//     const newAboutImageUrl = await formatUrlLinkToImage(aboutImageFile, userId, 'aboutImages');
+
+//     // Mettre à jour les données utilisateur dans Firestore
+//     await setDoc(userDocRef, {
+//       ...userData,
+//       logo: newLogoUrl || userData.logo,
+//       aboutImage: newAboutImageUrl || userData.aboutImage
+//     }, { merge: true });
+
+//   } catch (error) {
+//     console.error("Error saving user data: ", error);
+//   }
+// };
+
+// const formatUrlLinkToImage = async (imageFile, userId, folder) => {
+//   let imageUrl = "";
+//   if (imageFile) {
+//     const imageRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+//     await uploadBytes(imageRef, imageFile);
+//     imageUrl = await getDownloadURL(imageRef);
+//   }
+
+//   return imageUrl;
+// }
+
+
+
+// -----------------------------------------------------------DELETED-----------------------------------------------------
+
+// export const saveUserData = async (userId, userData, logoFile, aboutImageFile) => {
+//   try {
+//     // Supprimer tout ce qu'il y a dans le répertoire "logos" de l'utilisateur
+//     const logoFolderRef = ref(storage, `logos/${userId}`);
+//     await deleteAllFilesInFolder(logoFolderRef);
+    
+//     // Supprimer tout ce qu'il y a dans le répertoire "aboutImages" de l'utilisateur
+//     const aboutImageFolderRef = ref(storage, `aboutImages/${userId}`);
+//     await deleteAllFilesInFolder(aboutImageFolderRef);
+
+//     // Télécharger les nouvelles images et obtenir les URLs
+//     const newLogoUrl = await formatUrlLinkToImage(logoFile, userId, 'logos');
+//     const newAboutImageUrl = await formatUrlLinkToImage(aboutImageFile, userId, 'aboutImages');
+
+//     // Mettre à jour les données utilisateur dans Firestore
+//     await setDoc(doc(db, "users", userId), {
+//       ...userData,
+//       logo: newLogoUrl || userData.logo,
+//       aboutImage: newAboutImageUrl || userData.aboutImage
+//     }, { merge: true });
+
+//   } catch (error) {
+//     console.error("Error saving user data: ", error);
+//   }
+// };
+
+// // Fonction pour supprimer tous les fichiers dans un répertoire donné
+// const deleteAllFilesInFolder = async (folderRef) => {
+//   try {
+//     const listResult = await listAll(folderRef);
+//     const deletePromises = listResult.items.map((itemRef) => deleteObject(itemRef));
+//     await Promise.all(deletePromises);
+//   } catch (error) {
+//     console.error("Error deleting files in folder: ", error);
+//   }
+// };
+
+// const formatUrlLinkToImage = async (imageFile, userId, folder) => {
+//   let imageUrl = "";
+//   if (imageFile) {
+//     const imageRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+//     await uploadBytes(imageRef, imageFile);
+//     imageUrl = await getDownloadURL(imageRef);
+//   }
+
+//   return imageUrl;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
