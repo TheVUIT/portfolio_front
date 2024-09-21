@@ -15,27 +15,22 @@ import AdminPage from "./pages/AdminPage";
 import UserInfosManagePage from "./pages/UserInfosManagePage";
 import ProjectManagePage from "./pages/ProjectManagePage";
 import CarrouselManagePage from "./pages/CarrouselManagePage";
+import ConexionInfosPage from "./pages/ConexionInfosPage";
 import Loading from "src/components/Loading";
 
+import Layout from "./components/Layout";
+import "./css/index.css";
+import "@mantine/core/styles.css";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProjectDetail from "./pages/ProjectDetail";
 
+const validPaths = ["/", "/about", "/services", "/contact"];
 
-import Layout from './components/Layout';
-import './css/index.css';
-import '@mantine/core/styles.css';
-import Home from './pages/Home';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Services from './pages/Services';
-import NotFoundPage from './pages/NotFoundPage';
-import ProjectDetail from './pages/ProjectDetail'; 
-
-
-
-
-const validPaths = ['/', '/about', '/services', '/contact'];
-
-const  App = ()=> {
-
+const App = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
@@ -48,12 +43,8 @@ const  App = ()=> {
   }, []);
 
   if (loading) {
-    return (<Loading/>) ;
+    return <Loading />;
   }
-
-
-
-
 
   return (
     <Router>
@@ -63,56 +54,54 @@ const  App = ()=> {
             <Route key={path} path={path} element={getPageComponent(path)} />
           ))}
           <Route path="/portfolio/project/:id" element={<ProjectDetail />} />
-
-           {/* Si l'utilisateur est déjà connecté, redirige vers /admin */}
-        <Route
-          path="/login"
-          element={user ? <Navigate to="/admin" /> : <LoginPage />}
-        />
-
-        <Route
-          path="/admin/user-manage"
-          element={<PrivateRoute element={<UserInfosManagePage />} />}
-        />
-
-        <Route
-          path="/admin"
-          element={<PrivateRoute element={<AdminPage />} />}
-        />
-
-        <Route
-          path="/admin/carousel-manage"
-          element={<PrivateRoute element={<CarrouselManagePage />} />}
-        />
-        <Route
-          path="/admin/project-manage"
-          element={<PrivateRoute element={<ProjectManagePage />} />}
-        />
-        <Route path="*" element={<Navigate to="/login" />} />
-
-
-          <Route path="*" element={<NotFoundPage />} /> {/* Route de fallback pour les chemins non trouvés */}
+          {/* Si l'utilisateur est déjà connecté, redirige vers /admin */}
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/admin" /> : <LoginPage />}
+          />
+          <Route
+            path="/admin/user-manage"
+            element={<PrivateRoute element={<UserInfosManagePage />} />}
+          />
+          <Route
+            path="/admin/connexion-manage"
+            element={<PrivateRoute element={<ConexionInfosPage />} />}
+          />
+          <Route
+            path="/admin"
+            element={<PrivateRoute element={<AdminPage />} />}
+          />
+          <Route
+            path="/admin/carousel-manage"
+            element={<PrivateRoute element={<CarrouselManagePage />} />}
+          />
+          <Route
+            path="/admin/project-manage"
+            element={<PrivateRoute element={<ProjectManagePage />} />}
+          />
+          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<NotFoundPage />} />{" "}
+          {/* Route de fallback pour les chemins non trouvés */}
         </Routes>
       </Layout>
     </Router>
   );
-}
+};
 
 function getPageComponent(path) {
   switch (path) {
-    case '/':
+    case "/":
       return <Home />;
-    case '/about':
+    case "/about":
       return <About />;
-    case '/services':
+    case "/services":
       return <Services />;
-    case '/contact':
+    case "/contact":
       return <Contact />;
     default:
       return <NotFoundPage />;
   }
 }
-
 
 const PrivateRoute = ({ element }) => {
   const [loading, setLoading] = useState(true);

@@ -6,7 +6,6 @@ import GoBackBtn from "src/components/GoBackBtn";
 
 const AdminPage = () => {
 
-
   const navigate = useNavigate();
   const auth = getAuth();
 
@@ -29,22 +28,35 @@ const AdminPage = () => {
             className="admin-page-choice-button"
             to={"/admin/user-manage"}
           >
-            UserServices
+            <p>User</p>
+            <p>Services</p>
           </Link>
           <Link
             className="admin-page-choice-button"
             to={"/admin/carousel-manage"}
           >
-            CarrouselService
+            <p>Caroussel</p>
+            <p>Services</p>
           </Link>
         </div>
-
+        <div className="h-full w-full flex flex-row items-center justify-between gap-6">
         <Link
           className="admin-page-choice-button"
           to={"/admin/project-manage"}
         >
-          ProjectService
+          <p>Project</p>
+          <p>Services</p>
         </Link>
+          <Link
+            className="admin-page-choice-button"
+            to={"/admin/connexion-manage"}
+          >
+            <p>Connexion</p>
+            <p>Infos</p>
+          </Link>
+        </div>
+
+        
       </div>
 
       

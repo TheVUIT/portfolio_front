@@ -186,7 +186,7 @@ body {
 
 
 .admin-page-choice-button {
-  @apply w-1/2 text-center  bg-texte_secondary text-backgroung_secondary lg:text-2xl text-xl rounded-xl p-4 font-ubuntu hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+  @apply w-1/2 flex flex-col md:flex-row lg:flex-row items-center justify-center text-center  bg-texte_secondary text-backgroung_secondary lg:text-2xl text-xl rounded-xl p-4 font-ubuntu hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
 }
 
 .custom-btn {

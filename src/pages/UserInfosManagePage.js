@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getUserData, saveUserData } from "../services/userService";
+import { getUserData, saveUserData,getCurrentUserId } from "../services/userService";
 import GoBackBtn from "src/components/GoBackBtn";
-import Loading from "src/components/Loading";
 
 const UserInfosManagePage = () => {
   const [userData, setUserData] = useState(null);
@@ -11,7 +10,10 @@ const UserInfosManagePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const user = await getUserData("qkwBuoEernVFsBDq7bqFrTwa0ru1");
+      // const user = await getUserData("qkwBuoEernVFsBDq7bqFrTwa0ru1");
+      // const user = await getUserData("wQ7Zrq4pFnczp0MVtteVfPL4Sr02");
+      const user = await getUserData(getCurrentUserId());
+      
       if (user) {
         setUserData(user);
         setFormData(user); 
@@ -45,22 +47,11 @@ const UserInfosManagePage = () => {
 
   const handleSave = async () => {
     setLoading(true);
-    const userId = "qkwBuoEernVFsBDq7bqFrTwa0ru1"; 
+    // const userId = "qkwBuoEernVFsBDq7bqFrTwa0ru1"; 
+    // const userId = "wQ7Zrq4pFnczp0MVtteVfPL4Sr02"; 
+    const userId = getCurrentUserId();
+    ; 
     const updatedFormData = { ...formData };
-    // for (const [key, file] of Object.entries(imageFiles)) {
-    //   console.log(imageFiles)
-    //   console.log(imageFiles)
-
-    //   const folder = key === "logo" ? "logos" : "aboutImages";
-    //   const imageRef = ref(storage, `${folder}/${userId}/${file.name}`);
-    //   try {
-    //     await uploadBytes(imageRef, file);
-    //     const imageURL = await getDownloadURL(imageRef);
-    //     updatedFormData[key] = imageURL;
-    //   } catch (error) {
-    //     console.error("Error uploading image: ", error);
-    //   }
-    // }
 
     try {
       await saveUserData(
@@ -136,7 +127,7 @@ const UserInfosManagePage = () => {
     <div>
       <div>
         {userData ? (
-          <div className="mt-16 lg:mt-14">
+          <div className="mt-16 lg:mt-24">
             {renderInputFields()}
             <div className="fixed bottom-4 left-4 flex flex-row items-center justify-end ml-4">
               <button
