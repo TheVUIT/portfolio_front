@@ -1,108 +1,182 @@
-// import React from 'react'
 
-// const ProjectManagePage = () => {
-//   return (
-//     <div>ProjectManagePage</div>
-//   )
-// }
-
-// export default ProjectManagePage
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from "react";
+// import { FaPlus } from "react-icons/fa";
 // import {
 //   createProject,
 //   getProject,
+//   addProjectDetailData,
 //   updateProject,
 //   deleteProject,
-// } from '../services/projectDetailService';
+// } from "../services/projectDetailService";
+// import GoBackBtn from "src/components/GoBackBtn";
 
-// const ProjectManagePage = () => {
-//   const [projectId, setProjectId] = useState('');
-//   const [projectData, setProjectData] = useState({ title: '', isPinned: false });
-//   const [images, setImages] = useState([]);
-//   const [existingProject, setExistingProject] = useState(null);
+// import ProjectDetailData from "../model/ProjectDetailData";
+// import Project from "../model/Project";
+// import Category from "../model/Category";
+// import ProjectDetails from "../model/ProjectDetails";
+// import ProjectImages from "../model/ProjectImages";
 
-//   // Charger un projet existant si projectId est fourni
-//   useEffect(() => {
-//     if (projectId) {
-//       const fetchProject = async () => {
-//         const project = await getProject(projectId);
-//         if (project) {
-//           setExistingProject(project);
-//           setProjectData({ title: project.title, isPinned: project.isPinned });
-//         }
-//       };
-//       fetchProject();
-//     }
-//   }, [projectId]);
+// // Composant pour le Modal
+// const ProjectModal = ({ project, onSave, onClose, isOpen }) => {
+//   const [formData, setFormData] = useState(project || { id: "", images: {}, pinned: false, details: {} });
 
-//   const handleCreateOrUpdate = async () => {
-//     if (existingProject) {
-//       // Mise à jour d'un projet existant
-//       await updateProject(existingProject.id, projectData, images);
-//       alert("Projet mis à jour !");
-//     } else {
-//       // Création d'un nouveau projet
-//       const newProject = await createProject(projectData, images);
-//       alert("Nouveau projet créé !");
-//     }
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
 //   };
 
-//   const handleDelete = async () => {
-//     if (existingProject) {
-//       await deleteProject(existingProject.id);
-//       alert("Projet supprimé !");
-//       setExistingProject(null);
-//       setProjectData({ title: '', isPinned: false });
-//       setImages([]);
+//   const handleSave = () => {
+//     onSave(formData);
+//     onClose(); // Ferme le modal après sauvegarde
+//   };
+
+//   if (!isOpen) return null;
+
+//   return (
+//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//       <div className="bg-white p-6 rounded-lg shadow-lg">
+//         <h2 className="text-xl font-semibold mb-4">Modifier le Projet</h2>
+//         <input
+//           type="text"
+//           name="id"
+//           placeholder="ID du Projet"
+//           value={formData.id}
+//           onChange={handleChange}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_principal_image"
+//           placeholder="Image Principale"
+//           value={formData.images.src_principal_image}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_principal_image: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_image_on_hover"
+//           placeholder="Image sur Survol"
+//           value={formData.images.src_image_on_hover}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_image_on_hover: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <button onClick={handleSave} className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition mr-2">Sauvegarder</button>
+//         <button onClick={onClose} className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition">Annuler</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const ProjectManagePage = () => {
+//   const [projectDetailData, setProjectDetailData] = useState(new ProjectDetailData());
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [selectedProject, setSelectedProject] = useState(null);
+//   const [hoveredProjectId, setHoveredProjectId] = useState(null); // Utilisé pour suivre l'ID du projet survolé
+
+//   useEffect(() => {
+//     const fetchProjectDetailData = async () => {
+//       const projectDetail = await getProject(); // Assurez-vous que getProject() renvoie une promesse
+//       setProjectDetailData(projectDetail);
+//     };
+
+//     fetchProjectDetailData();
+//   }, []);
+
+//   const handleAddProject = (categoryId) => {
+//     setSelectedProject({ id: '', images: {}, pinned: false, details: {}, categoryId }); // Ajoutez categoryId ici
+//     setIsModalOpen(true);
+//   };
+
+//   const handleEditProject = (project) => {
+//     setSelectedProject(project);
+//     setIsModalOpen(true);
+//   };
+
+//   const handleSaveProject = (project) => {
+//     // Si l'ID est vide, cela signifie que c'est un nouveau projet
+//     if (!project.id) {
+//       // Ajouter le projet à la catégorie
+//       const category = projectDetailData.categories.find(cat => cat.id === project.categoryId);
+//       if (category) {
+//         category.projects.push(project); // Ajoutez le nouveau projet à la catégorie
+//       }
+//     } else {
+//       // Mettre à jour le projet existant
+//       updateProject(project);
 //     }
+//     setProjectDetailData({ ...projectDetailData });
+//   };
+
+//   const handleSaveAll = async () => {
+//     await addProjectDetailData(projectDetailData);
+//     alert('Tous les projets ont été sauvegardés avec succès.');
 //   };
 
 //   return (
-//     <div className="project-manage-page">
-//       <h1>{existingProject ? "Modifier le projet" : "Créer un nouveau projet"}</h1>
-//       <input
-//         type="text"
-//         placeholder="Titre du projet"
-//         value={projectData.title}
-//         onChange={(e) => setProjectData({ ...projectData, title: e.target.value })}
-//       />
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={projectData.isPinned}
-//           onChange={(e) => setProjectData({ ...projectData, isPinned: e.target.checked })}
-//         />
-//         Épingler ce projet
-//       </label>
-//       <input
-//         type="file"
-//         multiple
-//         onChange={(e) => setImages([...e.target.files])}
-//       />
-//       <button onClick={handleCreateOrUpdate}>
-//         {existingProject ? "Mettre à jour" : "Créer"}
-//       </button>
-//       {existingProject && (
-//         <button onClick={handleDelete}>Supprimer le projet</button>
-//       )}
-//       <div>
-//         <h2>Chargement des images :</h2>
-//         {images.map((image, index) => (
-//           <div key={index}>{image.name}</div>
-//         ))}
+//     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-blue-100">
+//       <div className="max-w-4xl w-full border-2 border-amber-600 rounded-lg shadow-xl p-6 bg-white">
+//         <h1 className="text-3xl font-bold mb-6 text-center text-amber-600">Gestion des Projets</h1>
+        
+//         {projectDetailData.categories.length > 0 ? (
+//           <ul className="space-y-8">
+//             {projectDetailData.categories.map((category) => (
+//               <li key={category.id} className="shadow-md rounded-lg overflow-hidden bg-gray-50 transition-transform transform hover:scale-105">
+//                 <div className="flex justify-between items-center p-4">
+//                   <h2 className="text-2xl font-semibold text-amber-600">{category.title}</h2>
+//                   <button 
+//                     onClick={() => handleAddProject(category.id)} 
+//                     className="bg-amber-600 text-white p-2 rounded hover:bg-amber-700 transition">
+//                     <FaPlus />
+//                   </button>
+//                 </div>
+//                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+//                   {category.projects.map((project) => {
+//                     return (
+//                       <li 
+//                         key={project.id} 
+//                         className="border rounded-lg shadow-lg bg-white p-4 flex flex-col"
+//                         onMouseEnter={() => setHoveredProjectId(project.id)} // Définit l'ID du projet survolé
+//                         onMouseLeave={() => setHoveredProjectId(null)} // Réinitialise l'ID du projet survolé
+//                       >
+//                         <img
+//                           src={hoveredProjectId === project.id ? project.images.src_image_on_hover : project.images.src_principal_image} // Utilise l'ID pour déterminer quelle image afficher
+//                           alt={`Image du projet ${project.id}`}
+//                           className="w-full h-40 object-cover rounded-md mb-4 transition-transform transform hover:scale-105"
+//                         />
+//                         <div className="flex-1">
+//                           <p className="text-lg font-medium">ID du projet: <span className="font-bold">{project.id}</span></p>
+//                           <p className="text-lg">Pinned: <span className={project.pinned ? "text-green-600" : "text-red-600"}>{project.pinned ? "Oui" : "Non"}</span></p>
+//                         </div>
+//                         <div className="flex justify-between mt-4">
+//                           <button onClick={() => handleEditProject(project)} className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition">Modifier</button>
+//                           <button className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition">Supprimer</button>
+//                         </div>
+//                       </li>
+//                     );
+//                   })}
+//                 </ul>
+//               </li>
+//             ))}
+//           </ul>
+//         ) : (
+//           <p className="text-center text-gray-500">Aucune catégorie disponible.</p>
+//         )}
+//         <button 
+//           onClick={handleSaveAll} 
+//           className="mt-6 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">
+//           Sauvegarder Tous
+//         </button>
 //       </div>
+
+//       <ProjectModal
+//         project={selectedProject}
+//         onSave={handleSaveProject}
+//         onClose={() => setIsModalOpen(false)}
+//         isOpen={isModalOpen}
+//       />
 //     </div>
 //   );
 // };
@@ -144,136 +218,529 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { FaPlus } from "react-icons/fa";
+// import {
+//   createProject,
+//   getProject,
+//   addProjectDetailData,
+//   updateProject,
+//   deleteProject,
+// } from "../services/projectDetailService";
+// import GoBackBtn from "src/components/GoBackBtn";
+
+// import ProjectDetailData from "../model/ProjectDetailData";
+// import Project from "../model/Project";
+// import Category from "../model/Category";
+// import ProjectDetails from "../model/ProjectDetails";
+// import ProjectImages from "../model/ProjectImages";
+
+// // Composant pour le Modal des Détails du Projet
+// const ProjectDetailModal = ({ project, onClose, isOpen }) => {
+//   if (!isOpen || !project) return null;
+
+//   return (
+//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//       <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+//         <h2 className="text-xl font-semibold mb-4">Détails du Projet: {project.id}</h2>
+//         <div className="mb-4">
+//           <img src={project.images.src_detail1} alt="Détail 1" className="w-full h-40 object-cover rounded-md mb-2" />
+//           <img src={project.images.src_detail2} alt="Détail 2" className="w-full h-40 object-cover rounded-md" />
+//         </div>
+//         <button onClick={onClose} className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition">Fermer</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // Composant pour le Modal de Modification du Projet
+// const ProjectModal = ({ project, onSave, onClose, isOpen }) => {
+//   const [formData, setFormData] = useState(project || { id: "", images: {}, pinned: false, details: {} });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   const handleSave = () => {
+//     onSave(formData);
+//     onClose(); // Ferme le modal après sauvegarde
+//   };
+
+//   if (!isOpen) return null;
+
+//   return (
+//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//       <div className="bg-white p-6 rounded-lg shadow-lg">
+//         <h2 className="text-xl font-semibold mb-4">Modifier le Projet</h2>
+//         <input
+//           type="text"
+//           name="id"
+//           placeholder="ID du Projet"
+//           value={formData.id}
+//           onChange={handleChange}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_principal_image"
+//           placeholder="Image Principale"
+//           value={formData.images.src_principal_image}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_principal_image: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_image_on_hover"
+//           placeholder="Image sur Survol"
+//           value={formData.images.src_image_on_hover}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_image_on_hover: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_detail1"
+//           placeholder="Image Détail 1"
+//           value={formData.images.src_detail1}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_detail1: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <input
+//           type="text"
+//           name="src_detail2"
+//           placeholder="Image Détail 2"
+//           value={formData.images.src_detail2}
+//           onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_detail2: e.target.value } })}
+//           className="border p-2 mb-4 w-full"
+//         />
+//         <button onClick={handleSave} className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition mr-2">Sauvegarder</button>
+//         <button onClick={onClose} className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition">Annuler</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const ProjectManagePage = () => {
+//   const [projectDetailData, setProjectDetailData] = useState(new ProjectDetailData());
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+//   const [selectedProject, setSelectedProject] = useState(null);
+//   const [hoveredProjectId, setHoveredProjectId] = useState(null); // Utilisé pour suivre l'ID du projet survolé
+
+//   useEffect(() => {
+//     const fetchProjectDetailData = async () => {
+//       const projectDetail = await getProject(); // Assurez-vous que getProject() renvoie une promesse
+//       setProjectDetailData(projectDetail);
+//     };
+
+//     fetchProjectDetailData();
+//   }, []);
+
+//   const handleAddProject = (categoryId) => {
+//     setSelectedProject({ id: '', images: {}, pinned: false, details: {}, categoryId }); // Ajoutez categoryId ici
+//     setIsModalOpen(true);
+//   };
+
+//   const handleEditProject = (project) => {
+//     setSelectedProject(project);
+//     setIsModalOpen(true);
+//   };
+
+//   const handleViewProjectDetails = (project) => {
+//     setSelectedProject(project);
+//     setIsDetailModalOpen(true);
+//   };
+
+//   const handleSaveProject = (project) => {
+//     // Si l'ID est vide, cela signifie que c'est un nouveau projet
+//     if (!project.id) {
+//       // Ajouter le projet à la catégorie
+//       const category = projectDetailData.categories.find(cat => cat.id === project.categoryId);
+//       if (category) {
+//         category.projects.push(project); // Ajoutez le nouveau projet à la catégorie
+//       }
+//     } else {
+//       // Mettre à jour le projet existant
+//       updateProject(project);
+//     }
+//     setProjectDetailData({ ...projectDetailData });
+//   };
+
+//   const handleSaveAll = async () => {
+//     await addProjectDetailData(projectDetailData);
+//     alert('Tous les projets ont été sauvegardés avec succès.');
+//   };
+
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-blue-100">
+//       <div className="max-w-4xl w-full border-2 border-amber-600 rounded-lg shadow-xl p-6 bg-white">
+//         <h1 className="text-3xl font-bold mb-6 text-center text-amber-600">Gestion des Projets</h1>
+        
+//         {projectDetailData.categories.length > 0 ? (
+//           <ul className="space-y-8">
+//             {projectDetailData.categories.map((category) => (
+//               <li key={category.id} className="shadow-md rounded-lg overflow-hidden bg-gray-50 transition-transform transform hover:scale-105">
+//                 <div className="flex justify-between items-center p-4">
+//                   <h2 className="text-2xl font-semibold text-amber-600">{category.title}</h2>
+//                   <button 
+//                     onClick={() => handleAddProject(category.id)} 
+//                     className="bg-amber-600 text-white p-2 rounded hover:bg-amber-700 transition">
+//                     <FaPlus />
+//                   </button>
+//                 </div>
+//                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+//                   {category.projects.map((project) => {
+//                     return (
+//                       <li 
+//                         key={project.id} 
+//                         className="border rounded-lg shadow-lg bg-white p-4 flex flex-col"
+//                         onMouseEnter={() => setHoveredProjectId(project.id)} // Définit l'ID du projet survolé
+//                         onMouseLeave={() => setHoveredProjectId(null)} // Réinitialise l'ID du projet survolé
+//                       >
+//                         <img
+//                           src={hoveredProjectId === project.id ? project.images.src_image_on_hover : project.images.src_principal_image} // Utilise l'ID pour déterminer quelle image afficher
+//                           alt={`Image du projet ${project.id}`}
+//                           className="w-full h-40 object-cover rounded-md mb-4 transition-transform transform hover:scale-105"
+//                         />
+//                         <div className="flex-1">
+//                           <p className="text-lg font-medium">ID du projet: <span className="font-bold">{project.id}</span></p>
+//                         </div>
+//                         <div className="flex justify-between mt-4">
+//                           <button 
+//                             onClick={() => handleEditProject(project)} 
+//                             className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">
+//                             Modifier
+//                           </button>
+//                           <button 
+//                             onClick={() => handleViewProjectDetails(project)} 
+//                             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
+//                             Voir
+//                           </button>
+//                         </div>
+//                       </li>
+//                     );
+//                   })}
+//                 </ul>
+//               </li>
+//             ))}
+//           </ul>
+//         ) : (
+//           <p>Aucune catégorie disponible.</p>
+//         )}
+//         <button 
+//           onClick={handleSaveAll} 
+//           className="mt-8 bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition">
+//           Sauvegarder Tous
+//         </button>
+//       </div>
+
+//       {/* Modal de Détails du Projet */}
+//       <ProjectDetailModal project={selectedProject} onClose={() => setIsDetailModalOpen(false)} isOpen={isDetailModalOpen} />
+      
+//       {/* Modal de Modification du Projet */}
+//       <ProjectModal project={selectedProject} onSave={handleSaveProject} onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} />
+//     </div>
+//   );
+// };
+
+// export default ProjectManagePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 import {
   createProject,
   getProject,
+  addProjectDetailData,
   updateProject,
   deleteProject,
-} from '../services/projectDetailService';
+} from "../services/projectDetailService";
 import GoBackBtn from "src/components/GoBackBtn";
 
+import ProjectDetailData from "../model/ProjectDetailData";
+import Project from "../model/Project";
+import Category from "../model/Category";
+import ProjectDetails from "../model/ProjectDetails";
+import ProjectImages from "../model/ProjectImages";
+
+// Composant pour le Modal des Détails du Projet
+const ProjectDetailModal = ({ project, onClose, isOpen }) => {
+  if (!isOpen || !project) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 className="text-xl font-semibold mb-4">Détails du Projet: {project.id}</h2>
+        <div className="mb-4">
+          <img src={project.images.src_detail1} alt="Détail 1" className="w-full h-40 object-cover rounded-md mb-2" />
+          <img src={project.images.src_detail2} alt="Détail 2" className="w-full h-40 object-cover rounded-md" />
+        </div>
+        <button onClick={onClose} className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition">Fermer</button>
+      </div>
+    </div>
+  );
+};
+
+// Composant pour le Modal de Modification du Projet
+const ProjectModal = ({ project, onSave, onClose, isOpen }) => {
+  const [formData, setFormData] = useState(project || { id: "", images: {}, pinned: false, details: {} });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSave = () => {
+    onSave(formData);
+    onClose(); // Ferme le modal après sauvegarde
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-xl font-semibold mb-4">Modifier le Projet</h2>
+        <input
+          type="text"
+          name="id"
+          placeholder="ID du Projet"
+          value={formData.id}
+          onChange={handleChange}
+          className="border p-2 mb-4 w-full"
+        />
+        <input
+          type="text"
+          name="src_principal_image"
+          placeholder="Image Principale"
+          value={formData.images.src_principal_image}
+          onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_principal_image: e.target.value } })}
+          className="border p-2 mb-4 w-full"
+        />
+        <input
+          type="text"
+          name="src_image_on_hover"
+          placeholder="Image sur Survol"
+          value={formData.images.src_image_on_hover}
+          onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_image_on_hover: e.target.value } })}
+          className="border p-2 mb-4 w-full"
+        />
+        <input
+          type="text"
+          name="src_detail1"
+          placeholder="Image Détail 1"
+          value={formData.images.src_detail1}
+          onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_detail1: e.target.value } })}
+          className="border p-2 mb-4 w-full"
+        />
+        <input
+          type="text"
+          name="src_detail2"
+          placeholder="Image Détail 2"
+          value={formData.images.src_detail2}
+          onChange={(e) => setFormData({ ...formData, images: { ...formData.images, src_detail2: e.target.value } })}
+          className="border p-2 mb-4 w-full"
+        />
+        <button onClick={handleSave} className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition mr-2">Sauvegarder</button>
+        <button onClick={onClose} className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition">Annuler</button>
+      </div>
+    </div>
+  );
+};
+
 const ProjectManagePage = () => {
-  const [projectId, setProjectId] = useState('');
-  const [projectData, setProjectData] = useState({ title: '', isPinned: false });
-  const [imageFiles, setImageFiles] = useState([null, null]);
-  const [imagePreviews, setImagePreviews] = useState([null, null]);
-  const [existingProject, setExistingProject] = useState(null);
+  const [projectDetailData, setProjectDetailData] = useState(new ProjectDetailData());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [hoveredProjectId, setHoveredProjectId] = useState(null); // Utilisé pour suivre l'ID du projet survolé
 
   useEffect(() => {
-    if (projectId) {
-      const fetchProject = async () => {
-        const project = await getProject(projectId);
-        if (project) {
-          setExistingProject(project);
-          setProjectData({ title: project.title, isPinned: project.isPinned });
-          setImagePreviews([project.projectImages.imageUrl1, project.projectImages.imageUrl2]);
-        }
-      };
-      fetchProject();
-    }
-  }, [projectId]);
+    const fetchProjectDetailData = async () => {
+      const projectDetail = await getProject(); // Assurez-vous que getProject() renvoie une promesse
+      setProjectDetailData(projectDetail);
+    };
 
-  const handleImageChange = (index) => (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const newFiles = [...imageFiles];
-      newFiles[index] = file;
-      setImageFiles(newFiles);
+    fetchProjectDetailData();
+  }, []);
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const newPreviews = [...imagePreviews];
-        newPreviews[index] = reader.result;
-        setImagePreviews(newPreviews);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleAddProject = (categoryId) => {
+    setSelectedProject({ id: '', images: {}, pinned: false, details: {}, categoryId }); // Ajoutez categoryId ici
+    setIsModalOpen(true);
   };
 
-  const handleCreateOrUpdate = async () => {
-    try {
-      if (existingProject) {
-        await updateProject(existingProject.id, projectData, imageFiles);
-        alert("Projet mis à jour !");
-      } else {
-        const newProject = await createProject(projectData, imageFiles);
-        alert("Nouveau projet créé !");
-        setExistingProject(newProject);
+  const handleEditProject = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleViewProjectDetails = (project) => {
+    setSelectedProject(project);
+    setIsDetailModalOpen(true);
+  };
+
+  const handleDeleteProject = (project) => {
+    // Logique pour supprimer le projet
+    const updatedCategories = projectDetailData.categories.map(category => {
+      return {
+        ...category,
+        projects: category.projects.filter(p => p.id !== project.id)
+      };
+    });
+    setProjectDetailData({ ...projectDetailData, categories: updatedCategories });
+    // Ajoutez ici l'appel à la méthode deleteProject si nécessaire
+    deleteProject(project.id); // Ajoutez cette ligne si vous voulez aussi supprimer sur le serveur
+  };
+
+  const handleSaveProject = (project) => {
+    // Si l'ID est vide, cela signifie que c'est un nouveau projet
+    if (!project.id) {
+      // Ajouter le projet à la catégorie
+      const category = projectDetailData.categories.find(cat => cat.id === project.categoryId);
+      if (category) {
+        category.projects.push(project); // Ajoutez le nouveau projet à la catégorie
       }
-    } catch (error) {
-      console.error("Erreur lors de la création ou mise à jour du projet: ", error);
-      alert("Erreur lors de l'opération, veuillez réessayer.");
+    } else {
+      // Mettre à jour le projet existant
+      updateProject(project);
     }
+    setProjectDetailData({ ...projectDetailData });
   };
 
-  const handleDelete = async () => {
-    if (existingProject) {
-      await deleteProject(existingProject.id);
-      alert("Projet supprimé !");
-      setExistingProject(null);
-      setProjectData({ title: '', isPinned: false });
-      setImageFiles([null, null]);
-      setImagePreviews([null, null]);
-    }
+  const handleSaveAll = async () => {
+    await addProjectDetailData(projectDetailData);
+    alert('Tous les projets ont été sauvegardés avec succès.');
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4">{existingProject ? "Modifier le projet" : "Créer un nouveau projet"}</h1>
-      <input
-        type="text"
-        placeholder="Titre du projet"
-        value={projectData.title}
-        onChange={(e) => setProjectData({ ...projectData, title: e.target.value })}
-        className="w-full p-2 border border-gray-300 rounded mb-4"
-      />
-      <label className="inline-flex items-center mb-4">
-        <input
-          type="checkbox"
-          checked={projectData.isPinned}
-          onChange={(e) => setProjectData({ ...projectData, isPinned: e.target.checked })}
-          className="mr-2"
-        />
-        Épingler ce projet
-      </label>
-
-      {/* Inputs pour les images avec prévisualisation */}
-      {[0, 1].map((index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="file"
-            onChange={handleImageChange(index)}
-            className="mb-2"
-          />
-          {imagePreviews[index] && (
-            <img src={imagePreviews[index]} alt={`Image ${index + 1}`} className="w-full h-32 object-cover rounded mb-2" />
-          )}
-        </div>
-      ))}
-
-      <button
-        onClick={handleCreateOrUpdate}
-        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
-      >
-        {existingProject ? "Mettre à jour" : "Créer"}
-      </button>
-      {existingProject && (
-        <button
-          onClick={handleDelete}
-          className="w-full mt-2 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition duration-200"
-        >
-          Supprimer le projet
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-blue-100">
+      <div className="max-w-4xl w-full border-2 border-amber-600 rounded-lg shadow-xl p-6 bg-white">
+        <h1 className="text-3xl font-bold mb-6 text-center text-amber-600">Gestion des Projets</h1>
+        
+        {projectDetailData.categories.length > 0 ? (
+          <ul className="space-y-8">
+            {projectDetailData.categories.map((category) => (
+              <li key={category.id} className="shadow-md rounded-lg overflow-hidden bg-gray-50 transition-transform transform hover:scale-105">
+                <div className="flex justify-between items-center p-4">
+                  <h2 className="text-2xl font-semibold text-amber-600">{category.title}</h2>
+                  <button 
+                    onClick={() => handleAddProject(category.id)} 
+                    className="bg-amber-600 text-white p-2 rounded hover:bg-amber-700 transition">
+                    <FaPlus />
+                  </button>
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                  {category.projects.map((project) => {
+                    return (
+                      <li 
+                        key={project.id} 
+                        className="border rounded-lg shadow-lg bg-white p-4 flex flex-col"
+                        onMouseEnter={() => setHoveredProjectId(project.id)} // Définit l'ID du projet survolé
+                        onMouseLeave={() => setHoveredProjectId(null)} // Réinitialise l'ID du projet survolé
+                      >
+                        <img
+                          src={hoveredProjectId === project.id ? project.images.src_image_on_hover : project.images.src_principal_image} // Utilise l'ID pour déterminer quelle image afficher
+                          alt={project.id}
+                          className="w-full h-40 object-cover rounded-md mb-2"
+                        />
+                        <div className="flex-grow">
+                          <h3 className="text-xl font-semibold text-gray-700">{project.id}</h3>
+                          <p className="text-gray-600"><span className="font-semibold">Détails:</span> {project.details.description}</p>
+                        </div>
+                        <div className="flex justify-between mt-4">
+                          <button 
+                            onClick={() => handleEditProject(project)} 
+                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">
+                            Modifier
+                          </button>
+                          <button 
+                            onClick={() => handleViewProjectDetails(project)} 
+                            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
+                            Voir
+                          </button>
+                          <button 
+                            onClick={() => handleDeleteProject(project)} 
+                            className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition">
+                            Supprimer
+                          </button>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Aucune catégorie disponible.</p>
+        )}
+        <button 
+          onClick={handleSaveAll} 
+          className="mt-8 bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition">
+          Sauvegarder Tous
         </button>
-      )}
-      <GoBackBtn/>
+      </div>
+
+      {/* Modal de Détails du Projet */}
+      <ProjectDetailModal project={selectedProject} onClose={() => setIsDetailModalOpen(false)} isOpen={isDetailModalOpen} />
+      
+      {/* Modal de Modification du Projet */}
+      <ProjectModal project={selectedProject} onSave={handleSaveProject} onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} />
     </div>
   );
 };
 
 export default ProjectManagePage;
-
-
-
-
-// console.log(ProjectDetailData.categori1.projects[2])

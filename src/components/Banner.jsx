@@ -76,7 +76,7 @@ const Banner = () => {
     <div className='mt-16 lg:mt-16 w-full p-4 lg:pl-16 lg:pr-16  md:p-0 overflow-hidden'>
       <main
         ref={mainRef}
-        className={`lg:mt-4 w-full bg-cover bg-top transition-opacity duration-200 ease-in ${isTransitioning ? 'opacity-90' : 'opacity-100'}`}
+        className={`lg:mt-4 w-full bg-cover bg-top transition-opacity duration-200 ease-in ${isTransitioning ? 'opacity-100' : 'opacity-100'}`}
         style={{
           backgroundImage: imagesLoaded ? `url(${banner[currentImageIndex].src})` : 'none',
           backgroundSize: 'cover',

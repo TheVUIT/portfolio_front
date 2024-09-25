@@ -124,9 +124,9 @@ html, body {
     @apply border-border;
   } */
 
-  *:not(input) {
+  /* *:not(input) {
     @apply border-border;
-  }
+  } */
   body {
     @apply bg-background text-foreground;
   }
