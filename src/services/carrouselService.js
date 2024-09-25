@@ -4,8 +4,7 @@ import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage
 import { db, storage } from '../config/firebase';
 
 
-// GET
-
+// GET FROM FIRESTORE
 export const getCarrouselData = async (userId) => {
   try {
     // Récupérer le document avec l'ID utilisateur
@@ -26,49 +25,6 @@ export const getCarrouselData = async (userId) => {
 };
 
 
-
-
-// // Créer ou mettre à jour les données du carrousel
-// export const saveCarrouselData = async (userId, imageFile) => {
-//   try {
-//     const imageURL = await formatUrlLinkToImage(imageFile, userId, "carousels");
-    
-//     // Sauvegarder les URLs dans Firestore
-//     await saveCarrouselDataFireStore(userId, imageURL);
-//   } catch (error) {
-//     console.error("Error saving carrousel data: ", error);
-//   }
-// };
-
-// // Fonction pour sauvegarder les données dans Firestore
-// const saveCarrouselDataFireStore = async (userId, imageURL) => {
-//   const carrouselDocRef = doc(db, "carousels", userId);
-//   const carrouselDocSnap = await getDoc(carrouselDocRef);
-
-//   // Si le document existe déjà, on met à jour les images, sinon on en crée un nouveau
-//   if (carrouselDocSnap.exists()) {
-//     // Mettre à jour en ajoutant l'image à la liste existante
-//     const currentImages = carrouselDocSnap.data().images || [];
-//     await setDoc(carrouselDocRef, {
-//       images: [...currentImages, imageURL] // Ajout de la nouvelle image
-//     });
-//   } else {
-//     // Créer un nouveau document avec la nouvelle image
-//     await setDoc(carrouselDocRef, {
-//       images: [imageURL]
-//     });
-//   }
-// };
-
-
-
-
-
-
-
-
-
-// Créer ou mettre à jour les données du carrousel
 export const saveCarrouselData = async (userId, imageFile) => {
   try {
     const imageURL = await formatUrlLinkToImage(imageFile, userId, "carousels");

@@ -11,12 +11,6 @@ html, body {
 }
 
 
-/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
-/** {
-  scrollbar-width: thin;
-  scrollbar-color: #454142 #DFE9EB;
-}*/
-
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
   height: 10px;
@@ -126,7 +120,11 @@ html, body {
 }
 
 @layer base {
-  * {
+  /* * {
+    @apply border-border;
+  } */
+
+  *:not(input) {
     @apply border-border;
   }
   body {
@@ -195,4 +193,8 @@ body {
 
 .form-input {
   @apply m-2 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
+
 }
+/* .form-input {
+  @apply m-2 p-2 w-full border-t border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
+} */
