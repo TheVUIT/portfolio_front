@@ -199,11 +199,9 @@ export const updateUserAuthentication = async (user, newEmail, newPassword) => {
 // Fonction pour obtenir l'ID de l'utilisateur connecté
 export function getCurrentUserId() {
   const user = auth.currentUser;
-
   if (user) {
-    return user.uid;  // Retourne l'ID de l'utilisateur
+    return user.uid;  
   } else {
-    // L'utilisateur n'est pas connecté
     return null;
   }
 }

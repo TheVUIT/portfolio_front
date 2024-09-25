@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      transitionDuration: {
+        'custom-caroussel': '3000ms', // Remplacez '300ms' par la durée que vous souhaitez
+      },
       colors: {
         background_primary: "#FFFFFF",
         backgroung_secondary: "#F4F4F4",
@@ -85,7 +88,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('flowbite/plugin')
+  ],
 }
 
 

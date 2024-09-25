@@ -10,8 +10,6 @@ const UserInfosManagePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const user = await getUserData("qkwBuoEernVFsBDq7bqFrTwa0ru1");
-      // const user = await getUserData("wQ7Zrq4pFnczp0MVtteVfPL4Sr02");
       const user = await getUserData(getCurrentUserId());
       
       if (user) {
@@ -22,6 +20,8 @@ const UserInfosManagePage = () => {
     fetchData();
   }, []);
 
+
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -29,6 +29,7 @@ const UserInfosManagePage = () => {
       [name]: value,
     }));
   };
+
 
   const handleImageChange = (e, fieldType) => {
     const file = e.target.files[0];
@@ -47,8 +48,7 @@ const UserInfosManagePage = () => {
 
   const handleSave = async () => {
     setLoading(true);
-    // const userId = "qkwBuoEernVFsBDq7bqFrTwa0ru1"; 
-    // const userId = "wQ7Zrq4pFnczp0MVtteVfPL4Sr02"; 
+
     const userId = getCurrentUserId();
     ; 
     const updatedFormData = { ...formData };
@@ -98,7 +98,7 @@ const UserInfosManagePage = () => {
                   </label>
                 </div>
                 <img
-                  className="w-32 h-32 object-cover rounded-md"
+                  className="w-32 h-32 object-cover rounded-md mb-4"
                   alt={key}
                   src={formData[key]}
                 />
@@ -110,7 +110,7 @@ const UserInfosManagePage = () => {
                 onChange={handleInputChange}
                 placeholder={key}
                 rows="5"
-                className="w-auto p-2 border rounded-md placeholder-gray-400 focus:outline-none resize-none overflow-hidden"
+                className="w-auto p-2 border rounded-md placeholder-gray-400 focus:outline-none resize-none overflow-hidden mb-4"
                 onInput={(e) => {
                   e.target.style.height = "auto"; 
                   e.target.style.height = `${e.target.scrollHeight}px`; 
