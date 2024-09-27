@@ -16,4 +16,4 @@ class ProjectImages {
   }
   
   
-  export default ProjectImages;
+export default ProjectImages;

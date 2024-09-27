@@ -8,11 +8,15 @@ import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage
 
 
 
+
+
+
+
+
 export const addProjectDetailData = async (projectDetailData) => {
   try {
     const docRef = doc(db, "projects", "projectDetailAndCategories");
 
-    // Sérialisation des objets de classe en objets JavaScript simples
     const dataToSave = JSON.parse(JSON.stringify(projectDetailData));
 
     await setDoc(docRef, dataToSave);
@@ -21,6 +25,11 @@ export const addProjectDetailData = async (projectDetailData) => {
     console.error("Erreur lors de la création du document: ", error);
   }
 };
+
+
+
+
+
 
 
 

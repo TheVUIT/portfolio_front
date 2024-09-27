@@ -1,5 +1,3 @@
-
-
 class ProjectDetailData {
     constructor(categories = []) {
       this.categories = categories;
