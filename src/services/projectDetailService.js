@@ -1,15 +1,8 @@
 // projectDetailService.js
 
-import { db, storage } from '../config/firebase'; // Assurez-vous d'importer vos configurations Firebase
+import { db, storage } from '../config/firebase'; 
 import { doc, setDoc, getDoc, updateDoc, deleteDoc, collection } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-
-
-
-
-
-
-
 
 
 
@@ -25,13 +18,6 @@ export const addProjectDetailData = async (projectDetailData) => {
     console.error("Erreur lors de la création du document: ", error);
   }
 };
-
-
-
-
-
-
-
 
 
 // Lire un Projet
@@ -51,113 +37,34 @@ export const getProject = async () => {
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const createProject = async (projectData, images) => {
-  try {
-    const { title, isPinned } = projectData;
-
-    const projectId = doc(collection(db, "projects")).id;
-
-    // Upload des images dans le Storage
-    const imageUrls = await Promise.all(images.map(async (image) => {
-      const imageRef = ref(storage, `projects/${projectId}/${image.name}`);
-      await uploadBytes(imageRef, image);
-      return await getDownloadURL(imageRef);
-    }));
-
-    // Créer la structure de données
-    const projectDetail = {
-      id: projectId,
-      title,
-      isPinned,
-      projectImages: {
-        imageUrl1: imageUrls[0],
-        imageUrl2: imageUrls[1],
-      },
-    };
-
-    // Enregistrer dans Firestore
-    await setDoc(doc(db, "projects", projectId), projectDetail);
-
-    return projectDetail;
-  } catch (error) {
-    console.error("Error creating project: ", error);
-    throw error; // Propager l'erreur pour la gestion ultérieure
+const formatUrlLinkToImage = async (imageFile,  folder) => {
+  let imageUrl = "";
+  if (imageFile) {
+    const logoRef = ref(storage, `${folder}/${imageFile.name}`);
+    await uploadBytes(logoRef, imageFile);
+    imageUrl = await getDownloadURL(logoRef);
   }
+
+  return imageUrl;
 };
 
 
+const uploadImageToStorage = async (file) => {
+  if (!file) {
+    throw new Error("Aucun fichier sélectionné");
+  }
 
-
-
-
-
-
-
-// Mettre à Jour un Projet
-export const updateProject = async (projectId, updatedData, images) => {
   try {
-    const projectDocRef = doc(db, "projects", projectId);
+    const storageRef = ref(storage, `/project_data/${file.name}`);
 
-    // Upload des nouvelles images si elles sont fournies
-    if (images && images.length > 0) {
-      const imageUrls = await Promise.all(images.map(async (image) => {
-        const imageRef = ref(storage, `projects/${projectId}/${image.name}`);
-        await uploadBytes(imageRef, image);
-        return await getDownloadURL(imageRef);
-      }));
+    const snapshot = await uploadBytes(storageRef, file);
 
-      updatedData.projectImages = {
-        imageUrl1: imageUrls[0],
-        imageUrl2: imageUrls[1],
-      };
-    }
+    const downloadURL = await getDownloadURL(snapshot.ref);
 
-    await updateDoc(projectDocRef, updatedData);
+    console.log("Fichier téléchargé avec succès. URL :", downloadURL);
+    return downloadURL;
   } catch (error) {
-    console.error("Error updating project: ", error);
+    console.error("Erreur lors du téléchargement de l'image :", error);
+    throw error;
   }
 };
-
-// Supprimer un Projet
-export const deleteProject = async (projectId) => {
-  try {
-    // Supprimer les images du Storage
-    const imageRef1 = ref(storage, `projects/${projectId}/image1.jpg`); // Modifiez avec le vrai nom de l'image
-    const imageRef2 = ref(storage, `projects/${projectId}/image2.jpg`); // Modifiez avec le vrai nom de l'image
-
-    await deleteObject(imageRef1);
-    await deleteObject(imageRef2);
-
-    // Supprimer le document Firestore
-    await deleteDoc(doc(db, "projects", projectId));
-  } catch (error) {
-    console.error("Error deleting project: ", error);
-  }
-};
-
-
-
-
-
-

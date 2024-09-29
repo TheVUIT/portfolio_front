@@ -3,7 +3,7 @@ class Category {
     constructor(id, title, projects = []) {
       this.id = id;
       this.title = title;
-      this.projects = projects;
+      this.projects = projects || [];
     }
   
     // Ajouter un projet
@@ -24,10 +24,18 @@ class Category {
       }
     }
   
-    // Supprimer un projet
+    // // Supprimer un projet
+    // deleteProject(projectId) {
+    //   this.projects = this.projects.filter(project => project.id !== projectId);
+    //   return this.projects
+    // }
     deleteProject(projectId) {
+      const initialLength = this.projects.length; // Pour le débogage
       this.projects = this.projects.filter(project => project.id !== projectId);
-    }
+      console.log('Projects after deletion:', this.projects); // Pour voir l'état après suppression
+      console.log('Projects removed:', initialLength - this.projects.length); // Nombre de projets supprimés
+  }
+  
   }
   
 

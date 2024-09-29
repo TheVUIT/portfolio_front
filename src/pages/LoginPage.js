@@ -27,7 +27,7 @@ const LoginPage = () => {
       >
         <h1 className="text-2xl font-ubuntu">Login</h1>
 
-        <label htmlFor="email">email</label>
+        <label htmlFor="email" className="font-ubuntu">email</label>
         <input
         className="form-input"
           type="email"
@@ -37,7 +37,7 @@ const LoginPage = () => {
           placeholder="Email"
           required
         />
-        <label htmlFor="password">Mot de Passe</label>
+        <label htmlFor="password" className="font-ubuntu">Mot de Passe</label>
 
         <input
         className="form-input"
@@ -48,7 +48,7 @@ const LoginPage = () => {
           placeholder="Password"
           required
         />
-        <button className="custom-btn" type="submit">Login</button>
+        <button className="custom-btn mb-3" type="submit">Login</button>
       </form>
     </div>
   );

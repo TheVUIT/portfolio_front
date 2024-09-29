@@ -195,6 +195,15 @@ body {
   @apply m-2 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
 
 }
+
+.custom-btn-project-serv {
+  @apply font-ubuntu p-2  bg-green-500 text-white  rounded hover:bg-backgroung_secondary hover:text-green-700 hover:border-green-500 hover:border-2 transition
+}
+
+.custom-btn-project-no {
+  @apply font-ubuntu p-2 bg-red-500 text-white rounded hover:bg-red-600 transition
+}
+
 /* .form-input {
   @apply m-2 p-2 w-full border-t border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
 } */

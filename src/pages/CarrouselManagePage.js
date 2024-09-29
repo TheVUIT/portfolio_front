@@ -226,7 +226,7 @@ const CarrouselManagePage = () => {
             />
             <button
               onClick={handleSaveImage}
-              className={`bg-blue-600 text-white rounded-md px-4 py-2 flex items-center gap-2 ${
+              className={`custom-btn-project-serv${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={isLoading}
@@ -239,10 +239,10 @@ const CarrouselManagePage = () => {
 
         {/* Bouton d'ajout */}
         <button
-          className="mt-6 bg-green-600 text-white rounded-md px-4 py-2 flex items-center gap-2 hover:bg-green-700 transition-all"
+          className="custom-btn-project-serv"
           onClick={() => setIsModalOpen(true)}
         >
-          Ajouter une image <FaPlus />
+          Ajout image <FaPlus />
         </button>
       </div>
 

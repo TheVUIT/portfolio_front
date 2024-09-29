@@ -7,17 +7,15 @@ import { db, storage } from '../config/firebase';
 // GET FROM FIRESTORE
 export const getCarrouselData = async (userId) => {
   try {
-    // Récupérer le document avec l'ID utilisateur
     const docRef = doc(db, "carousels", userId);
     const docSnap = await getDoc(docRef);
 
-    // Vérifier si le document existe
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data()); // Vérification des données récupérées
+      console.log("Document data:", docSnap.data()); 
       return docSnap.data();
     } else {
       console.log("No such document!");
-      return { images: [] }; // Retourne une structure vide si le document n'existe pas
+      return { images: [] }; 
     }
   } catch (error) {
     console.error("Error getting carrousel data: ", error);
@@ -29,10 +27,8 @@ export const saveCarrouselData = async (userId, imageFile) => {
   try {
     const imageURL = await formatUrlLinkToImage(imageFile, userId, "carousels");
     
-    // Sauvegarde l'URL dans Firestore
     const updatedImageList = await saveCarrouselDataFireStore(userId, imageURL);
 
-    // Retourne la nouvelle liste d'images après ajout
     return updatedImageList;
   } catch (error) {
     console.error("Error saving carrousel data: ", error);
@@ -40,7 +36,6 @@ export const saveCarrouselData = async (userId, imageFile) => {
   }
 };
 
-// Fonction pour sauvegarder les données dans Firestore
 const saveCarrouselDataFireStore = async (userId, imageURL) => {
   const carrouselDocRef = doc(db, "carousels", userId);
   const carrouselDocSnap = await getDoc(carrouselDocRef);
