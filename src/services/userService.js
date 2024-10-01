@@ -38,8 +38,10 @@ export const saveUserData = async (
 
     await setDoc(doc(db, "users", userId), updatedUserData, { merge: true });
 
-    await deleteUnusedFiles("logos", userId, logoFile?.name);
-    await deleteUnusedFiles("aboutImages", userId, aboutImageFile?.name);
+    if (aboutImageFile && logoFile) {
+      await deleteUnusedFiles("logos", userId, logoFile?.name);
+      await deleteUnusedFiles("aboutImages", userId, aboutImageFile?.name);
+    }
   } catch (error) {
     console.error("Error saving user data: ", error);
   }
@@ -75,67 +77,12 @@ const formatUrlLinkToImage = async (imageFile, userId, folder) => {
 
 
 
-export const updateUserAuthentication = async (user, newEmail, newPassword) => {
-  try {
-    let emailUpdated = false;
-    let passwordUpdated = false;
-
-    // Met à jour l'email si une nouvelle valeur est fournie
-    if (newEmail && newEmail !== user.email) {
-      await updateEmail(user, newEmail);
-      console.log("Email updated to:", newEmail);
-      emailUpdated = true;
-    }
-
-    // Met à jour le mot de passe si une nouvelle valeur est fournie
-    if (newPassword) {
-      await updatePassword(user, newPassword);
-      console.log("Password updated.");
-      passwordUpdated = true;
-    }
-
-    // Si l'email ou le mot de passe est mis à jour, déconnecte l'utilisateur
-    if (emailUpdated || passwordUpdated) {
-      await signOut(user.auth);
-      console.log("User signed out after updating credentials.");
-    }
-    
-  } catch (error) {
-    console.error("Error updating user authentication:", error);
-  }
-};
-
-
-
-// Exemple d'appel de la méthode
-const updateUserData = async (newEmail, newPassword) => {
-  const user = auth.currentUser; // Récupère l'utilisateur actuellement connecté
-
-  if (user) {
-    await updateUserAuthentication(user, newEmail, newPassword);
-  } else {
-    console.log("No user is logged in.");
-  }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 export const getUserData = async (userId) => {
   try {
-    const userDetailFromAuth = getUserDetailFromAuthentification(userId); 
+    const userDetailFromAuth = getUserDetailFromAuthentification(userId);
     const userDetailFromFirestore = await getUserDetailFromFirestore(userId);
 
     if (
@@ -211,12 +158,50 @@ const defaultDataProvider = async (userId) => {
   return defaultData;
 };
 
-// // Mettre à jour les données utilisateur
-// export const updateUserData = async (userId, userData) => {
-//   try {
-//     const docRef = doc(db, "users", userId);
-//     await updateDoc(docRef, userData);
-//   } catch (error) {
-//     console.error("Error updating user data: ", error);
-//   }
-// };
+
+
+
+
+
+
+
+export const updateUserAuthentication = async (user, newEmail, newPassword) => {
+  try {
+    let emailUpdated = false;
+    let passwordUpdated = false;
+
+    // Met à jour l'email si une nouvelle valeur est fournie
+    if (newEmail && newEmail !== user.email) {
+      await updateEmail(user, newEmail);
+      console.log("Email updated to:", newEmail);
+      emailUpdated = true;
+    }
+
+    // Met à jour le mot de passe si une nouvelle valeur est fournie
+    if (newPassword) {
+      await updatePassword(user, newPassword);
+      console.log("Password updated.");
+      passwordUpdated = true;
+    }
+
+    // Si l'email ou le mot de passe est mis à jour, déconnecte l'utilisateur
+    if (emailUpdated || passwordUpdated) {
+      await signOut(user.auth);
+      console.log("User signed out after updating credentials.");
+    }
+  } catch (error) {
+    console.error("Error updating user authentication:", error);
+  }
+};
+
+
+
+// Fonction pour obtenir l'ID de l'utilisateur connecté
+export function getCurrentUserId() {
+  const user = auth.currentUser;
+  if (user) {
+    return user.uid;  
+  } else {
+    return null;
+  }
+}

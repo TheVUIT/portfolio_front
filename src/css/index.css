@@ -11,12 +11,6 @@ html, body {
 }
 
 
-/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
-/** {
-  scrollbar-width: thin;
-  scrollbar-color: #454142 #DFE9EB;
-}*/
-
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
   height: 10px;
@@ -126,9 +120,13 @@ html, body {
 }
 
 @layer base {
-  * {
+  /* * {
     @apply border-border;
-  }
+  } */
+
+  /* *:not(input) {
+    @apply border-border;
+  } */
   body {
     @apply bg-background text-foreground;
   }
@@ -186,13 +184,26 @@ body {
 
 
 .admin-page-choice-button {
-  @apply w-1/2 text-center  bg-texte_secondary text-backgroung_secondary lg:text-2xl text-xl rounded-xl p-4 font-ubuntu hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+  @apply w-1/2 flex flex-col md:flex-row lg:flex-row items-center justify-center text-center  bg-texte_secondary text-backgroung_secondary lg:text-2xl text-xl rounded-xl p-4 font-ubuntu hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
 }
 
 .custom-btn {
-  @apply bg-backgroung_secondary text-texte_secondary font-bold py-2 px-4 rounded hover:bg-texte_secondary hover:text-backgroung_secondary;
+  @apply bg-backgroung_secondary text-texte_secondary font-bold py-2 px-4 rounded hover:bg-texte_secondary hover:text-backgroung_secondary transition-colors;
 }
 
 .form-input {
   @apply m-2 p-2 w-full border-b border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
+
 }
+
+.custom-btn-project-serv {
+  @apply font-ubuntu p-2  bg-green-500 text-white  rounded hover:bg-backgroung_secondary hover:text-green-700 hover:border-green-500 hover:border-2 transition
+}
+
+.custom-btn-project-no {
+  @apply font-ubuntu p-2 bg-red-500 text-white rounded hover:bg-red-600 transition
+}
+
+/* .form-input {
+  @apply m-2 p-2 w-full border-t border-gray-400 rounded-none shadow-sm hover:border-texte_secondary focus:border-b focus:border-texte_secondary focus:outline-none focus:shadow-none;
+} */

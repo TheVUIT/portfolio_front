@@ -44,7 +44,7 @@ import BANNER_IMAGE_8 from "../assets/images/banner/banner-image-8.png";
 
 import BANNER_IMAGE_1_DETAIL_1 from "../assets/images/project-detail/banner-image-1-detail-1.png"
 import BANNER_IMAGE_1_DETAIL_2 from "../assets/images/project-detail/banner-image-1-detail-2.png"
-import { parse } from "postcss";
+
 
 
 const imagesPack = {
@@ -111,10 +111,13 @@ const imagesPack = {
   ],
 };
 
+
+
 const banner_project = [
   {id: 1, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
   {id: 2, src_detail1: BANNER_IMAGE_1_DETAIL_1 , src_detail2: BANNER_IMAGE_1_DETAIL_2 },
 ]
+
 
 
 const banner_project2 = [

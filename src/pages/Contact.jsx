@@ -108,7 +108,7 @@ const Contact = () => {
 
         <div className="mr-10 w-full flex flex-row justify-end">
           <motion.button 
-            className="m-4 bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] hover:shadow-[7px_19px_20px_6px_#595959]"
+            className="custom-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
