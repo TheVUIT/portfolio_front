@@ -1,55 +1,134 @@
-import Category from "./Category";
+
+// class ProjectDetailData {
+//   constructor(categories = []) {
+//     this.categories = categories;
+//   }
+
+//   addCategory(category) {
+//     this.categories.push(category);
+//   }
+
+//   getCategoryById(categoryId) {
+//     return this.categories.find((category) => category.id === categoryId);
+//   }
+
+//   updateCategory(categoryId, updatedCategory) {
+//     const index = this.categories.findIndex(
+//       (category) => category.id === categoryId
+//     );
+//     if (index !== -1) {
+//       this.categories[index] = updatedCategory;
+//     }
+//     return new ProjectDetailData([...this.categories]);
+//   }
+
+//   deleteCategory(categoryId) {
+//     this.categories = this.categories.filter(
+//       (category) => category.id !== categoryId
+//     );
+//   }
+
+//   deleteProject(projectId, categoryId) {
+//     const category = this.getCategoryById(categoryId);
+
+//     if (category) {
+//       // Filtrer les projets pour exclure celui à supprimer
+//       let updatedProjects = category.projects.filter(
+//         (project) => project.id !== projectId
+//       );
+
+//       // Réorganiser les IDs des projets restants
+//       updatedProjects = updatedProjects.map((project, index) => {
+//         return { ...project, id: index + 1 }; // Réaffecter les IDs de manière consécutive
+//       });
+
+//       // Mettre à jour la catégorie avec les projets réarrangés
+//       const updatedCategory = { ...category, projects: updatedProjects };
+//       this.updateCategory(categoryId, updatedCategory);
+//     } else {
+//       console.error(`Category with ID ${categoryId} not found.`);
+//     }
+//   }
+
+//   // Ajouter un projet à une catégorie
+//   addProjectToCategory(project, categoryId) {
+//     const category = this.getCategoryById(categoryId);
+
+//     if (category) {
+//       const updatedProjects = [...category.projects, project];
+//       const updatedCategory = { ...category, projects: updatedProjects };
+//       this.updateCategory(categoryId, updatedCategory);
+//     } else {
+//       console.error(`Category with ID ${categoryId} not found.`);
+//     }
+//   }
+// }
+
+// export default ProjectDetailData;
+
+
+
+
 
 class ProjectDetailData {
   constructor(categories = []) {
     this.categories = categories;
   }
 
-  // Ajouter une catégorie
   addCategory(category) {
     this.categories.push(category);
   }
 
-  // Lire une catégorie par ID
   getCategoryById(categoryId) {
-     this.categories.find(category => category.id === categoryId);
-    // return this.categories.find(category => category.id === categoryId);
-    // const category = this.categories.find(category => category.id === categoryId);
-
-
-    // if (category) {
-    //   return new Category(category.id, category.title, category.projects);
-    // }
-    // return null; // Ou lever une erreur selon votre logique
+    return this.categories.find((category) => category.id === categoryId);
   }
 
-  
-  // Mettre à jour une catégorie
   updateCategory(categoryId, updatedCategory) {
-    const index = this.categories.findIndex(category => category.id === categoryId);
+    const index = this.categories.findIndex(
+      (category) => category.id === categoryId
+    );
     if (index !== -1) {
       this.categories[index] = updatedCategory;
     }
-    return new ProjectDetailData([...this.categories]);
+    return new ProjectDetailData([...this.categories]); // Retourner les catégories mises à jour
   }
 
-  // Supprimer une catégorie
   deleteCategory(categoryId) {
-    this.categories = this.categories.filter(category => category.id !== categoryId);
+    this.categories = this.categories.filter(
+      (category) => category.id !== categoryId
+    );
   }
 
-  // Supprimer un projet
   deleteProject(projectId, categoryId) {
     const category = this.getCategoryById(categoryId);
+
     if (category) {
-      // Appel de la méthode deleteProject de la classe Category
-      category.deleteProject(projectId);
-      
-      // Mettez à jour la catégorie dans les catégories existantes
-      const index = this.categories.findIndex(cat => cat.id === categoryId);
-      if (index !== -1) {
-        this.categories[index] = category; // Mettez à jour la catégorie avec la liste de projets modifiée
-      }
+      // Filtrer les projets pour exclure celui à supprimer
+      let updatedProjects = category.projects.filter(
+        (project) => project.id !== projectId
+      );
+
+      // Réorganiser les IDs des projets restants
+      updatedProjects = updatedProjects.map((project, index) => {
+        return { ...project, id: index + 1 }; // Réaffecter les IDs de manière consécutive
+      });
+
+      // Mettre à jour la catégorie avec les projets réarrangés
+      const updatedCategory = { ...category, projects: updatedProjects };
+      return this.updateCategory(categoryId, updatedCategory);
+    } else {
+      console.error(`Category with ID ${categoryId} not found.`);
+    }
+  }
+
+  // Ajouter un projet à une catégorie
+  addProjectToCategory(project, categoryId) {
+    const category = this.getCategoryById(categoryId);
+
+    if (category) {
+      const updatedProjects = [...category.projects, project];
+      const updatedCategory = { ...category, projects: updatedProjects };
+      return this.updateCategory(categoryId, updatedCategory); 
     } else {
       console.error(`Category with ID ${categoryId} not found.`);
     }

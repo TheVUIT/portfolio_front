@@ -49,17 +49,14 @@ const formatUrlLinkToImage = async (imageFile,  folder) => {
 };
 
 
-const uploadImageToStorage = async (file) => {
+export const uploadImageToStorage = async (file) => {
   if (!file) {
     throw new Error("Aucun fichier sélectionné");
   }
 
   try {
-    const storageRef = ref(storage, `/project_data/${file.name}`);
-
-    const snapshot = await uploadBytes(storageRef, file);
-
-    const downloadURL = await getDownloadURL(snapshot.ref);
+   
+    const downloadURL = await formatUrlLinkToImage(file, "projects");
 
     console.log("Fichier téléchargé avec succès. URL :", downloadURL);
     return downloadURL;
