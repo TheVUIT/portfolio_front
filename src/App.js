@@ -16,6 +16,7 @@ import UserInfosManagePage from "./pages/UserInfosManagePage";
 import ProjectManagePage from "./pages/ProjectManagePage";
 import CarrouselManagePage from "./pages/CarrouselManagePage";
 import ConexionInfosPage from "./pages/ConexionInfosPage";
+import MessageService from "./pages/MessageService";
 import Loading from "src/components/Loading";
 
 import Layout from "./components/Layout";
@@ -78,6 +79,10 @@ const App = () => {
           <Route
             path="/admin/project-manage"
             element={<PrivateRoute element={<ProjectManagePage />} />}
+          />
+          <Route
+            path="/admin/message-manage"
+            element={<PrivateRoute element={<MessageService />} />}
           />
           <Route path="*" element={<Navigate to="/login" />} />
           <Route path="*" element={<NotFoundPage />} />{" "}

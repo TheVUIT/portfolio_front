@@ -7,7 +7,7 @@ import { FaX } from "react-icons/fa6";
 import {
   getProject,
   addProjectDetailData,
-  uploadImageToStorage
+  uploadImageToStorage,
 } from "../services/projectDetailService";
 import GoBackBtn from "src/components/GoBackBtn";
 
@@ -19,10 +19,17 @@ import ProjectImages from "../model/ProjectImages";
 
 // Composant pour le Modal des Détails du Projet
 
-const ProjectDetailModal = ({ project, onClose, isOpen, handleDeleteImage, handleAddImage }) => {
-
-  const [srcImages, setSrcImages] = useState(project?.details?.src_images || []); 
-  const [newImageLink, setNewImageLink] = useState(""); 
+const ProjectDetailModal = ({
+  project,
+  onClose,
+  isOpen,
+  handleDeleteImage,
+  handleAddImage,
+}) => {
+  const [srcImages, setSrcImages] = useState(
+    project?.details?.src_images || []
+  );
+  const [newImageLink, setNewImageLink] = useState("");
 
   const handleAddImageLink = () => {
     if (newImageLink.trim()) {
@@ -35,8 +42,6 @@ const ProjectDetailModal = ({ project, onClose, isOpen, handleDeleteImage, handl
     const updatedSrcImages = srcImages.filter((_, i) => i !== index);
     setSrcImages(updatedSrcImages);
   };
-
-
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -80,7 +85,7 @@ const ProjectDetailModal = ({ project, onClose, isOpen, handleDeleteImage, handl
 
           <div className="relative group">
             {/* Bouton FaPlus toujours visible */}
-            <FaPlus className="text-xl text-texte_secondary group-hover:rotate-360 group-focus:rotate-360 transition-transform duration-500" /> 
+            <FaPlus className="text-xl text-texte_secondary group-hover:rotate-360 group-focus:rotate-360 transition-transform duration-500" />
 
             {/* Input file transparent superposé */}
             <input
@@ -89,157 +94,29 @@ const ProjectDetailModal = ({ project, onClose, isOpen, handleDeleteImage, handl
               className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
             />
           </div>
-
-
         </div>
       </div>
     </div>
   );
 };
 
-
-
-
 // Composant pour le Modal de Modification du Projet
 
-// const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId ,categoryLastIndex }) => {
-  
-//   const [formData, setFormData] = useState({...project,
-//     pinned: project?.pinned ?? false});
-//   const [categoryIdConcerned, setCategoryIdConcerned] = useState(categoryId || {})
-//   const [categoryLastIndexConcerned, setCategoryLastIndexConcerned] = useState(categoryLastIndex || {})
+const ProjectModal = ({
+  project,
+  onSave,
+  onClose,
+  isOpen,
+  categoryId,
+  categoryLastIndex,
+}) => {
+  // console.log("Category in the ProjectModal componenet")
+  console.log('--------Start Projet in the component')
+    console.log(categoryId)
+  console.log(project)
+  console.log(categoryLastIndex)
+  console.log('--------End Projet in the component')
 
-//   const [previewImages, setPreviewImages] = useState({
-//     src_principal_image: project?.images?.src_principal_image || "",
-//     src_image_on_hover: project?.images?.src_image_on_hover || "",
-//   });
-
- 
-//   // Utiliser useEffect pour mettre à jour les états lorsque project change
-//   useEffect(() => {
-//     if (project) {
-//       setFormData(project);
-//       setCategoryIdConcerned(categoryId)
-//       setCategoryLastIndexConcerned(categoryLastIndex)
-//       setPreviewImages({
-//         src_principal_image: project?.images?.src_principal_image || "",
-//         src_image_on_hover: project?.images?.src_image_on_hover || "",
-//       });
-//       setSrcImages(project?.details?.src_images || []);
-//     }
-//   }, [project]);
-
-
-//   const handleImageChange = async (e) => {
-//     const { name, files } = e.target;
-//     if (files && files[0]) {
-//       const file = files[0];
-//      const newPreviewURL = await uploadImageToStorage(file)
-//       setPreviewImages({
-//         ...previewImages,
-//         [name]: newPreviewURL,
-//       });
-
-//       setFormData({
-//         ...formData,
-//         images: {
-//           ...formData.images,
-//           [name]: file, 
-//         },
-//       });
-//     }
-//   };
-
-//   const handleSave = (e) => {
-//     e.preventDefault()
-//     const updatedFormData = {
-//       ...formData,
-//       details: {
-//         ...formData.details,
-//       },
-//     };
-    
-//     onSave(updatedFormData, categoryLastIndexConcerned, categoryIdConcerned);
-//     onClose();
-//   };
-  
-//   if (!isOpen || !project) return null;
-
-//   return (
-//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-//       <div className="bg-white p-6 rounded-lg shadow-lg">
-//         <h2 className="text-xl font-semibold mb-4">
-//           {categoryLastIndexConcerned == formData.id ? "Créer un" : "Modifier ce"}  Projet
-//         </h2>
-
-//           <div className="mb-4">
-//             <h2 className="font-ubuntu text-lg font-bold">ID : {formData.id}</h2>
-
-//             {/* Affichage de la case à cocher stylisée */}
-//             <div className="mb-4 flex items-center space-x-4">
-//               <label className="font-ubuntu text-gray-700 text-sm">Épingler le projet</label>
-//               <input
-//                 type="checkbox"
-//                 checked={formData.pinned}
-//                 onChange={(e) => setFormData({ ...formData, pinned: e.target.checked })}
-//                 className="form-checkbox h-5 w-5 text-blue-600 border-gray-300 focus:ring-blue-500"
-//               />
-//             </div>
-
-//             <label className="font-ubuntu text-gray-700">Image Principale</label>
-//             <input
-//               type="file"
-//               name="src_principal_image"
-//               onChange={handleImageChange}
-//               className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-600 focus:outline-none"
-//             />
-//             {previewImages.src_principal_image && (
-//               <img
-//                 src={previewImages.src_principal_image}
-//                 alt="Aperçu"
-//                 className="mt-2 w-full h-20 object-cover rounded-md shadow"
-//               />
-//             )}
-//           </div>
-
-//           <div className="mb-4">
-//             <label className="font-ubuntu">Image sur Survol</label>
-//             <input
-//               type="file"
-//               name="src_image_on_hover"
-//               onChange={handleImageChange}
-//               className="border p-2 w-full"
-//             />
-//             {previewImages.src_image_on_hover && (
-//               <img
-//                 src={previewImages.src_image_on_hover}
-//                 alt="Aperçu"
-//                 className="mt-2 w-full h-20 object-cover rounded-md"
-//               />
-//             )}
-//           </div>
-
-//         <div className="flex flex-row justify-between items-center">
-//           <button
-//             onClick={handleSave}
-//             className="custom-btn-project-serv"
-//           >
-//           {categoryLastIndexConcerned == formData.id ? "Create" : "Confirm"} 
-//           </button>
-//           <button
-//             onClick={onClose}
-//             className="custom-btn"
-//           >
-//             Annuler
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLastIndex }) => {
   const [formData, setFormData] = useState({
     ...project,
     pinned: project?.pinned ?? false,
@@ -252,8 +129,12 @@ const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLa
     },
   });
 
-  const [categoryIdConcerned, setCategoryIdConcerned] = useState(categoryId || {});
-  const [categoryLastIndexConcerned, setCategoryLastIndexConcerned] = useState(categoryLastIndex || {});
+  const [categoryIdConcerned, setCategoryIdConcerned] = useState(
+    categoryId || {}
+  );
+  const [categoryLastIndexConcerned, setCategoryLastIndexConcerned] = useState(
+    categoryLastIndex || {}
+  );
   const [previewImages, setPreviewImages] = useState({
     src_principal_image: project?.images?.src_principal_image || "",
     src_image_on_hover: project?.images?.src_image_on_hover || "",
@@ -308,7 +189,21 @@ const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLa
 
     console.log("Données du formulaire avant enregistrement:", updatedFormData); // Log des valeurs avant enregistrement
     onSave(updatedFormData, categoryLastIndexConcerned, categoryIdConcerned);
+
+    // setFormData({
+    //   ...project,
+    //   id: 0,
+    //   pinned:  false,
+    //   images: {
+    //     src_principal_image:  "",
+    //     src_image_on_hover:  "",
+    //   },
+    //   details: {
+    //     src_images: [],
+    //   },
+    // })
     onClose();
+
   };
 
   if (!isOpen || !project) return null;
@@ -317,7 +212,10 @@ const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLa
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-xl font-semibold mb-4">
-          {categoryLastIndexConcerned === formData.id ? "Créer un" : "Modifier ce"} Projet
+          {categoryLastIndexConcerned === formData.id
+            ? "Créer un"
+            : "Modifier ce"}{" "}
+          Projet
         </h2>
 
         <div className="mb-4">
@@ -325,11 +223,15 @@ const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLa
 
           {/* Affichage de la case à cocher stylisée */}
           <div className="mb-4 flex items-center space-x-4">
-            <label className="font-ubuntu text-gray-700 text-sm">Épingler le projet</label>
+            <label className="font-ubuntu text-gray-700 text-sm">
+              Épingler le projet
+            </label>
             <input
               type="checkbox"
               checked={formData.pinned}
-              onChange={(e) => setFormData({ ...formData, pinned: e.target.checked })}
+              onChange={(e) =>
+                setFormData({ ...formData, pinned: e.target.checked })
+              }
               className="form-checkbox h-5 w-5 text-blue-600 border-gray-300 focus:ring-blue-500"
             />
           </div>
@@ -380,11 +282,6 @@ const ProjectModal = ({ project, onSave, onClose, isOpen, categoryId, categoryLa
   );
 };
 
-
-
-
-
-
 const CategoryModal = ({ saveCategoryCreated, onClose, isOpen }) => {
   const [category, setCategory] = useState("");
 
@@ -434,36 +331,33 @@ const CategoryModal = ({ saveCategoryCreated, onClose, isOpen }) => {
   );
 };
 
-
-
-
 const ProjectManagePage = () => {
-
   //*******************GlobalProject USESTATE********************** */
-    const [projectDetailData, setProjectDetailData] = useState(
-      new ProjectDetailData()
-    );
+  const [projectDetailData, setProjectDetailData] = useState(
+    new ProjectDetailData()
+  );
   //*******************GlobalProject USESTATE********************** */
 
-  console.log(projectDetailData)
+  console.log(projectDetailData);
 
   //*******************Catgory Updating USESTATE********************** */
-    const [categoryInfosIsChanging, setCategoryInfosIsChanging] = useState(null);
-    const [categoryUpdatingData, setCategoryUpdatingData] =  useState({ id: '', title: '' });
-    const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+  const [categoryInfosIsChanging, setCategoryInfosIsChanging] = useState(null);
+  const [categoryUpdatingData, setCategoryUpdatingData] = useState({
+    id: "",
+    title: "",
+  });
+  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   //*******************Catgory Updating USESTATE********************** */
 
-
   //*******************Project Updating USESTATE********************** */
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
-    const [categoryLastIndex, setCategoryLastIndex] = useState (null)
-    const [categoryIdProject, setCategoryIdProject] = useState (null)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [categoryLastIndex, setCategoryLastIndex] = useState(null);
+  const [categoryIdProject, setCategoryIdProject] = useState(null);
 
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [hoveredProjectId, setHoveredProjectId] = useState(null); // Utilisé pour suivre l'ID du projet survolé
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [hoveredProjectId, setHoveredProjectId] = useState(null); // Utilisé pour suivre l'ID du projet survolé
   //*******************Project Updating USESTATE********************** */
-
 
   //===================================The LOAD BEHAVIOR===================================//
   useEffect(() => {
@@ -476,166 +370,93 @@ const ProjectManagePage = () => {
   }, []);
   //===================================THE LOAD BEHAVIOR===================================//
 
-
-
   //===================================PROJECT CRUD===================================//
 
-    //===================PROJECT VIEWER===================//
-      const handleViewProjectDetails = (project) => {
-        setSelectedProject(project);
-        setIsDetailModalOpen(true);
-      };
-      const handleEditProject = (project) => {
-        setSelectedProject(project);
-        setIsModalOpen(true);
-      };
-    //===================PROJECT VIEWER===================//
+  //===================PROJECT VIEWER===================//
+  const handleViewProjectDetails = (project) => {
+    setSelectedProject(project);
+    setIsDetailModalOpen(true);
+  };
+  const handleEditProject = (project, categoryIdChoose) => {
+    setCategoryIdProject(categoryIdChoose);
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+  //===================PROJECT VIEWER===================//
 
+  const handleDeleteProject = (event, projectId, categoryId) => {
+    event.preventDefault();
 
-    const handleDeleteProject = (event, projectId, categoryId) => {
-      event.preventDefault();
-      
-      const updatedProjectDetailData = new ProjectDetailData([...projectDetailData.categories]);
-      
-      updatedProjectDetailData.deleteProject(projectId, categoryId);
-    
-      setProjectDetailData(updatedProjectDetailData);
-    };
-    
+    const updatedProjectDetailData = new ProjectDetailData([
+      ...projectDetailData.categories,
+    ]);
 
-    const handleAddProject = (categoryId, categoryLastIndex, project) => {
-      console.log(selectedProject)
+    updatedProjectDetailData.deleteProject(projectId, categoryId);
 
-      console.log(project)
-      setCategoryLastIndex(categoryLastIndex)
-      setCategoryIdProject(categoryId)
-      setSelectedProject(project);
+    setProjectDetailData(updatedProjectDetailData);
+  };
 
-      setIsModalOpen(true);
-   
-    };
+  const handleAddProject = (categoryLastIndex, project) => {
+    // console.log(selectedProject);
+    console.log(
+      "------------------------------In the methode handleAddProject-----------------------------------------"
+    );
+    console.log("c'est nul ici !")
+    // console.log(categoryIdChoose);
+    // console.log(project);
 
+    setCategoryLastIndex(categoryLastIndex);
+    setSelectedProject(project);
 
+    setIsModalOpen(true);
+  };
 
-//-------------------------------------------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------------------------------------------
+
   // const handleSaveProject = (project, categoryLastIndex, categoryId) => {
   //   let updatedProjectDetailData = new ProjectDetailData([...projectDetailData.categories]);
-  
+
   //   console.log(categoryId);
-  
+
   //   if (categoryLastIndex === project.id) {
   //     const finalProjectDetailData = updatedProjectDetailData.addProjectToCategory(project, categoryId);
-      
   //     setProjectDetailData(finalProjectDetailData);
   //   } else {
-  //     updateProject(project); 
+  //     const finalCategories = updateProject(project, updatedProjectDetailData.categories);
+  //     setProjectDetailData(new ProjectDetailData(finalCategories));
   //   }
-  
   // };
- 
 
-
-  // // Fonction pour mettre à jour un projet
-  // const updateProject = (project, categories) => {
-  //   // Trouver la catégorie par ID
-  //   const category = categories.find((cat) => cat.id === project.categoryId);
-    
-  //   if (category) {
-  //     // Trouver l'index du projet à mettre à jour
-  //     const projectIndex = category.projects.findIndex((p) => p.id === project.id);
-      
-  //     if (projectIndex !== -1) {
-  //       // Créer une copie des catégories existantes
-  //       const updatedCategories = [...categories];
-  //       const updatedCategory = { ...category };
-
-  //       // Remplacer l'ancien projet par le projet mis à jour
-  //       updatedCategory.projects[projectIndex] = { ...project };
-
-  //       // Mettre à jour la catégorie avec le projet modifié
-  //       updatedCategories[updatedCategories.indexOf(category)] = updatedCategory;
-
-  //       return updatedCategories; // Retourner les catégories mises à jour
-  //     } else {
-  //       console.error("Projet non trouvé dans la catégorie");
-  //     }
-  //   } else {
-  //     console.error("Catégorie non trouvée");
-  //   }
-
-  //   return categories; // Retourner les catégories originales si la mise à jour échoue
-  // };
-  
   const handleSaveProject = (project, categoryLastIndex, categoryId) => {
-    let updatedProjectDetailData = new ProjectDetailData([...projectDetailData.categories]);
-  
-    console.log(categoryId);
-  
+    // Créer une nouvelle instance de ProjectDetailData avec les catégories existantes
+    const updatedProjectDetailData = new ProjectDetailData([
+      ...projectDetailData.categories,
+    ]);
+
+    // Vérifier si le project.id correspond à categoryLastIndex pour ajouter ou mettre à jour le projet
     if (categoryLastIndex === project.id) {
-      const finalProjectDetailData = updatedProjectDetailData.addProjectToCategory(project, categoryId);
-      setProjectDetailData(finalProjectDetailData);
+      // Ajouter un nouveau projet
+      const finalProjectDetailData =
+        updatedProjectDetailData.addProjectToCategory(project, categoryId);
+      setProjectDetailData(finalProjectDetailData); // Mettre à jour le state avec la nouvelle version des données
     } else {
-      const finalCategories = updateProject(project, updatedProjectDetailData.categories);
-      setProjectDetailData(new ProjectDetailData(finalCategories));
+      console.log(categoryId);
+      // Mettre à jour un projet existant dans la catégorie
+      const finalProjectDetailData =
+        updatedProjectDetailData.updateProjectInCategory(project, categoryId);
+      // if (finalProjectDetailData) {
+        setProjectDetailData(finalProjectDetailData); // Mettre à jour les données si le projet a été mis à jour avec succès
+      // }
     }
   };
-  
-  // Fonction pour mettre à jour un projet
-  const updateProject = (project, categories) => {
-    // Trouver la catégorie par ID
-    const category = categories.find((cat) => cat.id === project.categoryId || cat.id === project.categoryId);
-  
-    if (category) {
-      // Trouver l'index du projet à mettre à jour
-      const projectIndex = category.projects.findIndex((p) => p.id === project.id);
-  
-      if (projectIndex !== -1) {
-        // Créer une copie des catégories existantes
-        const updatedCategories = [...categories];
-        const updatedCategory = { ...category };
-  
-        // Remplacer l'ancien projet par le projet mis à jour
-        updatedCategory.projects[projectIndex] = { ...project };
-  
-        // Mettre à jour la catégorie avec le projet modifié
-        updatedCategories[updatedCategories.indexOf(category)] = updatedCategory;
-  
-        return updatedCategories; // Retourner les catégories mises à jour
-      } else {
-        console.error("Projet non trouvé dans la catégorie");
-      }
-    } else {
-      console.error("Catégorie non trouvée");
-    }
-  
-    return categories; // Retourner les catégories originales si la mise à jour échoue
-  };
-  
 
-
-
+  
 
   //===================================PROJECT CRUD===================================//
 
-
-
-
-
-
-
-
-
   //===================================PROJECT-DETAILS CRUD===================================//
 
-
-
-
   //===================================PROJECT-DETAILS CRUD===================================//
-
-
-
-
-
 
   //===================================CATEGORY CRUD===================================//
 
@@ -643,7 +464,7 @@ const ProjectManagePage = () => {
     setIsCategoryModalOpen(true);
 
     if (!categoryName || categoryName.trim() === "") {
-      return; 
+      return;
     }
 
     const updatedProjectDetailData = new ProjectDetailData([
@@ -710,7 +531,7 @@ const ProjectManagePage = () => {
     setProjectDetailData(updatedProjectDetailData);
 
     setCategoryUpdatingData({});
-    setCategoryInfosIsChanging(null); 
+    setCategoryInfosIsChanging(null);
   };
 
   const handleUpdateCategoryName = (updatedCategories, categoryId, newName) => {
@@ -747,12 +568,6 @@ const ProjectManagePage = () => {
 
   //===================================CATEGORY CRUD===================================//
 
-
-
-
-
-
-
   //===================================FINAL-SAVING===================================//
   const handleSaveAll = async () => {
     await addProjectDetailData(projectDetailData);
@@ -769,31 +584,39 @@ const ProjectManagePage = () => {
 
         {projectDetailData.categories.length > 0 ? (
           <ul className="space-y-8">
-            {projectDetailData.categories.sort((a, b) => a.id - b.id).map((category) => (
-              <li
-                key={category.id}
-                className="shadow-md rounded-lg overflow-hidden bg-gray-50 transition-transform transform hover:scale-105"
-              >
-                {categoryInfosIsChanging == category.id ? (
-                  
-                  <form 
-                    className="flex flex-col md:flex-row lg:flex-row justify-between gap-2 items-center p-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleUpdateCategory(category.id, categoryUpdatingData.id, categoryUpdatingData.title)
-                      setCategoryUpdatingData({ id: '', title: '' });
-                      setCategoryInfosIsChanging(null);
-                    }
-                      
-                    }
-                  >
+            {projectDetailData.categories
+              .sort((a, b) => a.id - b.id)
+              .map((category) => (
+                <li
+                  key={category.id}
+                  className="shadow-md rounded-lg overflow-hidden bg-gray-50 transition-transform transform hover:scale-105"
+                >
+                  {categoryInfosIsChanging == category.id ? (
+                    <form
+                      className="flex flex-col md:flex-row lg:flex-row justify-between gap-2 items-center p-4"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleUpdateCategory(
+                          category.id,
+                          categoryUpdatingData.id,
+                          categoryUpdatingData.title
+                        );
+                        setCategoryUpdatingData({ id: "", title: "" });
+                        setCategoryInfosIsChanging(null);
+                      }}
+                    >
                       {/* Input pour modifier le titre de la catégorie */}
                       <input
                         type="text"
                         className="text-2xl font-semibold text-texte_secondary"
                         placeholder={category.title}
-                        value={categoryUpdatingData.title  }
-                        onChange={(e) => setCategoryUpdatingData({ ...categoryUpdatingData, title: e.target.value })}
+                        value={categoryUpdatingData.title}
+                        onChange={(e) =>
+                          setCategoryUpdatingData({
+                            ...categoryUpdatingData,
+                            title: e.target.value,
+                          })
+                        }
                         // onChange={handleInputCategoryChange} // Mettez à jour le titre de la catégorie
                       />
 
@@ -802,11 +625,15 @@ const ProjectManagePage = () => {
                         type="number"
                         className="text-2xl font-semibold text-texte_secondary"
                         placeholder={category.id}
-
-                        value={categoryUpdatingData.id  }
+                        value={categoryUpdatingData.id}
                         // onChange={handleInputCategoryChange} // Mettez à jour l'ID de la catégorie
-                        onChange={(e) => setCategoryUpdatingData({ ...categoryUpdatingData, id: e.target.value })}                      
-                        />
+                        onChange={(e) =>
+                          setCategoryUpdatingData({
+                            ...categoryUpdatingData,
+                            id: e.target.value,
+                          })
+                        }
+                      />
 
                       {/* Boutons de validation et annulation */}
                       <div className="flex flex-row gap-3 items-center justify-center">
@@ -823,118 +650,130 @@ const ProjectManagePage = () => {
                           <FaCheck />
                         </button>
                       </div>
-                  </form>
-                ) : (
-                  <div className="flex justify-between items-center p-4">
-                    <h2 className="text-2xl font-semibold text-texte_secondary">
-                      {category.title}
-                    </h2>
-                    <div className="flex flex-row gap-3 items-center justify-center">
-                      <button
-                        onClick={() => handleDeleteCategory(category.id)}
-                        className="custom-btn"
-                      >
-                        <FaTrash />
-                      </button>
-                      <p className="font-ubuntu"> {category.projects.length}  |   {projectDetailData.categories.length} 
-                      </p>
-                      <button
-                          onClick={() =>  
+                    </form>
+                  ) : (
+                    <div className="flex justify-between items-center p-4">
+                      <h2 className="text-2xl font-semibold text-texte_secondary">
+                        {category.title}
+                      </h2>
+                      <div className="flex flex-row gap-3 items-center justify-center">
+                        <button
+                          onClick={() => handleDeleteCategory(category.id)}
+                          className="custom-btn"
+                        >
+                          <FaTrash />
+                        </button>
+                        <p className="font-ubuntu">
+                          {" "}
+                          {category.projects.length} |{" "}
+                          {projectDetailData.categories.length} /
+                          {category.id}
+                        </p>
+
+                        <button
+                          onClick={() => {
+                            console.log("Category:", category);
+                            // setCategoryIdProject(category.id); // Vérifie que la catégorie existe et contient un id
                             handleAddProject(
-                              category.id,
-                              category.projects.length + 1, 
-                            {
-                              id: category.projects.length + 1, 
-                              images: {
-                                src_principal_image: "",
-                                src_image_on_hover: ""
-                              }, 
-                              pinned: false, 
-                              details: {
-                                src_images: []
+                              // category.id,
+                              category.projects.length + 1,
+                              {
+                                id: category.projects.length + 1,
+                                images: {
+                                  src_principal_image: "",
+                                  src_image_on_hover: "",
+                                },
+                                pinned: false,
+                                details: {
+                                  src_images: [],
+                                },
                               }
-                            }
-                            // ou une autre valeur unique si nécessaire
-                          ) }
+                            );
+                          }}
                           className="custom-btn"
                         >
                           <FaPlus />
+                        </button>
 
-                      </button>
-
-                      <button
-                        onClick={() => handleUpdateCategoryTrigger(category.id)}
-                        className="custom-btn"
-                      >
-                        <FaPencilAlt />
-                      </button>
+                        <button
+                          onClick={() =>
+                            handleUpdateCategoryTrigger(category.id)
+                          }
+                          className="custom-btn"
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-                  {category.projects.map((project) => {
-                    return (
-                      <li
-                        key={project.id}
-                        className="w-auto rounded-lg shadow-lg bg-white p-4 flex flex-col justify-center items-start"
-                        onMouseEnter={() => setHoveredProjectId(project.id)} // Définit l'ID du projet survolé
-                        onMouseLeave={() => setHoveredProjectId(null)} // Réinitialise l'ID du projet survolé
-                      >
-                        <img
-                          src={
-                            hoveredProjectId === project.id
-                              ? project.images.src_image_on_hover
-                              : project.images.src_principal_image
-                          } // Utilise l'ID pour déterminer quelle image afficher
-                          alt={project.id}
-                          className="w-full h-40 object-cover rounded-md mb-2 cursor-pointer"
-                        />
-                        <div className="flex-grow">
-                          <h3 className="text-xl font-semibold text-gray-700">
-                            {project.id}
-                          </h3>
-                          <p className="text-gray-600">
-                            {project.details.description}
-                          </p>
-                        </div>
-                        <div className={`h-2 rounded-2xl flex flex-row w-1/6 justify-center items-center ${project.pinned == true ? 'bg-green-500' : 'bg-red-500'}`}>
-
-                        </div>
-                        <div className=" flex flex-row items-center justify-between gap-2 mt-4">
-                          <button
-                            onClick={() => handleEditProject(project)}
-                            className="custom-btn-project-serv"
-                          >
-                            Update
-                          </button>
-                          <button
-                            onClick={() => handleViewProjectDetails(project)}
-                            className="custom-btn"
-                          >
-                            Show
-                          </button>
-                          <button
-                            onClick={(event) =>
-                              handleDeleteProject(
-                                event,
-                                project.id,
-                                category.id
-                              )
-                            }
-                            className="font-ubuntu p-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
-                          >
-                            Delete
-                          </button>
-                        </div>
-                        {/* {` la gategorie à l'état est  ${category.id}`} */}
-                      </li>
-
-                    );
-                  })}
-                </ul>
-              </li>
-            ))}
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                    {category.projects.map((project) => {
+                      return (
+                        <li
+                          key={project.id}
+                          className="w-auto rounded-lg shadow-lg bg-white p-4 flex flex-col justify-center items-start"
+                          onMouseEnter={() => setHoveredProjectId(project.id)} // Définit l'ID du projet survolé
+                          onMouseLeave={() => setHoveredProjectId(null)} // Réinitialise l'ID du projet survolé
+                        >
+                          <img
+                            src={
+                              hoveredProjectId === project.id
+                                ? project.images.src_image_on_hover
+                                : project.images.src_principal_image
+                            } // Utilise l'ID pour déterminer quelle image afficher
+                            alt={project.id}
+                            className="w-full h-40 object-cover rounded-md mb-2 cursor-pointer"
+                          />
+                          <div className="flex-grow">
+                            <h3 className="text-xl font-semibold text-gray-700">
+                              {project.id}
+                            </h3>
+                            <p className="text-gray-600">
+                              {project.details.description}
+                            </p>
+                          </div>
+                          <div
+                            className={`h-2 rounded-2xl flex flex-row w-1/6 justify-center items-center ${
+                              project.pinned == true
+                                ? "bg-green-500"
+                                : "bg-red-500"
+                            }`}
+                          ></div>
+                          {category.id}
+                          <div className=" flex flex-row items-center justify-between gap-2 mt-4">
+                            <button
+                              onClick={() => handleEditProject(project, category.id)}
+                              className="custom-btn-project-serv"
+                            >
+                              Update
+                            </button>
+                            <button
+                              onClick={() => handleViewProjectDetails(project)}
+                              className="custom-btn"
+                            >
+                              Show
+                            </button>
+                            <button
+                              onClick={(event) =>
+                                handleDeleteProject(
+                                  event,
+                                  project.id,
+                                  category.id
+                                )
+                              }
+                              className="font-ubuntu p-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                          {/* {` la gategorie à l'état est  ${category.id}`} */}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              ))}
           </ul>
         ) : (
           <p className="font-ubuntu text-2xl text-center">
@@ -975,6 +814,7 @@ const ProjectManagePage = () => {
           Vider tout
         </button>
       </div>
+
       {/* Modal de Modification du Projet */}
       <ProjectModal
         project={selectedProject}
@@ -984,8 +824,7 @@ const ProjectManagePage = () => {
         categoryId={categoryIdProject}
         categoryLastIndex={categoryLastIndex}
       />
-      {/* const [categoryLastIndex, setCategoryLastIndex] = useState (null)
-      const [categoryIdProject, setCategoryIdProject] = useState (null) */}
+     
 
       <CategoryModal
         isOpen={isCategoryModalOpen}

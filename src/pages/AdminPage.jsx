@@ -23,6 +23,7 @@ const AdminPage = () => {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center ">
       <div className="h-1/2 w-1/2 lg:w-1/3  flex flex-col items-center justify-center ">
+
         <div className="h-full w-full flex flex-row items-center justify-between gap-6">
           <Link
             className="admin-page-choice-button"
@@ -39,6 +40,21 @@ const AdminPage = () => {
             <p>Services</p>
           </Link>
         </div>
+
+        <div className="h-full w-full flex flex-row items-center justify-center">
+          
+          <Link
+            className="admin-page-choice-button"
+            to={"/admin/message-manage"}
+          >
+            <p>Message</p>
+            <p>Services</p>
+          </Link>
+          
+        </div>
+
+
+
         <div className="h-full w-full flex flex-row items-center justify-between gap-6">
         <Link
           className="admin-page-choice-button"
