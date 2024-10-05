@@ -76,7 +76,7 @@ const formatUrlLinkToImage = async (imageFile,  folder) => {
 
 
 
-export const deleteCarrouselImage = async (userId, imageUrl) => {
+export const deleteCarrouselImage = async ( imageUrl) => {
   try {
     console.log("URL de l'image :", imageUrl); 
 
@@ -89,7 +89,7 @@ export const deleteCarrouselImage = async (userId, imageUrl) => {
     const imageRef = ref(storage, filePath);
     await deleteObject(imageRef); 
 
-    const carrouselDocRef = doc(db, "carousels", userId);
+    const carrouselDocRef = doc(db, "carousels", "carrouselImages");
     const carrouselDocSnap = await getDoc(carrouselDocRef);
 
     if (carrouselDocSnap.exists()) {
@@ -103,7 +103,7 @@ export const deleteCarrouselImage = async (userId, imageUrl) => {
 
       return updatedImages; 
     } else {
-      console.error("Document carrousel non trouvé pour l'utilisateur :", userId);
+      console.error("Document carrousel non trouvé pour l'utilisateur ");
     }
   } catch (error) {
     console.error("Erreur lors de la suppression de l'image :", error);

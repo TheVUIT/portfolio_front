@@ -6,8 +6,7 @@ import {useToast} from '../hooks/use-toast';
 
 import {
     getProject,
-    addProjectDetailData,
-    uploadImageToStorage,
+    addProjectDetailData
 } from "../services/projectDetailService";
 import GoBackBtn from "src/components/GoBackBtn";
 

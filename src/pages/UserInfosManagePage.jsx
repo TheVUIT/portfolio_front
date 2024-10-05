@@ -1,21 +1,18 @@
-
 import React, { useEffect, useState } from "react";
-import { getUserData, saveUserData, getCurrentUserId } from "../services/userService";
+import { getUserData, saveUserData } from "../services/userService"; // Supprimer getCurrentUserId
 import GoBackBtn from "src/components/GoBackBtn";
+import { useToast } from "src/hooks/use-toast";
 
 const UserInfosManagePage = () => {
+  const { toast } = useToast();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({});
   const [imageFiles, setImageFiles] = useState({}); // Stocker temporairement les fichiers image
 
-  const [userId, setUserId] = useState("")
-
-
   useEffect(() => {
     const fetchData = async () => {
-      setUserId(getCurrentUserId())
-      const user = await getUserData(getCurrentUserId());
+      const user = await getUserData(); // Supprimer l'utilisation de userId
       if (user) {
         setUserData(user);
         setFormData(user);
@@ -37,27 +34,34 @@ const UserInfosManagePage = () => {
     if (file) {
       setImageFiles((prevFiles) => ({
         ...prevFiles,
-        [fieldType]: file, // Stocker temporairement l'image
+        [fieldType]: file,
       }));
-      const imageURL = URL.createObjectURL(file); // Aperçu local de l'image
+      const imageURL = URL.createObjectURL(file);
       setFormData((prevData) => ({
         ...prevData,
-        [fieldType]: imageURL, // Mettre à jour l'aperçu local
+        [fieldType]: imageURL,
       }));
     }
   };
 
   const handleSave = async () => {
     setLoading(true);
-    const userId = getCurrentUserId();
     const updatedFormData = { ...formData };
 
     try {
-      await saveUserData(userId, updatedFormData, imageFiles.logo, imageFiles.aboutImage);
-      alert("Données enregistrées avec succès !");
+      await saveUserData(updatedFormData, imageFiles.logo, imageFiles.aboutImage);
+      toast({
+        title: "Succès",
+        description: "Données sauvegardées avec succès",
+        type: "success",
+      });
     } catch (error) {
       console.error("Error saving user data: ", error);
-      alert("Une erreur s'est produite lors de l'enregistrement.");
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de la mise à jour.",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
@@ -65,7 +69,7 @@ const UserInfosManagePage = () => {
 
   const renderInputFields = () => {
     return Object.keys(userData).map((key) => {
-      const value = formData[key] || ""; // Valeur par défaut vide si pas encore définie
+      const value = formData[key] || "";
       const isImageField = key === "logo" || key === "aboutImage";
 
       return (
@@ -90,7 +94,7 @@ const UserInfosManagePage = () => {
                 </label>
                 {formData[key] && (
                   <img
-                    className="w-full h-32 object-cover rounded-md mb-4"
+                    className="w-full h-auto max-h-48 object-contain rounded-md mb-4" // Ajuster l'affichage des images
                     alt={key}
                     src={formData[key]}
                   />
@@ -103,7 +107,7 @@ const UserInfosManagePage = () => {
                 onChange={handleInputChange}
                 placeholder={`Entrez votre ${key}`}
                 rows="4"
-                className="w-full h-32 p-2 border rounded-md placeholder-gray-400 focus:outline-none resize-none overflow-y-auto mb-4" // Utilisez overflow-y-auto pour le défilement vertical
+                className="w-full h-32 p-2 border rounded-md placeholder-gray-400 focus:outline-none resize-none overflow-y-auto mb-4"
               />
             )}
           </div>
@@ -112,8 +116,6 @@ const UserInfosManagePage = () => {
       );
     });
   };
-
-
 
   return (
     <div className="mt-20 flex flex-col justify-center items-center p-4 bg-gray-100 min-h-screen">
@@ -134,8 +136,8 @@ const UserInfosManagePage = () => {
           </>
         ) : (
           <div>
-              <div className="text-red-500">Aucun profil trouvé pour cette ID {userId}</div>
-              <GoBackBtn/>
+            <div className="text-red-500">Aucun profil trouvé.</div>
+            <GoBackBtn />
           </div>
         )}
       </div>

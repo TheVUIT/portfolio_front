@@ -17,13 +17,13 @@ const CarrouselManagePage = () => {
 
   useEffect(() => {
     const fetchCarrouselData = async () => {
-      const allCarrousel = await getCarrouselData(userId);
+      const allCarrousel = await getCarrouselData();
       if (allCarrousel && allCarrousel.images) {
         setImages(allCarrousel.images);
       }
     };
     fetchCarrouselData();
-  }, [userId]);
+  }, []);
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -44,7 +44,7 @@ const CarrouselManagePage = () => {
   };
 
   const handleDeleteImage = async (imageUrl) => {
-    const updatedImageList = await deleteCarrouselImage(userId, imageUrl);
+    const updatedImageList = await deleteCarrouselImage( imageUrl);
     setImages(updatedImageList);
   };
 

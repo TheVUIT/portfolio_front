@@ -13,26 +13,15 @@ import {
 import { db, storage } from "../config/firebase";
 import { auth } from "../config/firebase";
 
-export const saveUserData = async (
-  userData,
-  logoFile,
-  aboutImageFile
-) => {
+export const saveUserData = async (userData, logoFile, aboutImageFile) => {
   try {
     console.log("Logo file:", logoFile ? logoFile.name : "No file");
-    console.log(
-      "About image file:",
-      aboutImageFile ? aboutImageFile.name : "No file"
-    );
+    console.log("About image file:", aboutImageFile ? aboutImageFile.name : "No file");
 
     const updatedUserData = {
       ...userData,
-      logo:
-        (await formatUrlLinkToImage(logoFile, "logos")) ||
-        userData.logo,
-      aboutImage:
-        (await formatUrlLinkToImage(aboutImageFile, "aboutImages")) ||
-        userData.aboutImage,
+      logo: (await formatUrlLinkToImage(logoFile, "logos")) || userData.logo,
+      aboutImage: (await formatUrlLinkToImage(aboutImageFile, "aboutImages")) || userData.aboutImage,
     };
 
     await setDoc(doc(db, "users", "userManageInfos"), updatedUserData, { merge: true });
@@ -46,7 +35,7 @@ export const saveUserData = async (
   }
 };
 
-const deleteUnusedFiles = async (folder,  fileNameToKeep) => {
+const deleteUnusedFiles = async (folder, fileNameToKeep) => {
   try {
     const directoryRef = ref(storage, `${folder}/`);
 
@@ -63,85 +52,52 @@ const deleteUnusedFiles = async (folder,  fileNameToKeep) => {
   }
 };
 
-const formatUrlLinkToImage = async (imageFile,  folder) => {
+const formatUrlLinkToImage = async (imageFile, folder) => {
   let imageUrl = "";
   if (imageFile) {
-    const logoRef = ref(storage, `${folder}/${imageFile.name}`);
-    await uploadBytes(logoRef, imageFile);
-    imageUrl = await getDownloadURL(logoRef);
+    const imageRef = ref(storage, `${folder}/${imageFile.name}`);
+    await uploadBytes(imageRef, imageFile);
+    imageUrl = await getDownloadURL(imageRef);
   }
 
   return imageUrl;
 };
 
-
-
-
-
-
-export const getUserData = async (userId) => {
+export const getUserData = async () => {
   try {
-    const userDetailFromAuth = getUserDetailFromAuthentification(userId);
-    const userDetailFromFirestore = await getUserDetailFromFirestore(userId);
+    const userDetailFromFirestore = await getUserDetailFromFirestore();
 
-    if (
-      userDetailFromAuth &&
-      userDetailFromFirestore &&
-      userDetailFromAuth.email === userDetailFromFirestore.email
-    ) {
+    if (userDetailFromFirestore) {
       return userDetailFromFirestore;
     } else {
-      return null; // Si les emails ne correspondent pas ou en cas d'erreur
+      return null; // Si aucune donnée utilisateur n'est trouvée
     }
   } catch (error) {
-    console.error(
-      "Erreur lors de la récupération des données utilisateur :",
-      error
-    );
+    console.error("Erreur lors de la récupération des données utilisateur :", error);
     return null;
   }
 };
 
-const getUserDetailFromAuthentification = (userId) => {
-  const user = auth.currentUser;
-
-  if (user && user.uid === userId) {
-    return {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      phoneNumber: user.phoneNumber,
-    };
-  } else {
-    console.error("Utilisateur non authentifié ou mauvais ID utilisateur.");
-    return null;
-  }
-};
-
-const getUserDetailFromFirestore = async (userId) => {
+const getUserDetailFromFirestore = async () => {
   try {
-    const userDocRef = doc(db, "users", userId);
+    const userDocRef = doc(db, "users", "userManageInfos");
     const userDoc = await getDoc(userDocRef);
 
     if (userDoc.exists()) {
       return userDoc.data();
     } else {
-      console.error("Aucun utilisateur trouvé dans Firestore pour cet ID.");
+      await defaultDataProvider();
+      console.error("Aucun utilisateur trouvé dans Firestore. Création de données par défaut.");
       return null;
     }
   } catch (error) {
-    console.error(
-      "Erreur lors de la récupération des détails depuis Firestore :",
-      error
-    );
+    console.error("Erreur lors de la récupération des détails depuis Firestore :", error);
     return null;
   }
 };
 
-const defaultDataProvider = async (userId) => {
-  const docRef = doc(db, "users", userId);
-  console.log("No such document! Creating a new one...");
+const defaultDataProvider = async () => {
+  const docRef = doc(db, "users", "userManageInfos");
   const defaultData = {
     logo: "",
     textAboutFirst: "",
@@ -150,22 +106,15 @@ const defaultDataProvider = async (userId) => {
     linkLinkedIn: "",
     linkInstagram: "",
     email: "tony@gmail.com",
-    aboutImage: "",
-    password: "",
-  };
+    aboutImage: ""
+    };
   await setDoc(docRef, defaultData);
   return defaultData;
 };
 
-
-
-
-
-
-
-
-export const updateUserAuthentication = async (user, newEmail, newPassword) => {
+export const updateUserAuthentication = async (newEmail, newPassword) => {
   try {
+    const user = auth.currentUser;
     let emailUpdated = false;
     let passwordUpdated = false;
 
@@ -185,7 +134,7 @@ export const updateUserAuthentication = async (user, newEmail, newPassword) => {
 
     // Si l'email ou le mot de passe est mis à jour, déconnecte l'utilisateur
     if (emailUpdated || passwordUpdated) {
-      await signOut(user.auth);
+      await signOut(auth);
       console.log("User signed out after updating credentials.");
     }
   } catch (error) {
@@ -193,14 +142,8 @@ export const updateUserAuthentication = async (user, newEmail, newPassword) => {
   }
 };
 
-
-
 // Fonction pour obtenir l'ID de l'utilisateur connecté
 export function getCurrentUserId() {
   const user = auth.currentUser;
-  if (user) {
-    return user.uid;  
-  } else {
-    return null;
-  }
+  return user ? user.uid : null;
 }
