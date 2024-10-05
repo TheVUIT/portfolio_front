@@ -32,7 +32,6 @@ const NavBar = () => {
   }, [])
 
 
-
   function toggleMenu() {
     if (!showMenu) {
       setShowMenu(true);
@@ -40,7 +39,6 @@ const NavBar = () => {
       setShowMenu(false);
     }
   }
-
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-10 flex flex-row h-16 lg:h-20 w-full justify-between items-center bg-white py-4 shadow-md backdrop-blur-md">
