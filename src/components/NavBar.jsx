@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { FiMenu, FiX } from 'react-icons/fi';
 import React from 'react';
@@ -10,6 +10,7 @@ import '../css/styles.css'
 import { imagesPack } from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import {getUserData} from "../services/userService"
 
 import {
   RiInstagramLine,
@@ -20,6 +21,17 @@ import {
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [userData, setUserData] = useState({})
+
+  useEffect(()=> {
+    const fetchAboutImformation = async () => {
+      const userDataFromFireStore = await  getUserData()
+      setUserData(userDataFromFireStore)
+    };
+    fetchAboutImformation();
+  }, [])
+
+
 
   function toggleMenu() {
     if (!showMenu) {
@@ -28,39 +40,15 @@ const NavBar = () => {
       setShowMenu(false);
     }
   }
-  // Variantes d'animation pour la navbar
-  const menuVariants = {
-    hidden: { opacity: 0, y: -50 },  // Caché avec opacité 0 et hors écran en haut
-    visible: {
-      opacity: 1,
-      y: 0,  // Slide vers la position normale
-      transition: {
-        duration: 0.5, // Durée de l'animation
-        ease: 'easeInOut' // Transition fluide
-      },
-    },
-    exit: { opacity: 0, y: -50 }, // Animation à la sortie
-  };
-
 
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-10 flex flex-row h-16 lg:h-20 w-full justify-between items-center bg-white py-4 shadow-md backdrop-blur-md">
 
       {/* Logo Container */}
-      {/*<Link to={'/'} className='flex flex-row justify-start ml-14'>*/}
-
-      {/*  <div className="flex justify-start items-left w-full">*/}
-      {/*    <a className="cursor-pointer">*/}
-      {/*      <img className="h-10 object-cover" src={imagesPack.TONY_LOGO} alt="Tony Logo" />*/}
-      {/*    </a>*/}
-      {/*  </div>*/}
-
-      {/*</Link>*/}
-
       <Link to={'/'} className='flex flex-row justify-start ml-14'>
         <div className="flex justify-start items-left w-full">
-          <img className="h-10 object-cover cursor-pointer" src={imagesPack.TONY_LOGO} alt="Tony Logo" />
+          <img className="h-10 object-cover cursor-pointer" src={userData.logo} alt="Tony Logo" />
         </div>
       </Link>
 
@@ -104,15 +92,15 @@ const NavBar = () => {
 
         {/* Social Links And Directions */}
         <div className="hidden lg:flex lg:items-center space-x-2">
-          <Link className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
+          <Link to={userData.linkBehance} className="p-4 h-full w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiBehanceLine className='h-full' />
           </Link>
 
-          <Link className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
+          <Link to={userData.linkInstagram} className="p-4 h-full w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiInstagramLine className='h-full' />
           </Link>
 
-          <Link className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
+          <Link to={userData.linkLinkedIn} className="p-4 h-full w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-300 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-3.5">
             <RiLinkedinLine className='h-full' />
           </Link>
         </div>
@@ -214,18 +202,21 @@ const NavBar = () => {
 
           <div className="h-auto flex pg items-center space-x-2">
             <Link
+              to={userData.linkBehance}
               onClick={toggleMenu}
               className="h-auto p-5 w-full rounded-full bg-texte_secondary flex cursor-pointer text-background_primary transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiBehanceLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
             <Link
+              to={userData.linkInstagram}
               onClick={toggleMenu}
               className="h-auto p-5 w-full flex rounded-full bg-texte_secondary text-background_primary  cursor-pointer transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiInstagramLine className='h-full text-3xl sm:text-2xl' />
             </Link>
 
             <Link
+              to={userData.linkLinkedIn}
               onClick={toggleMenu}
               className="h-auto p-5 w-full flex cursor-pointer rounded-full bg-texte_secondary text-background_primary font-bold transition-colors duration-500 hover:bg-background_primary hover:text-texte_secondary hover:border-2 hover:border-texte_secondary hover:p-4.5">
               <RiLinkedinLine className='h-full text-3xl sm:text-2xl' />
