@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion'; // Importation de Framer Motion
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import '../css/index.css';
+import { addMessagingData, getMessages } from 'src/services/messageService';
+import MessagingData from '../model/MessagingData';
 
 const Contact = () => {
+  const [messagingData, setMessagingData] = useState(new MessagingData());
   const [formData, setFormData] = useState({
     name: '',
     profession: '',
@@ -10,16 +13,49 @@ const Contact = () => {
     message: ''
   });
 
+  // Charger les messages existants au montage du composant
+  useEffect(() => {
+    const fetchActualMessages = async () => {
+      const actualMessages = await getMessages();
+      setMessagingData(actualMessages);
+    };
+    fetchActualMessages();
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const updatedMessagingData = new MessagingData();
+
+    // Créer un nouvel objet MessagingData avec les messages existants
+    updatedMessagingData.messages = messagingData.messages
+    // Ajouter le nouveau message
+    updatedMessagingData.addMessage(
+      formData.name,
+      formData.profession,
+      formData.email,
+      formData.message
+    );
+
+    // Envoyer les données mises à jour dans Firestore
+    await addMessagingData(updatedMessagingData);
+
+    // Reset du formulaire après soumission
+    setFormData({
+      name: '',
+      profession: '',
+      email: '',
+      message: ''
+    });
+
     console.log('Form submitted:', formData);
   };
 
-  // Définir des variantes pour les animations
+
+
   const textVariant = {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } }
@@ -31,32 +67,32 @@ const Contact = () => {
   };
 
   return (
-    <motion.div 
-      className='h-[95vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-5 pl-5'
+    <motion.div
+      className="h-[95vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-5 pl-5"
       initial="hidden"
       animate="visible"
     >
-      <motion.p 
-        className='mt-8 text-3xl lg:text-6xl font-montserrat font-bold text-texte_secondary md:text-4xl sm:text-2xl'
+      <motion.p
+        className="mt-8 text-3xl lg:text-6xl font-montserrat font-bold text-texte_secondary md:text-4xl sm:text-2xl"
         variants={textVariant}
       >
         Hire me for your projects
       </motion.p>
-      
-      <motion.p 
-        className='mb-12 text-xs lg:text-xl font-montserrat'
+
+      <motion.p
+        className="mb-12 text-xs lg:text-xl font-montserrat"
         variants={textVariant}
         transition={{ delay: 0.4 }}
       >
         Designers, UI, Comms companies and everyone! Elevate your work with stunning 4K 3D renders - Ready to use and customizable
       </motion.p>
-      
-      <motion.form 
-        onSubmit={handleSubmit} 
-        className='h-2/3 w-full flex flex-col items-start justify-between gap-3 mb-20'
+
+      <motion.form
+        onSubmit={handleSubmit}
+        className="h-2/3 w-full flex flex-col items-start justify-between gap-3 mb-20"
         variants={formVariant}
       >
-        <div className='w-full flex flex-col lg:flex-row justify-between gap-4 pr-4 pl-4'>
+        <div className="w-full flex flex-col lg:flex-row justify-between gap-4 pr-4 pl-4">
           <div className="w-full lg:w-1/2 flex flex-col ">
             <label htmlFor="name" className="text-md font-ubuntu text-texte_secondary">Name / Organisation</label>
             <input
@@ -107,7 +143,7 @@ const Contact = () => {
         </div>
 
         <div className="mr-10 w-full flex flex-row justify-end">
-          <motion.button 
+          <motion.button
             className="custom-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -118,6 +154,6 @@ const Contact = () => {
       </motion.form>
     </motion.div>
   );
-}
+};
 
 export default Contact;

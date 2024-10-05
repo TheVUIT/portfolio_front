@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { updateEmail, updatePassword, signOut } from "firebase/auth";
 
 import {
@@ -14,7 +14,6 @@ import { db, storage } from "../config/firebase";
 import { auth } from "../config/firebase";
 
 export const saveUserData = async (
-  userId,
   userData,
   logoFile,
   aboutImageFile
@@ -29,27 +28,27 @@ export const saveUserData = async (
     const updatedUserData = {
       ...userData,
       logo:
-        (await formatUrlLinkToImage(logoFile, userId, "logos")) ||
+        (await formatUrlLinkToImage(logoFile, "logos")) ||
         userData.logo,
       aboutImage:
-        (await formatUrlLinkToImage(aboutImageFile, userId, "aboutImages")) ||
+        (await formatUrlLinkToImage(aboutImageFile, "aboutImages")) ||
         userData.aboutImage,
     };
 
-    await setDoc(doc(db, "users", userId), updatedUserData, { merge: true });
+    await setDoc(doc(db, "users", "userManageInfos"), updatedUserData, { merge: true });
 
     if (aboutImageFile && logoFile) {
-      await deleteUnusedFiles("logos", userId, logoFile?.name);
-      await deleteUnusedFiles("aboutImages", userId, aboutImageFile?.name);
+      await deleteUnusedFiles("logos", logoFile?.name);
+      await deleteUnusedFiles("aboutImages", aboutImageFile?.name);
     }
   } catch (error) {
     console.error("Error saving user data: ", error);
   }
 };
 
-const deleteUnusedFiles = async (folder, userId, fileNameToKeep) => {
+const deleteUnusedFiles = async (folder,  fileNameToKeep) => {
   try {
-    const directoryRef = ref(storage, `${folder}/${userId}/`);
+    const directoryRef = ref(storage, `${folder}/`);
 
     const fileList = await listAll(directoryRef);
 
@@ -64,10 +63,10 @@ const deleteUnusedFiles = async (folder, userId, fileNameToKeep) => {
   }
 };
 
-const formatUrlLinkToImage = async (imageFile, userId, folder) => {
+const formatUrlLinkToImage = async (imageFile,  folder) => {
   let imageUrl = "";
   if (imageFile) {
-    const logoRef = ref(storage, `${folder}/${userId}/${imageFile.name}`);
+    const logoRef = ref(storage, `${folder}/${imageFile.name}`);
     await uploadBytes(logoRef, imageFile);
     imageUrl = await getDownloadURL(logoRef);
   }

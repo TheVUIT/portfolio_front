@@ -48,15 +48,22 @@ const NavBar = () => {
     <nav className="fixed left-0 right-0 top-0 z-10 flex flex-row h-16 lg:h-20 w-full justify-between items-center bg-white py-4 shadow-md backdrop-blur-md">
 
       {/* Logo Container */}
+      {/*<Link to={'/'} className='flex flex-row justify-start ml-14'>*/}
+
+      {/*  <div className="flex justify-start items-left w-full">*/}
+      {/*    <a className="cursor-pointer">*/}
+      {/*      <img className="h-10 object-cover" src={imagesPack.TONY_LOGO} alt="Tony Logo" />*/}
+      {/*    </a>*/}
+      {/*  </div>*/}
+
+      {/*</Link>*/}
+
       <Link to={'/'} className='flex flex-row justify-start ml-14'>
-
         <div className="flex justify-start items-left w-full">
-          <a className="cursor-pointer">
-            <img className="h-10 object-cover" src={imagesPack.TONY_LOGO} alt="Tony Logo" />
-          </a>
+          <img className="h-10 object-cover cursor-pointer" src={imagesPack.TONY_LOGO} alt="Tony Logo" />
         </div>
-
       </Link>
+
 
       <div className='h-full flex flex-row gap-10'>
 

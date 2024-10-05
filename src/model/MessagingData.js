@@ -47,3 +47,6 @@ class MessagingData {
     return false;
   }
 }
+
+
+export default MessagingData

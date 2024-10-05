@@ -16,7 +16,7 @@ import UserInfosManagePage from "./pages/UserInfosManagePage";
 import ProjectManagePage from "./pages/ProjectManagePage";
 import CarrouselManagePage from "./pages/CarrouselManagePage";
 import ConexionInfosPage from "./pages/ConexionInfosPage";
-import MessageService from "./pages/MessageService";
+import MessageManagePage from "./pages/MessageManagePage";
 import Loading from "src/components/Loading";
 
 import Layout from "./components/Layout";
@@ -28,7 +28,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProjectDetail from "./pages/ProjectDetail";
-
+import {Toaster} from "src/components/ui/toaster";
 const validPaths = ["/", "/about", "/services", "/contact"];
 
 const App = () => {
@@ -50,6 +50,7 @@ const App = () => {
   return (
     <Router>
       <Layout>
+        <Toaster />
         <Routes>
           {validPaths.map((path) => (
             <Route key={path} path={path} element={getPageComponent(path)} />
@@ -82,7 +83,7 @@ const App = () => {
           />
           <Route
             path="/admin/message-manage"
-            element={<PrivateRoute element={<MessageService />} />}
+            element={<PrivateRoute element={<MessageManagePage />} />}
           />
           <Route path="*" element={<Navigate to="/login" />} />
           <Route path="*" element={<NotFoundPage />} />{" "}
