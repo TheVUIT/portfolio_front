@@ -21,6 +21,7 @@ import Loading from "src/components/Loading";
 
 import Layout from "./components/Layout";
 import "./css/index.css";
+import "./css/styles.css";
 import "@mantine/core/styles.css";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
