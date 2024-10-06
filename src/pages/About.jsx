@@ -26,7 +26,7 @@ const About = () => {
         {/* Div pour la photo de profil */}
         <motion.div
           className="flex-shrink-0 lg:w-1/2 flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}
+          // style={{ backgroundImage: `url(${imagesPack.CONTACT_PROFILE_BACKGROUND})` }}
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}

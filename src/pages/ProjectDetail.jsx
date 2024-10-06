@@ -57,7 +57,7 @@ const ProjectDetail = () => {
                             key={index}
                             src={src}
                             alt={`Detail ${index + 1} ${projectDetails.id}`}
-                            className="max-w-full h-auto mx-auto mb-8"
+                            className="max-w-full h-auto m-10 mb-8"
                         />
                     ))}
                 </div>
