@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import ButtonCarousel from './ButtonCarousel';
-import { imagesPack } from 'src/utils/ImagesContant';
 import {getProject} from "../services/projectDetailService";
 import ProjectDetailData from 'src/model/ProjectDetailData';
 

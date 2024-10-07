@@ -9,14 +9,10 @@ import {
   Navigate,
 } from "react-router-dom";
 import { auth } from "./config/firebase";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
-import LoginPage from "./pages/LoginPage";
-import AdminPage from "./pages/AdminPage";
-import UserInfosManagePage from "./pages/UserInfosManagePage";
-import ProjectManagePage from "./pages/ProjectManagePage";
-import CarrouselManagePage from "./pages/CarrouselManagePage";
-import ConexionInfosPage from "./pages/ConexionInfosPage";
-import MessageManagePage from "./pages/MessageManagePage";
+
 import Loading from "src/components/Loading";
 
 import Layout from "./components/Layout";
@@ -57,38 +53,8 @@ const App = () => {
             <Route key={path} path={path} element={getPageComponent(path)} />
           ))}
           <Route path="/portfolio/project/:id" element={<ProjectDetail />} />
-          {/* Si l'utilisateur est déjà connecté, redirige vers /admin */}
-          {/* <Route
-            path="/login"
-            element={user ? <Navigate to="/admin" /> : <LoginPage />}
-          />
-          <Route
-            path="/admin/user-manage"
-            element={<PrivateRoute element={<UserInfosManagePage />} />}
-          />
-          <Route
-            path="/admin/connexion-manage"
-            element={<PrivateRoute element={<ConexionInfosPage />} />}
-          />
-          <Route
-            path="/admin"
-            element={<PrivateRoute element={<AdminPage />} />}
-          />
-          <Route
-            path="/admin/carousel-manage"
-            element={<PrivateRoute element={<CarrouselManagePage />} />}
-          />
-          <Route
-            path="/admin/project-manage"
-            element={<PrivateRoute element={<ProjectManagePage />} />}
-          />
-          <Route
-            path="/admin/message-manage"
-            element={<PrivateRoute element={<MessageManagePage />} />}
-          />
-          <Route path="*" element={<Navigate to="/login" />} /> */}
+          
           <Route path="*" element={<NotFoundPage />} />{" "}
-          {/* Route de fallback pour les chemins non trouvés */}
         </Routes>
       </Layout>
     </Router>
@@ -109,24 +75,5 @@ function getPageComponent(path) {
       return <NotFoundPage />;
   }
 }
-
-// const PrivateRoute = ({ element }) => {
-//   const [loading, setLoading] = useState(true);
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (user) => {
-//       setUser(user);
-//       setLoading(false);
-//     });
-//     return () => unsubscribe();
-//   }, []);
-
-//   if (loading) {
-//     return <div>Loading ...</div>;
-//   }
-
-//   return user ? element : <Navigate to="/login" />;
-// };
 
 export default App;

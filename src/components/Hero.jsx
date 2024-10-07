@@ -5,11 +5,7 @@ import React from 'react'
 
 function Hero() {
 
-  const items = [
-    'Producers', 'Graphic designer', 'Web designer', 'Packaging designers', 'Products presentations',
-    'Artistic director', 'Video game designer', 'Technical illustrator', 'Model maker', 'Designers', 'Computer graphics designers', 'Etc'
-  ];
-
+ 
   return (
     <div className='mt-32 max-w-full flex flex-col items-center bg-backgroung_secondary overflow-x-hidden'>
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { imagesPack } from '../utils/ImagesContant';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import {getUserData} from "../services/userService"
