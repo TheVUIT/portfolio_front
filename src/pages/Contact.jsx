@@ -84,7 +84,7 @@ const Contact = () => {
 
   return (
     <motion.div
-      className="h-[95vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-5 pl-5"
+      className="h-[89vh] min-w-full mt-20 flex flex-col items-start justify-between lg:pr-20 lg:pl-20 pr-5 pl-5"
       initial="hidden"
       animate="visible"
     >
@@ -183,12 +183,12 @@ const Contact = () => {
       {openDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-5 w-11/12 sm:w-1/3">
-            <h2 className="font-bold text-lg mb-4">Erreur</h2>
-            <p>Veuillez remplir tous les champs avant d'envoyer le message.</p>
+            <h2 className="font-ubuntu text-lg mb-4">Attention !</h2>
+            <p className='font-ubuntu'>Please fill the text area before submit. Thank you</p>
             <div className="flex justify-end mt-4">
               <button 
                 onClick={handleCloseDialog} 
-                className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 transition">
+                className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 transition">
                 OK
               </button>
             </div>

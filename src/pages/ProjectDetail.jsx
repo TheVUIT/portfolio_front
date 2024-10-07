@@ -50,14 +50,14 @@ const ProjectDetail = () => {
 
     return (
         <>
-            <div className='w-full p-8 lg:p-32 mb-8'>
-                <div className="mt-6">
+            <div className='w-full p-8 md:p-28 lg:p-60 mb-8'>
+                <div className="mt-6 mb-16 lg:mb-32">
                     {projectDetails.details?.src_images?.map((src, index) => ( // Utilisez l'opérateur de coalescence nulle pour éviter les erreurs
                         <img
                             key={index}
                             src={src}
                             alt={`Detail ${index + 1} ${projectDetails.id}`}
-                            className="max-w-full h-auto mb-16 lg:mb-32"
+                            className="max-w-full h-auto mb-14 md:mb-32 lg:mb-48 "
                         />
                     ))}
                 </div>

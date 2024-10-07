@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-background_primary text-texte_secondary py-4">
       <div className="text-center">
-        <p className="text-lg font-montserrat font-extralight">&copy; theVuilt. All rights reserved 2024</p>
+        <p className="text-lg font-montserrat font-extralight">&copy; theVuit. All rights reserved 2024</p>
       </div>
     </footer>
   );

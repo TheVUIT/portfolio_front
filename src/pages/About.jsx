@@ -21,7 +21,7 @@ const About = () => {
 
   return (
     <>
-      <section className="h-auto lg:h-[95vh] mt-20 flex flex-col-reverse lg:flex-row bg-backgroung_secondary">
+      <section className="h-auto lg:h-[89vh] mt-16 lg:mt-20 flex flex-col lg:flex-row bg-backgroung_secondary">
         {/* Div pour la photo de profil */}
         <motion.div
           className="flex-shrink-0 lg:w-1/2 flex items-center justify-center bg-cover bg-center"
@@ -51,11 +51,12 @@ const About = () => {
           <p className="text-lg mb-8 font-montserrat">
             {userData.textAboutFirst}
           </p>
-          {/* <p className="text-lg mb-8 font-montserrat">
-            My ability to combine artistic vision with technical mastery allows me to deliver exceptional results that exceed client expectations.
-          </p> */}
           <p className="text-lg mb-8 font-montserrat">
           {userData.textAboutSecond}
+          </p>
+
+          <p className="text-lg mb-8 font-montserrat">
+          {userData.textAboutThird}
           </p>
           <motion.div
             className="flex flex-row justify-between lg:flex-row lg:justify-between gap-4"
@@ -65,13 +66,13 @@ const About = () => {
           >
             <Link
               to={'/'}
-              className="bg-background_primary text-nowrap text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+              className="bg-background_primary text-nowrap text-sm px-2 py-2 lg:px-6 lg:py-3 text-texte_secondary font-ubuntu  rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
             >
               Check portfolio
             </Link>
             <Link
               to={'/contact'}
-              className="bg-background_primary text-texte_secondary font-ubuntu px-6 py-3 rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+              className="bg-background_primary text-nowrap text-sm px-2 py-2 lg:px-6 lg:py-3 text-texte_secondary font-ubuntu rounded-lg hover:bg-texte_secondary hover:text-background_primary transition-colors duration-400 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
             >
               Hire for project
             </Link>

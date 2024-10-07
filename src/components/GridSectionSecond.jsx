@@ -51,8 +51,8 @@ const GridSectionSecond = () => {
     onClickOnCarrousel={handleOnClickOnCarrouselButton}
   />
 
-  <section className="mt-10 flex flex-col items-center justify-center p-16 w-full">
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+  <section className="mt-4 flex flex-col items-center justify-center p-6 lg:p-12 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
       {/* Tri des projets par l'attribut 'pinned' avant affichage */}
       {projectListByCategory
         .sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) // Les projets 'pinned' en premier
@@ -63,7 +63,7 @@ const GridSectionSecond = () => {
             className="relative group cursor-pointer w-full aspect-square bg-gray-200"
           >
             {/* Container for the images */}
-            <div className="absolute inset-0 overflow-hidden rounded-lg">
+            <div className="absolute inset-0 overflow-hidden">
               {/* Default image */}
               <img
                 src={project.images.src_principal_image}

@@ -47,7 +47,9 @@ const ButtonCarousel = ({categories, onClickOnCarrousel}) => {
           className="relative w-full"
         >
           <CarouselContent className="w-screen flex flex-row justify-between space-x-0 transition-transform duration-100 ease-out">
-            {categoriesList.map((category, index) => (
+            {categoriesList
+            .sort((c,d) => c.id - d.id)
+            .map((category, index) => (
               <CarouselItem
                 key={index}
                 className="flex-none w-auto flex-shrink-0"
