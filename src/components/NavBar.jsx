@@ -7,10 +7,9 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import React from 'react';
 import '../css/index.css'
 import '../css/styles.css'
-import { imagesPack } from "../utils/ImagesContant"
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {getUserData} from "../services/userService"
+import { getUserData } from "../services/userService"
 
 import {
   RiInstagramLine,
@@ -23,13 +22,21 @@ const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [userData, setUserData] = useState({})
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchAboutImformation = async () => {
-      const userDataFromFireStore = await  getUserData()
+      let userDataFromFireStore
+      try {
+         userDataFromFireStore = await getUserData()
+
+      } catch (error) {
+        console.log(error)
+      }
       setUserData(userDataFromFireStore)
     };
     fetchAboutImformation();
   }, [])
+
+  console.log(JSON.stringify(userData, null, 2))
 
 
   function toggleMenu() {
@@ -44,11 +51,22 @@ const NavBar = () => {
     <nav className="fixed left-0 right-0 top-0 z-10 flex flex-row h-16 lg:h-20 w-full justify-between items-center bg-white py-4 shadow-md backdrop-blur-md">
 
       {/* Logo Container */}
-      <Link to={'/'} className='flex flex-row justify-start ml-14'>
+      {/* <Link to={'/'} className='flex flex-row justify-start ml-14'>
         <div className="flex justify-start items-left w-full">
           <img className="h-10 object-cover cursor-pointer" src={userData.logo} alt="Tony Logo" />
         </div>
+      </Link> */}
+
+      <Link to={'/'} className='flex flex-row justify-start ml-14'>
+        <div className="flex justify-start items-left w-full">
+          {userData.logo ? (
+            <img className="h-10 object-cover cursor-pointer" src={userData.logo} alt="Tony Logo" />
+          ) : (
+            <span>Loading...</span> // Vous pouvez remplacer cela par une image par défaut ou un texte
+          )}
+        </div>
       </Link>
+
 
 
       <div className='h-full flex flex-row gap-10'>

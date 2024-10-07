@@ -58,7 +58,7 @@ const App = () => {
           ))}
           <Route path="/portfolio/project/:id" element={<ProjectDetail />} />
           {/* Si l'utilisateur est déjà connecté, redirige vers /admin */}
-          <Route
+          {/* <Route
             path="/login"
             element={user ? <Navigate to="/admin" /> : <LoginPage />}
           />
@@ -86,7 +86,7 @@ const App = () => {
             path="/admin/message-manage"
             element={<PrivateRoute element={<MessageManagePage />} />}
           />
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} /> */}
           <Route path="*" element={<NotFoundPage />} />{" "}
           {/* Route de fallback pour les chemins non trouvés */}
         </Routes>
@@ -110,23 +110,23 @@ function getPageComponent(path) {
   }
 }
 
-const PrivateRoute = ({ element }) => {
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
+// const PrivateRoute = ({ element }) => {
+//   const [loading, setLoading] = useState(true);
+//   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+//   useEffect(() => {
+//     const unsubscribe = onAuthStateChanged(auth, (user) => {
+//       setUser(user);
+//       setLoading(false);
+//     });
+//     return () => unsubscribe();
+//   }, []);
 
-  if (loading) {
-    return <div>Loading ...</div>;
-  }
+//   if (loading) {
+//     return <div>Loading ...</div>;
+//   }
 
-  return user ? element : <Navigate to="/login" />;
-};
+//   return user ? element : <Navigate to="/login" />;
+// };
 
 export default App;

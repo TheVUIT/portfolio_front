@@ -45,7 +45,7 @@ const ProjectDetail = () => {
     };
 
     if (!projectDetails) {
-        return <p>Projet non trouvé</p>; // Vérifiez si projectDetails est null ou undefined
+        return <p c>Projet non trouvé</p>; // Vérifiez si projectDetails est null ou undefined
     }
 
     return (
