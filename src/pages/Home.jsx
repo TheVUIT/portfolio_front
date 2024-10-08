@@ -3,7 +3,6 @@ import "@mantine/core/styles.css";
 import Hero from "../components/Hero";
 import Banner from '../components/Banner';
 import GridSectionSecond from '../components/GridSectionSecond';
-// import GridSection from '../components/GridSection';
 import React from "react";
 import { motion } from 'framer-motion';
 

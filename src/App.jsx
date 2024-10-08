@@ -5,8 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
-  Navigate,
+  Routes
 } from "react-router-dom";
 import { auth } from "./config/firebase";
 import "slick-carousel/slick/slick.css"; 

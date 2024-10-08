@@ -6,7 +6,7 @@ import { getProject } from "../services/projectDetailService";
 import ProjectDetailData from 'src/model/ProjectDetailData';
 
 const ProjectDetail = () => {
-    const [projectAndCategory, setProjectAndCategory] = useState({});
+    // const [projectAndCategory, setProjectAndCategory] = useState({});
     const [projectDetails, setProjectDetails] = useState(null); // Initialiser comme null
     const { id } = useParams();
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const ProjectDetail = () => {
     useEffect(() => {
         const fetchProjectAndCategoryData = async () => {
             const projectData = await getProject();
-            setProjectAndCategory(projectData);
+            // setProjectAndCategory(projectData);
 
             const projectAllData = new ProjectDetailData([...projectData.categories]); // Utiliser projectData ici
             const categoryId = parseInt(id.split("-")[0]);
