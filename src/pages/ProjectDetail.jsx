@@ -12,6 +12,7 @@ const ProjectDetail = () => {
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
 
+    
     useEffect(() => {
         const fetchProjectAndCategoryData = async () => {
             const projectData = await getProject();
