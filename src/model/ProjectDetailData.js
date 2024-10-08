@@ -76,12 +76,10 @@ class ProjectDetailData {
         }
     }
 
-    // Méthode mise à jour pour ajouter une image à un projet
     addImageSourceToProjectInCategory(ImageFileName, projectForDetailsUpdate, categoryId) {
         const category = this.getCategoryById(categoryId);
 
         if (category) {
-            // const project = category.projects.find(p => p.id === projectId);
             if (projectForDetailsUpdate) {
                 const updatedSrcImages = [...projectForDetailsUpdate.details.src_images, ImageFileName];
                 const updatedProject = {...projectForDetailsUpdate, details: {...projectForDetailsUpdate.details, src_images: updatedSrcImages}};
@@ -98,18 +96,15 @@ class ProjectDetailData {
         }
     }
 
-    // Méthode mise à jour pour supprimer une image d'un projet
     deleteSourceImagesToProjectInCategory(ImageFileName, projectId, categoryId) {
         const category = this.getCategoryById(categoryId);
 
         if (category) {
             const project = category.projects.find(p => p.id === projectId);
             if (project) {
-                // Supprime l'image de la liste src_images
                 const updatedSrcImages = project.details.src_images.filter(src_image => src_image !== ImageFileName);
                 const updatedProject = {...project, details: {...project.details, src_images: updatedSrcImages}};
 
-                // Mets à jour la liste des projets
                 const updatedProjects = category.projects.map(p => p.id === project.id ? updatedProject : p);
                 const updatedCategory = {...category, projects: updatedProjects};
 

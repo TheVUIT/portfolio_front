@@ -6,14 +6,12 @@ class Project {
     this.details = details;
   }
 
-  // Mise à jour d'un projet
   updateProject(images, pinned, details) {
     if (images) this.images = images;
     if (pinned !== undefined) this.pinned = pinned;
     if (details) this.details = details;
   }
 
-  // Suppression d'un projet
   deleteProject() {
     this.id = null;
     this.images = null;

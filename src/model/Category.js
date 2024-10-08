@@ -22,10 +22,10 @@ class Category {
     }
 
     deleteProject(projectId) {
-        const initialLength = this.projects.length; // Pour le débogage
+        const initialLength = this.projects.length; 
         this.projects = this.projects.filter(project => project.id !== projectId);
-        console.log('Projects after deletion:', this.projects); // Pour voir l'état après suppression
-        console.log('Projects removed:', initialLength - this.projects.length); // Nombre de projets supprimés
+        console.log('Projects after deletion:', this.projects); 
+        console.log('Projects removed:', initialLength - this.projects.length); 
     }
   
 }
